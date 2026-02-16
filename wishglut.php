@@ -3,7 +3,7 @@
  * Plugin Name: WishGlut - Wishlist for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/shopglut
  * Description: Beautiful WooCommerce wishlist plugin with advanced features like wishlist sharing, social sharing, QR code, popular products, and more.
- * Version: 1.0.6
+ * Version: 1.0.7
  * Author: AppGlut
  * Author URI: https://appglut.com/
  * License: GPL v2 or later
@@ -60,7 +60,7 @@ function wishglut_plugin_initialize() {
 	if ( class_exists( 'WooCommerce' ) ) {
 		// Run ShopGlut initialization
 		// Include the AGSHOPGLUT framework setup class
-		if ( file_exists( WISHGLUT_PATH . 'src/library/model/classes/setup.class.php' ) && ! defined( 'SHOPGLUT_VERSION' ) ) {
+		if ( file_exists( WISHGLUT_PATH . 'src/library/model/classes/setup.class.php' ) ) {
 			require_once WISHGLUT_PATH . 'src/library/model/classes/setup.class.php';
 		}
 		require_once WISHGLUT_PATH . 'src/wishlist-settings.php';
