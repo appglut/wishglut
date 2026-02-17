@@ -426,8 +426,8 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         private function render_notification_tables() {
             global $wpdb;
             
-            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
-            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
+            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
             $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             
             ob_start();
@@ -436,21 +436,21 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
             <!-- Table 1: Main Wishlist Notifications -->
             <div class="notification-table-section">
                 <h3 class="table-title"><?php esc_htmlesc_html_e( 'Main Wishlist Notifications', 'shopglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with main wishlist notification preferences from shopglut_wishlist.wishlist_notifications', 'shopglut' ); ?></p>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with main wishlist notification preferences from wishglut_wishlist.wishlist_notifications', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_main_wishlist_table()); ?>
             </div>
             
             <!-- Table 2: Sublist Notifications -->
             <div class="notification-table-section">
                 <h3 class="table-title"><?php esc_htmlesc_html_e( 'Sublist Notifications', 'shopglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with sublist notification preferences from shopglut_wishlist.sublist_notifications', 'shopglut' ); ?></p>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with sublist notification preferences from wishglut_wishlist.sublist_notifications', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_sublist_notifications_table()); ?>
             </div>
             
             <!-- Table 3: Individual Product Subscriptions -->
             <div class="notification-table-section">
                 <h3 class="table-title"><?php esc_htmlesc_html_e( 'Individual Product Subscriptions', 'shopglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Individual product subscriptions from shopglut_wishlist_social.product_subscriptions', 'shopglut' ); ?></p>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Individual product subscriptions from wishglut_wishlist_social.product_subscriptions', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_product_subscriptions_table()); ?>
             </div>
             
@@ -907,7 +907,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_main_wishlist_table() {
             global $wpdb;
-            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
+            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
             $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
 
             // Check if table exists
@@ -925,7 +925,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     w.useremail,
                     w.wishlist_notifications,
                     w.product_added_time
-                FROM {$wpdb->prefix}shopglut_wishlist w
+                FROM {$wpdb->prefix}wishglut_wishlist w
                 WHERE w.wishlist_notifications IS NOT NULL
                 AND w.wishlist_notifications != ''
                 AND w.wishlist_notifications != '[]'
@@ -995,8 +995,8 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_sublist_notifications_table() {
             global $wpdb;
-            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
-            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
+            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
             $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
 
             // Check if table exists
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
             // Note: sublist_notifications column has been removed, now using social table
             $wishlist_users = [];
 
-            // Get users from shopglut_wishlist_social table with notification_settings
+            // Get users from wishglut_wishlist_social table with notification_settings
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query
             $social_users = $wpdb->get_results(
                 "SELECT DISTINCT
@@ -1018,7 +1018,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     s.notification_settings,
                     s.created_at,
                     'social' as source
-                FROM {$wpdb->prefix}shopglut_wishlist_social s
+                FROM {$wpdb->prefix}wishglut_wishlist_social s
                 WHERE s.notification_settings IS NOT NULL
                 AND s.notification_settings != ''
                 AND s.notification_settings != '{}'
@@ -1143,7 +1143,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_product_subscriptions_table() {
             global $wpdb;
-            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
             $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
 
             // Check if table exists
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     s.notification_settings,
                     s.product_subscriptions,
                     s.created_at
-                FROM {$wpdb->prefix}shopglut_wishlist_social s
+                FROM {$wpdb->prefix}wishglut_wishlist_social s
                 WHERE s.product_subscriptions IS NOT NULL
                 AND s.product_subscriptions != ''
                 AND s.product_subscriptions != '[]'

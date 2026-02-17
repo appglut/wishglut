@@ -15,7 +15,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 		public $value = array();
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-			$this->cron_token = get_option( 'shopglut_wishlist_cron_token', '' );
+			$this->cron_token = get_option( 'wishglut_wishlist_cron_token', '' );
 			parent::__construct( $field, $value, $unique, $where, $parent );
 		}
 

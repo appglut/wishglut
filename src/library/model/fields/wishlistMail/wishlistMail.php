@@ -17,7 +17,7 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
         private $pro_email_instance;
 
         public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-            $this->cron_token = get_option( 'shopglut_wishlist_cron_token', '' );
+            $this->cron_token = get_option( 'wishglut_wishlist_cron_token', '' );
             
             // Get ProEmail instance if available
             if ( class_exists( 'Shopglut\WishlistPro\ProEmail' ) ) {
@@ -129,12 +129,12 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
             if ( $is_pro_active && $this->pro_email_instance ) {
                 $cron_url = $this->pro_email_instance->get_cron_url();
             } elseif ( !$is_pro || $is_pro_active ) {
-                $cron_url = site_url( '/send-shopglut-wishlist-emails/?cronkey=' . $this->cron_token );
+                $cron_url = site_url( '/send-wishglut-wishlist-emails/?cronkey=' . $this->cron_token );
             }
             ?>
             <div class="agl-cron-url-wrapper">
                 <input type="text" 
-                       id="shopglut-wishlist-cron-url" 
+                       id="wishglut-wishlist-cron-url" 
                        value="<?php echo esc_url( $cron_url ); ?>" 
                        readonly 
                        class="agl-cron-input">
@@ -344,7 +344,7 @@ jQuery(document).ready(function($) {
 
     // Copy cron URL to clipboard
     $('#copy-cron-url').click(function() {
-        var cronInput = $('#shopglut-wishlist-cron-url');
+        var cronInput = $('#wishglut-wishlist-cron-url');
         cronInput.select();
         document.execCommand('copy');
         
