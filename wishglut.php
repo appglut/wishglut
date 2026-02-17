@@ -33,6 +33,7 @@ if ( is_admin() && file_exists( WISHGLUT_PATH . 'src/WelcomePage.php' ) ) {
 require __DIR__ . '/autoloader.php';
 
 require __DIR__ . '/src/assets.php';
+require __DIR__ . '/src/WishglutDatabase.php';
 
 
 // Register welcome page menu (always available, not dependent on individual menu)
@@ -63,6 +64,9 @@ add_action( 'woocommerce_init', 'wishglut_plugin_initialize' );
 function wishglut_plugin_initialize() {
 	// Ensure that WooCommerce is loaded before proceeding
 	if ( class_exists( 'WooCommerce' ) ) {
+		// Initialize database tables
+		\Wishglut\WishglutDatabase::init();
+
 		// Run Wishglut initialization
 		// Include the AGWISHGLUT framework setup class
 		if ( file_exists( WISHGLUT_PATH . 'src/library/model/classes/setup.class.php' ) ) {
@@ -77,6 +81,9 @@ function wishglut_plugin_initialize() {
 
 // Activation hook
 register_activation_hook( __FILE__, function() {
+	// Create database tables
+	\Wishglut\WishglutDatabase::init();
+
 	// Set transient to redirect to welcome page
 	set_transient( 'wishglut_activation_redirect', true, 30 );
 } );
