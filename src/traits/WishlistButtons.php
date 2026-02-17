@@ -12,7 +12,7 @@ trait WishlistButtons {
 
 		global $wpdb, $product; // Access the global $wpdb and product object
 
-		if ( $this->enhancements['wishlist-general-outofstock'] == '1' && ! $product->is_in_stock() ) {
+		if ( ( $this->enhancements['wishlist-general-outofstock'] ?? '' ) == '1' && ! $product->is_in_stock() ) {
 			return; // Exit the function without displaying the wishlist button
 		}
 
@@ -44,7 +44,7 @@ trait WishlistButtons {
 			// Handle the second click action based on the existing entry
 			switch ( $second_click_action ) {
 				case 'goto-wishlist':
-					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ) );
+					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ?? 0 ) );
 					break;
 				case 'redirect-to-checkout':
 					$button_class = "checkout-link";
@@ -65,12 +65,12 @@ trait WishlistButtons {
 			$href = '#';
 		}
 
-		if ( $this->enhancements['wishlist-require-login'] == true && ! is_user_logged_in() ) {
+		if ( ( $this->enhancements['wishlist-require-login'] ?? '' ) == true && ! is_user_logged_in() ) {
 			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 			$href = wp_login_url( site_url( $request_uri ) );
 			$button_class = "login-required";
 			$button_text = __( 'Login Required', 'wishglut' );
-			$icon = $this->enhancements['wishlist-require-login-btn-icon'];
+			$icon = $this->enhancements['wishlist-require-login-btn-icon'] ?? 'fa fa-user';
 			$move_href = wp_login_url( site_url( $request_uri ) );
 			$move_button_class = "login-required";
 			$move_button_text = __( "Move to List", 'wishglut' );
@@ -78,9 +78,9 @@ trait WishlistButtons {
 
 		echo "<div class='wishglut_wishlist_container'>";
 		echo "<div class='wishglut_wishlist single-product'>";
-		if ( $this->enhancements['wishlist-product-option'] === 'only-icon' ) {
+		if ( ( $this->enhancements['wishlist-product-option'] ?? '' ) === 'only-icon' ) {
 			echo '<a href="' . esc_url( $href ) . '" class="button ' . esc_attr( $button_class ) . '" data-product-id="' . esc_attr( $product_id ) . '"><i class="' . esc_attr( $icon ) . '"></i></a>';
-		} elseif ( $this->enhancements['wishlist-product-option'] === 'button-with-icon' ) {
+		} elseif ( ( $this->enhancements['wishlist-product-option'] ?? '' ) === 'button-with-icon' ) {
 			$icon_position = $this->enhancements['wishlist-product-icon-position'] ?? 'text-right';
 			if ( $icon_position === 'text-left' ) {
 				echo '<a href="' . esc_url( $href ) . '" class="button ' . esc_attr( $button_class ) . '" data-product-id="' . esc_attr( $product_id ) . '"><i class="' . esc_attr( $icon ) . '"></i> <span class="button-text">' . esc_html( $button_text ) . '</span></a>';
@@ -109,7 +109,7 @@ trait WishlistButtons {
 		// Check if we're rendering from a shop layout template (shortcode/custom page)
 		$is_shop_layout_template = isset($wishglut_rendering_shop_layout) && $wishglut_rendering_shop_layout;
 
-		if ( $this->enhancements['wishlist-general-outofstock'] == '1' && ! $product->is_in_stock() ) {
+		if ( ( $this->enhancements['wishlist-general-outofstock'] ?? '' ) == '1' && ! $product->is_in_stock() ) {
 			return; // Exit the function without displaying the wishlist button
 		}
 
@@ -142,7 +142,7 @@ trait WishlistButtons {
 
 			switch ( $second_click_action ) {
 				case 'goto-wishlist':
-					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ) );
+					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ?? 0 ) );
 					break;
 				case 'redirect-to-checkout':
 					$button_class = "checkout-link";
@@ -164,12 +164,12 @@ trait WishlistButtons {
 		}
 
 		// Add login requirement if necessary
-		if ( $this->enhancements['wishlist-require-login'] == true && ! is_user_logged_in() ) {
+		if ( ( $this->enhancements['wishlist-require-login'] ?? '' ) == true && ! is_user_logged_in() ) {
 			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 			$href = wp_login_url( site_url( $request_uri ) );
 			$button_class = "login-required";
 			$button_text = __( 'Login Required', 'wishglut' );
-			$icon = $this->enhancements['wishlist-require-login-btn-icon'];
+			$icon = $this->enhancements['wishlist-require-login-btn-icon'] ?? 'fa fa-user';
 		}
 
 		// Render the wishlist button
@@ -190,7 +190,7 @@ trait WishlistButtons {
 		echo "</div>";
 
 		// Optionally render MoveList button
-		if ( $this->enhancements['wishlist-shop-enable-movelist'] === '1' && is_user_logged_in() ) {
+		if ( ( $this->enhancements['wishlist-shop-enable-movelist'] ?? '' ) === '1' && is_user_logged_in() ) {
 			$move_button_text = __( "Move to List", 'wishglut' );
 			echo "<div class='wishglut_wishlist_movelist shop-page'>";
 			echo '<a href="#" class="button move_to_list" data-product-id="' . esc_attr( $product_id ) . '"><span class="button-text">' . esc_html( $move_button_text ) . '</span></a>';
@@ -212,7 +212,7 @@ trait WishlistButtons {
 			return;
 		}
 
-			if ( $this->enhancements['wishlist-general-outofstock'] == '1' && ! $product->is_in_stock() ) {
+			if ( ( $this->enhancements['wishlist-general-outofstock'] ?? '' ) == '1' && ! $product->is_in_stock() ) {
 			return; // Exit the function without displaying the wishlist button
 		}
 
@@ -262,7 +262,7 @@ trait WishlistButtons {
 
 			switch ( $second_click_action ) {
 				case 'goto-wishlist':
-					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ) );
+					$href = esc_url( get_permalink( $this->enhancements['wishlist-general-page'] ?? 0 ) );
 					break;
 				case 'redirect-to-checkout':
 					$button_class = "checkout-link";
@@ -283,12 +283,12 @@ trait WishlistButtons {
 			$href = '#';
 		}
 
-		if ( $this->enhancements['wishlist-require-login'] == true && ! is_user_logged_in() ) {
+		if ( ( $this->enhancements['wishlist-require-login'] ?? '' ) == true && ! is_user_logged_in() ) {
 			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 			$href = wp_login_url( site_url( $request_uri ) );
 			$button_class = "login-required";
 			$button_text = __( 'Login Required', 'wishglut' );
-			$icon = $this->enhancements['wishlist-require-login-btn-icon'];
+			$icon = $this->enhancements['wishlist-require-login-btn-icon'] ?? 'fa fa-user';
 		}
 
 		echo "<div class='wishglut_wishlist_container'>";
