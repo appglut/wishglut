@@ -116,14 +116,14 @@ if ( ! class_exists( 'AGWISHGLUT_select_archive_page' ) ) {
 
 					// Get already selected options from other shop layouts
 					global $wpdb;
-					$table_name = $wpdb->prefix . 'wishglut_shop_layouts';
+					$table_name = $wpdb->prefix . 'shopglut_shop_layouts';
 
 					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check
 					$current_layout_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 0;
 
 					// Query without cache for real-time conflict detection
 					// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table name variable, no cache needed for conflict check
-					$all_layouts = $wpdb->get_results( "SELECT id, layout_settings FROM `{$wpdb->prefix}wishglut_shop_layouts`" );
+					$all_layouts = $wpdb->get_results( "SELECT id, layout_settings FROM `{$wpdb->prefix}shopglut_shop_layouts`" );
 
 					$used_options = array();
 					foreach ( $all_layouts as $layout ) {
@@ -210,7 +210,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_archive_page' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

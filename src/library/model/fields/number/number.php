@@ -24,7 +24,7 @@ if ( ! class_exists( 'AGWISHGLUT_number' ) ) {
 
 			echo wp_kses_post( $this->field_before() );
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( ' Unlock the Pro version', 'wishglut' );
+			$pro_text = __( ' Unlock the Pro version', 'shopglut' );
 
 			if ( $is_pro ) {
 

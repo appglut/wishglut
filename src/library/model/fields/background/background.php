@@ -33,7 +33,7 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
         'background_auto_attributes'    => false,
         'compact'                       => false,
         'background_image_library'      => 'image',
-        'background_image_placeholder'  => esc_html__( 'Not selected', 'wishglut' ),
+        'background_image_placeholder'  => esc_html__( 'Not selected', 'shopglut' ),
       ) );
 
       if ( $args['compact'] ) {
@@ -69,7 +69,7 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
 
         echo '<div class="agl--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl--title">'. esc_html__( 'From', 'wishglut' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl--title">'. esc_html__( 'From', 'shopglut' ) .'</div>' : '';
 
         AGWISHGLUT::field( array(
           'id'      => 'background-color',
@@ -87,7 +87,7 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
 
         echo '<div class="agl--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl--title">'. esc_html__( 'To', 'wishglut' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl--title">'. esc_html__( 'To', 'shopglut' ) .'</div>' : '';
 
         AGWISHGLUT::field( array(
           'id'      => 'background-gradient-color',
@@ -105,17 +105,17 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
 
         echo '<div class="agl--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl---title">'. esc_html__( 'Direction', 'wishglut' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="agl---title">'. esc_html__( 'Direction', 'shopglut' ) .'</div>' : '';
 
         AGWISHGLUT::field( array(
           'id'          => 'background-gradient-direction',
           'type'        => 'select',
           'options'     => array(
-            ''          => esc_html__( 'Gradient Direction', 'wishglut' ),
-            'to bottom' => esc_html__( '&#8659; top to bottom', 'wishglut' ),
-            'to right'  => esc_html__( '&#8658; left to right', 'wishglut' ),
-            '135deg'    => esc_html__( '&#8664; corner top to right', 'wishglut' ),
-            '-135deg'   => esc_html__( '&#8665; corner top to left', 'wishglut' ),
+            ''          => esc_html__( 'Gradient Direction', 'shopglut' ),
+            'to bottom' => esc_html__( '&#8659; top to bottom', 'shopglut' ),
+            'to right'  => esc_html__( '&#8658; left to right', 'shopglut' ),
+            '135deg'    => esc_html__( '&#8664; corner top to right', 'shopglut' ),
+            '-135deg'   => esc_html__( '&#8665; corner top to left', 'shopglut' ),
           ),
         ), $this->value['background-gradient-direction'], $this->field_name(), 'field/background' );
 
@@ -158,16 +158,16 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'              => 'background-position',
           'type'            => 'select',
           'options'         => array(
-            ''              => esc_html__( 'Background Position', 'wishglut' ),
-            'left top'      => esc_html__( 'Left Top', 'wishglut' ),
-            'left center'   => esc_html__( 'Left Center', 'wishglut' ),
-            'left bottom'   => esc_html__( 'Left Bottom', 'wishglut' ),
-            'center top'    => esc_html__( 'Center Top', 'wishglut' ),
-            'center center' => esc_html__( 'Center Center', 'wishglut' ),
-            'center bottom' => esc_html__( 'Center Bottom', 'wishglut' ),
-            'right top'     => esc_html__( 'Right Top', 'wishglut' ),
-            'right center'  => esc_html__( 'Right Center', 'wishglut' ),
-            'right bottom'  => esc_html__( 'Right Bottom', 'wishglut' ),
+            ''              => esc_html__( 'Background Position', 'shopglut' ),
+            'left top'      => esc_html__( 'Left Top', 'shopglut' ),
+            'left center'   => esc_html__( 'Left Center', 'shopglut' ),
+            'left bottom'   => esc_html__( 'Left Bottom', 'shopglut' ),
+            'center top'    => esc_html__( 'Center Top', 'shopglut' ),
+            'center center' => esc_html__( 'Center Center', 'shopglut' ),
+            'center bottom' => esc_html__( 'Center Bottom', 'shopglut' ),
+            'right top'     => esc_html__( 'Right Top', 'shopglut' ),
+            'right center'  => esc_html__( 'Right Center', 'shopglut' ),
+            'right bottom'  => esc_html__( 'Right Bottom', 'shopglut' ),
           ),
         ), $this->value['background-position'], $this->field_name(), 'field/background' );
 
@@ -181,11 +181,11 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'          => 'background-repeat',
           'type'        => 'select',
           'options'     => array(
-            ''          => esc_html__( 'Background Repeat', 'wishglut' ),
-            'repeat'    => esc_html__( 'Repeat', 'wishglut' ),
-            'no-repeat' => esc_html__( 'No Repeat', 'wishglut' ),
-            'repeat-x'  => esc_html__( 'Repeat Horizontally', 'wishglut' ),
-            'repeat-y'  => esc_html__( 'Repeat Vertically', 'wishglut' ),
+            ''          => esc_html__( 'Background Repeat', 'shopglut' ),
+            'repeat'    => esc_html__( 'Repeat', 'shopglut' ),
+            'no-repeat' => esc_html__( 'No Repeat', 'shopglut' ),
+            'repeat-x'  => esc_html__( 'Repeat Horizontally', 'shopglut' ),
+            'repeat-y'  => esc_html__( 'Repeat Vertically', 'shopglut' ),
           ),
         ), $this->value['background-repeat'], $this->field_name(), 'field/background' );
 
@@ -199,9 +199,9 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'       => 'background-attachment',
           'type'     => 'select',
           'options'  => array(
-            ''       => esc_html__( 'Background Attachment', 'wishglut' ),
-            'scroll' => esc_html__( 'Scroll', 'wishglut' ),
-            'fixed'  => esc_html__( 'Fixed', 'wishglut' ),
+            ''       => esc_html__( 'Background Attachment', 'shopglut' ),
+            'scroll' => esc_html__( 'Scroll', 'shopglut' ),
+            'fixed'  => esc_html__( 'Fixed', 'shopglut' ),
           ),
         ), $this->value['background-attachment'], $this->field_name(), 'field/background' );
 
@@ -215,10 +215,10 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'        => 'background-size',
           'type'      => 'select',
           'options'   => array(
-            ''        => esc_html__( 'Background Size', 'wishglut' ),
-            'cover'   => esc_html__( 'Cover', 'wishglut' ),
-            'contain' => esc_html__( 'Contain', 'wishglut' ),
-            'auto'    => esc_html__( 'Auto', 'wishglut' ),
+            ''        => esc_html__( 'Background Size', 'shopglut' ),
+            'cover'   => esc_html__( 'Cover', 'shopglut' ),
+            'contain' => esc_html__( 'Contain', 'shopglut' ),
+            'auto'    => esc_html__( 'Auto', 'shopglut' ),
           ),
         ), $this->value['background-size'], $this->field_name(), 'field/background' );
 
@@ -232,10 +232,10 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'            => 'background-origin',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Origin', 'wishglut' ),
-            'padding-box' => esc_html__( 'Padding Box', 'wishglut' ),
-            'border-box'  => esc_html__( 'Border Box', 'wishglut' ),
-            'content-box' => esc_html__( 'Content Box', 'wishglut' ),
+            ''            => esc_html__( 'Background Origin', 'shopglut' ),
+            'padding-box' => esc_html__( 'Padding Box', 'shopglut' ),
+            'border-box'  => esc_html__( 'Border Box', 'shopglut' ),
+            'content-box' => esc_html__( 'Content Box', 'shopglut' ),
           ),
         ), $this->value['background-origin'], $this->field_name(), 'field/background' );
 
@@ -249,10 +249,10 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'            => 'background-clip',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Clip', 'wishglut' ),
-            'border-box'  => esc_html__( 'Border Box', 'wishglut' ),
-            'padding-box' => esc_html__( 'Padding Box', 'wishglut' ),
-            'content-box' => esc_html__( 'Content Box', 'wishglut' ),
+            ''            => esc_html__( 'Background Clip', 'shopglut' ),
+            'border-box'  => esc_html__( 'Border Box', 'shopglut' ),
+            'padding-box' => esc_html__( 'Padding Box', 'shopglut' ),
+            'content-box' => esc_html__( 'Content Box', 'shopglut' ),
           ),
         ), $this->value['background-clip'], $this->field_name(), 'field/background' );
 
@@ -266,17 +266,17 @@ if ( ! class_exists( 'AGWISHGLUT_background' ) ) {
           'id'            => 'background-blend-mode',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Blend Mode', 'wishglut' ),
-            'normal'      => esc_html__( 'Normal', 'wishglut' ),
-            'multiply'    => esc_html__( 'Multiply', 'wishglut' ),
-            'screen'      => esc_html__( 'Screen', 'wishglut' ),
-            'overlay'     => esc_html__( 'Overlay', 'wishglut' ),
-            'darken'      => esc_html__( 'Darken', 'wishglut' ),
-            'lighten'     => esc_html__( 'Lighten', 'wishglut' ),
-            'color-dodge' => esc_html__( 'Color Dodge', 'wishglut' ),
-            'saturation'  => esc_html__( 'Saturation', 'wishglut' ),
-            'color'       => esc_html__( 'Color', 'wishglut' ),
-            'luminosity'  => esc_html__( 'Luminosity', 'wishglut' ),
+            ''            => esc_html__( 'Background Blend Mode', 'shopglut' ),
+            'normal'      => esc_html__( 'Normal', 'shopglut' ),
+            'multiply'    => esc_html__( 'Multiply', 'shopglut' ),
+            'screen'      => esc_html__( 'Screen', 'shopglut' ),
+            'overlay'     => esc_html__( 'Overlay', 'shopglut' ),
+            'darken'      => esc_html__( 'Darken', 'shopglut' ),
+            'lighten'     => esc_html__( 'Lighten', 'shopglut' ),
+            'color-dodge' => esc_html__( 'Color Dodge', 'shopglut' ),
+            'saturation'  => esc_html__( 'Saturation', 'shopglut' ),
+            'color'       => esc_html__( 'Color', 'shopglut' ),
+            'luminosity'  => esc_html__( 'Luminosity', 'shopglut' ),
           ),
         ), $this->value['background-blend-mode'], $this->field_name(), 'field/background' );
 

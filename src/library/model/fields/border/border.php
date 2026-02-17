@@ -24,11 +24,11 @@ if ( ! class_exists( 'AGWISHGLUT_border' ) ) {
 				'bottom_icon' => '<i class="fas fa-long-arrow-alt-down"></i>',
 				'right_icon' => '<i class="fas fa-long-arrow-alt-right"></i>',
 				'all_icon' => '<i class="fas fa-arrows-alt"></i>',
-				'top_placeholder' => esc_html__( 'top', 'wishglut' ),
-				'right_placeholder' => esc_html__( 'right', 'wishglut' ),
-				'bottom_placeholder' => esc_html__( 'bottom', 'wishglut' ),
-				'left_placeholder' => esc_html__( 'left', 'wishglut' ),
-				'all_placeholder' => esc_html__( 'all', 'wishglut' ),
+				'top_placeholder' => esc_html__( 'top', 'shopglut' ),
+				'right_placeholder' => esc_html__( 'right', 'shopglut' ),
+				'bottom_placeholder' => esc_html__( 'bottom', 'shopglut' ),
+				'left_placeholder' => esc_html__( 'left', 'shopglut' ),
+				'all_placeholder' => esc_html__( 'all', 'shopglut' ),
 				'top' => true,
 				'left' => true,
 				'bottom' => true,
@@ -68,15 +68,15 @@ if ( ! class_exists( 'AGWISHGLUT_border' ) ) {
 			);
 
 			$border_props = array(
-				'none' => esc_html__( 'None', 'wishglut' ),
-				'solid' => esc_html__( 'Solid', 'wishglut' ),
-				'dashed' => esc_html__( 'Dashed', 'wishglut' ),
-				'dotted' => esc_html__( 'Dotted', 'wishglut' ),
-				'double' => esc_html__( 'Double', 'wishglut' ),
-				'inset' => esc_html__( 'Inset', 'wishglut' ),
-				'outset' => esc_html__( 'Outset', 'wishglut' ),
-				'groove' => esc_html__( 'Groove', 'wishglut' ),
-				'ridge' => esc_html__( 'ridge', 'wishglut' ),
+				'none' => esc_html__( 'None', 'shopglut' ),
+				'solid' => esc_html__( 'Solid', 'shopglut' ),
+				'dashed' => esc_html__( 'Dashed', 'shopglut' ),
+				'dotted' => esc_html__( 'Dotted', 'shopglut' ),
+				'double' => esc_html__( 'Double', 'shopglut' ),
+				'inset' => esc_html__( 'Inset', 'shopglut' ),
+				'outset' => esc_html__( 'Outset', 'shopglut' ),
+				'groove' => esc_html__( 'Groove', 'shopglut' ),
+				'ridge' => esc_html__( 'ridge', 'shopglut' ),
 
 			);
 

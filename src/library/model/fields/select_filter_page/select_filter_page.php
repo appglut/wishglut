@@ -98,7 +98,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_filter_page' ) ) {
 					global $wpdb;
 
 					// Define table name
-					//$table_name = $wpdb->prefix . 'wishglut_shop_layouts';
+					//$table_name = $wpdb->prefix . 'shopglut_shop_layouts';
 			   // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table existence check with caching, safe table name from internal function
 					//$layout_values = $wpdb->get_results( "SELECT * FROM $table_name" );
 
@@ -172,7 +172,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_filter_page' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

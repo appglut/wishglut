@@ -15,7 +15,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 		public $value = array();
 
 		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-			$this->cron_token = get_option( 'wishglut_wishlist_cron_token', '' );
+			$this->cron_token = get_option( 'shopglut_wishlist_cron_token', '' );
 			parent::__construct( $field, $value, $unique, $where, $parent );
 		}
 
@@ -49,28 +49,28 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 
 			// Check if 'pro' is active
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( 'Unlock the Pro version', 'wishglut' );
+			$pro_text = __( 'Unlock the Pro version', 'shopglut' );
 			?>
 
 			<div class="agl-woo-subscription-table">
-				<h3><?php esc_html_e( 'Subscribers', 'wishglut' ); ?></h3>
+				<h3><?php esc_html_e( 'Subscribers', 'shopglut' ); ?></h3>
 				<table class="widefat">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Subscription', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Item', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Payment', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Start Date', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Next Payment', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Last Order', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'End Date', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Status', 'wishglut' ); ?></th>
+							<th><?php esc_html_e( 'Subscription', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Item', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Payment', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Start Date', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Next Payment', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Last Order', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'End Date', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Status', 'shopglut' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						global $wpdb;
-						$table_name = $wpdb->prefix . 'wishglut_woo_subscriptions';
+						$table_name = $wpdb->prefix . 'shopglut_woo_subscriptions';
 			   // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table existence check with caching, safe table name from internal function
 						$subscriptions = $wpdb->get_results( 
 							""
@@ -79,8 +79,8 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 						if ( ! empty( $subscriptions ) ) {
 							foreach ( $subscriptions as $subscription ) {
 								$user_info = get_userdata($subscription->user_id);
-								$username = $user_info ? $user_info->display_name : __('Unknown User', 'wishglut');
-								$product_title = $subscription->product_name ? $subscription->product_name : __('Unknown Product', 'wishglut');
+								$username = $user_info ? $user_info->display_name : __('Unknown User', 'shopglut');
+								$product_title = $subscription->product_name ? $subscription->product_name : __('Unknown Product', 'shopglut');
 								
 								$status_class = 'status-' . $subscription->status;
 								?>
@@ -121,7 +121,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 										<?php if ($subscription->next_payment_date): ?>
 											<?php echo esc_attr(date_i18n(get_option('date_format'), strtotime($subscription->next_payment_date))); ?>
 										<?php else: ?>
-											<?php esc_html_e('N/A', 'wishglut'); ?>
+											<?php esc_html_e('N/A', 'shopglut'); ?>
 										<?php endif; ?>
 									</td>
 
@@ -129,7 +129,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 										<?php if ($subscription->last_payment_date): ?>
 											<?php echo esc_attr(date_i18n(get_option('date_format'), strtotime($subscription->last_payment_date))); ?>
 										<?php else: ?>
-											<?php esc_html_e('N/A', 'wishglut'); ?>
+											<?php esc_html_e('N/A', 'shopglut'); ?>
 										<?php endif; ?>
 									</td>
 
@@ -139,7 +139,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 												<?php echo esc_attr(date_i18n(get_option('date_format'), strtotime($subscription->end_date))); ?>
 											</time>
 										<?php else: ?>
-											<?php esc_html_e('N/A', 'wishglut'); ?>
+											<?php esc_html_e('N/A', 'shopglut'); ?>
 										<?php endif; ?>
 									</td>
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'AGWISHGLUT_subscriptionTable' ) ) {
 						} else {
 							?>
 							<tr>
-								<td colspan="8"><?php esc_html_e( 'No subscriptions available', 'wishglut' ); ?></td>
+								<td colspan="8"><?php esc_html_e( 'No subscriptions available', 'shopglut' ); ?></td>
 							</tr>
 						<?php } ?>
 					</tbody>

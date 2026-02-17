@@ -48,7 +48,7 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
         }
       }
 
-      echo '<div class="agwishglut-datetime-field" data-field-id="' . esc_attr( $this->field['id'] ) . '">';
+      echo '<div class="agshopglut-datetime-field" data-field-id="' . esc_attr( $this->field['id'] ) . '">';
       
       // Main datetime input (HTML5)
       echo '<div class="datetime-input-wrapper">';
@@ -56,7 +56,7 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
       echo 'name="' . esc_attr( $this->field_name() ) . '" ';
       echo 'id="' . esc_attr( $this->field['id'] ) . '" ';
       echo 'value="' . esc_attr( $current_datetime ) . '" ';
-      echo 'class="agwishglut-datetime-input widefat" ';
+      echo 'class="agshopglut-datetime-input widefat" ';
       
       if ( ! empty( $args['placeholder'] ) ) {
         echo 'placeholder="' . esc_attr( $args['placeholder'] ) . '" ';
@@ -82,21 +82,21 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
       
       // Date input
       echo '<div class="date-input-wrapper" style="display: inline-block; margin-right: 10px;">';
-      echo '<label>' . esc_html__( 'Date:', 'wishglut' ) . '</label><br>';
+      echo '<label>' . esc_html__( 'Date:', 'shopglut' ) . '</label><br>';
       echo '<input type="date" ';
       echo 'name="' . esc_attr( $this->field_name( '_date' ) ) . '" ';
       echo 'value="' . esc_attr( $current_date ) . '" ';
-      echo 'class="agwishglut-date-input" />';
+      echo 'class="agshopglut-date-input" />';
       echo '</div>';
       
       // Time input
       if ( $args['show_time'] ) {
         echo '<div class="time-input-wrapper" style="display: inline-block;">';
-        echo '<label>' . esc_html__( 'Time:', 'wishglut' ) . '</label><br>';
+        echo '<label>' . esc_html__( 'Time:', 'shopglut' ) . '</label><br>';
         echo '<input type="time" ';
         echo 'name="' . esc_attr( $this->field_name( '_time' ) ) . '" ';
         echo 'value="' . esc_attr( $current_time ) . '" ';
-        echo 'class="agwishglut-time-input" />';
+        echo 'class="agshopglut-time-input" />';
         echo '</div>';
       }
       
@@ -104,14 +104,14 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
 
       // Quick preset buttons
       echo '<div class="datetime-presets" style="margin-top: 15px;">';
-      echo '<label style="font-weight: bold; display: block; margin-bottom: 10px;">' . esc_html__( 'Quick Options:', 'wishglut' ) . '</label>';
+      echo '<label style="font-weight: bold; display: block; margin-bottom: 10px;">' . esc_html__( 'Quick Options:', 'shopglut' ) . '</label>';
       
       $presets = array(
-        'now' => __( 'Now', 'wishglut' ),
-        '1hour' => __( 'In 1 Hour', 'wishglut' ),
-        '1day' => __( 'Tomorrow', 'wishglut' ),
-        '1week' => __( 'Next Week', 'wishglut' ),
-        'clear' => __( 'Clear', 'wishglut' ),
+        'now' => __( 'Now', 'shopglut' ),
+        '1hour' => __( 'In 1 Hour', 'shopglut' ),
+        '1day' => __( 'Tomorrow', 'shopglut' ),
+        '1week' => __( 'Next Week', 'shopglut' ),
+        'clear' => __( 'Clear', 'shopglut' ),
       );
       
       foreach ( $presets as $preset_key => $preset_label ) {
@@ -127,20 +127,20 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
 
       // Current selection display
       echo '<div class="datetime-display" style="margin-top: 15px; padding: 10px; background: #f9f9f9; border-radius: 4px;">';
-      echo '<strong>' . esc_html__( 'Selected:', 'wishglut' ) . '</strong> ';
+      echo '<strong>' . esc_html__( 'Selected:', 'shopglut' ) . '</strong> ';
       echo '<span class="selected-datetime">';
       if ( ! empty( $current_datetime ) ) {
         $display_datetime = new DateTime( $current_datetime );
         echo esc_html( $display_datetime->format( 'F j, Y \a\t g:i A' ) );
       } else {
-        echo '<em>' . esc_html__( 'Send immediately', 'wishglut' ) . '</em>';
+        echo '<em>' . esc_html__( 'Send immediately', 'shopglut' ) . '</em>';
       }
       echo '</span>';
       echo '</div>';
 
       // Timezone display
       echo '<div class="timezone-info" style="margin-top: 10px; font-size: 12px; color: #666;">';
-      echo '<strong>' . esc_html__( 'Timezone:', 'wishglut' ) . '</strong> ';
+      echo '<strong>' . esc_html__( 'Timezone:', 'shopglut' ) . '</strong> ';
       echo esc_html( wp_timezone_string() );
       echo '</div>';
 
@@ -153,14 +153,14 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
     private function add_datetime_assets() {
       ?>
       <style>
-        .agwishglut-datetime-field {
+        .agshopglut-datetime-field {
           background: #fff;
           border: 1px solid #ddd;
           padding: 20px;
           border-radius: 6px;
         }
         
-        .agwishglut-datetime-input {
+        .agshopglut-datetime-input {
           padding: 8px 12px;
           border: 1px solid #ddd;
           border-radius: 4px;
@@ -169,8 +169,8 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
           max-width: 300px;
         }
         
-        .agwishglut-date-input,
-        .agwishglut-time-input {
+        .agshopglut-date-input,
+        .agshopglut-time-input {
           padding: 8px 12px;
           border: 1px solid #ddd;
           border-radius: 4px;
@@ -206,7 +206,7 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
             margin-bottom: 10px;
           }
           
-          .agwishglut-datetime-input {
+          .agshopglut-datetime-input {
             max-width: 100%;
           }
         }
@@ -223,9 +223,9 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
         }
         
         // Initialize datetime fields
-        $('.agwishglut-datetime-field').each(function() {
+        $('.agshopglut-datetime-field').each(function() {
           var $container = $(this);
-          var $datetimeInput = $container.find('.agwishglut-datetime-input');
+          var $datetimeInput = $container.find('.agshopglut-datetime-input');
           var $fallback = $container.find('.datetime-fallback');
           
           // Show fallback for older browsers
@@ -234,7 +234,7 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
             $fallback.show();
             
             // Sync fallback inputs with main input
-            $container.find('.agwishglut-date-input, .agwishglut-time-input').on('change', function() {
+            $container.find('.agshopglut-date-input, .agshopglut-time-input').on('change', function() {
               updateMainInput($container);
             });
           }
@@ -260,8 +260,8 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
                 break;
               case 'clear':
                 $datetimeInput.val('');
-                $container.find('.agwishglut-date-input').val('');
-                $container.find('.agwishglut-time-input').val('');
+                $container.find('.agshopglut-date-input').val('');
+                $container.find('.agshopglut-time-input').val('');
                 updateDisplay($container, '');
                 return;
             }
@@ -271,8 +271,8 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
               $datetimeInput.val(datetimeString);
               
               // Update fallback inputs
-              $container.find('.agwishglut-date-input').val(targetDate.toISOString().split('T')[0]);
-              $container.find('.agwishglut-time-input').val(
+              $container.find('.agshopglut-date-input').val(targetDate.toISOString().split('T')[0]);
+              $container.find('.agshopglut-time-input').val(
                 targetDate.getHours().toString().padStart(2, '0') + ':' +
                 targetDate.getMinutes().toString().padStart(2, '0')
               );
@@ -301,12 +301,12 @@ if ( ! class_exists( 'AGWISHGLUT_datetime' ) ) {
         }
         
         function updateMainInput($container) {
-          var dateVal = $container.find('.agwishglut-date-input').val();
-          var timeVal = $container.find('.agwishglut-time-input').val();
+          var dateVal = $container.find('.agshopglut-date-input').val();
+          var timeVal = $container.find('.agshopglut-time-input').val();
           
           if (dateVal && timeVal) {
             var datetimeString = dateVal + 'T' + timeVal;
-            $container.find('.agwishglut-datetime-input').val(datetimeString);
+            $container.find('.agshopglut-datetime-input').val(datetimeString);
             updateDisplay($container, datetimeString);
           }
         }

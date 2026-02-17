@@ -24,7 +24,7 @@ if (!class_exists('AGWISHGLUT_repeater')) {
 
 			if (preg_match('/' . preg_quote('[' . $this->field['id'] . ']') . '/', $this->unique)) {
 
-				echo '<div class="agl-notice agl-notice-danger">' . esc_html__('Error: Field ID conflict.', 'wishglut') . '</div>';
+				echo '<div class="agl-notice agl-notice-danger">' . esc_html__('Error: Field ID conflict.', 'shopglut') . '</div>';
 
 			} else {
 
@@ -45,7 +45,7 @@ if (!class_exists('AGWISHGLUT_repeater')) {
 				echo '<div class="agl-repeater-helper-inner">';
 				echo '<i class="agl-repeater-sort fas fa-arrows-alt"></i>';
 				echo '<i class="agl-repeater-clone far fa-clone"></i>';
-				echo '<i class="agl-repeater-remove agl-confirm fas fa-times" data-confirm="' . esc_html__('Are you sure to delete this item?', 'wishglut') . '"></i>';
+				echo '<i class="agl-repeater-remove agl-confirm fas fa-times" data-confirm="' . esc_html__('Are you sure to delete this item?', 'shopglut') . '"></i>';
 				echo '</div>';
 				echo '</div>';
 				echo '</div>';
@@ -73,7 +73,7 @@ if (!class_exists('AGWISHGLUT_repeater')) {
 						echo '<div class="agl-repeater-helper-inner">';
 						echo '<i class="agl-repeater-sort fas fa-arrows-alt"></i>';
 						echo '<i class="agl-repeater-clone far fa-clone"></i>';
-						echo '<i class="agl-repeater-remove agl-confirm fas fa-times" data-confirm="' . esc_html__('Are you sure to delete this item?', 'wishglut') . '"></i>';
+						echo '<i class="agl-repeater-remove agl-confirm fas fa-times" data-confirm="' . esc_html__('Are you sure to delete this item?', 'shopglut') . '"></i>';
 						echo '</div>';
 						echo '</div>';
 						echo '</div>';
@@ -86,8 +86,8 @@ if (!class_exists('AGWISHGLUT_repeater')) {
 
 				echo '</div>';
 
-				echo '<div class="agl-repeater-alert agl-repeater-max">' . esc_html__('You cannot add more.', 'wishglut') . '</div>';
-				echo '<div class="agl-repeater-alert agl-repeater-min">' . esc_html__('You cannot remove more.', 'wishglut') . '</div>';
+				echo '<div class="agl-repeater-alert agl-repeater-max">' . esc_html__('You cannot add more.', 'shopglut') . '</div>';
+				echo '<div class="agl-repeater-alert agl-repeater-min">' . esc_html__('You cannot remove more.', 'shopglut') . '</div>';
 				echo '<a href="#" class="button button-primary agl-repeater-add">' . esc_html($args['button_title']) . '</a>';
 
 				echo wp_kses_post($this->field_after());

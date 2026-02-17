@@ -146,7 +146,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_badge_display' ) ) {
 
 					// Get all published badge posts except the current one
 					$badge_query = new WP_Query( array(
-						'post_type' => 'wishglut_badges',
+						'post_type' => 'shopglut_badges',
 						'post_status' => 'publish',
 						'posts_per_page' => -1,
 						'post__not_in' => array( $current_post_id ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Necessary to exclude current post
@@ -237,7 +237,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_badge_display' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

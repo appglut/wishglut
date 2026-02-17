@@ -18,7 +18,7 @@ if ( ! class_exists( 'AGWISHGLUT_product_categories' ) ) {
 
     public function render() {
       $args = wp_parse_args( $this->field, array(
-        'placeholder' => esc_html__( 'Select categories', 'wishglut' ),
+        'placeholder' => esc_html__( 'Select categories', 'shopglut' ),
         'chosen'      => true,
         'multiple'    => true,
         'sortable'    => false,
@@ -75,7 +75,7 @@ if ( ! class_exists( 'AGWISHGLUT_product_categories' ) ) {
           echo '<option value="'. esc_attr( $category->term_id ) .'" '. esc_attr( $selected ) .'>'. esc_html( $category->name ) .'</option>';
         }
       } else {
-        echo '<option value="">'. esc_html__( 'No categories found', 'wishglut' ) .'</option>';
+        echo '<option value="">'. esc_html__( 'No categories found', 'shopglut' ) .'</option>';
       }
 
       echo '</select>';

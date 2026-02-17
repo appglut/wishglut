@@ -36,7 +36,7 @@ if ( ! class_exists( 'AGWISHGLUT_accordion' ) ) {
 				$icon = ( ! empty( $accordion['icon'] ) ) ? 'agl--icon ' . $accordion['icon'] : 'agl-accordion-icon fas fa-angle-right';
 
 				// Check for shop or archive editor
-				if ( 'wishglut_layouts' === $page && ( 'shop' === $editor || 'archive' === $editor ) ) {
+				if ( 'shopglut_layouts' === $page && ( 'shop' === $editor || 'archive' === $editor ) ) {
 					echo '<h4 class="agl-accordion-title">';
 					echo '<i class="' . esc_attr( $icon ) . '"></i>';
 					echo esc_html( $accordion['title'] );
@@ -44,7 +44,7 @@ if ( ! class_exists( 'AGWISHGLUT_accordion' ) ) {
 					echo '<div class="agl-accordion-content">';
 				}
 
-				if ( 'wishglut_enhancements' === $page && ( 'filters' === $editor) ) {
+				if ( 'shopglut_enhancements' === $page && ( 'filters' === $editor) ) {
 					$accordion_title = $accordion['title']; // Default fallback
 
 					// Try to get accordion-title from the nested value structure
@@ -88,16 +88,16 @@ if ( ! class_exists( 'AGWISHGLUT_accordion' ) ) {
 					// Handle different editor types
 					$show_accordion_title = false;
 					
-					if ( 'wishglut_enhancements' === $page && 'filter' === $editor ) {
+					if ( 'shopglut_enhancements' === $page && 'filter' === $editor ) {
 						$show_accordion_title = true;
-					} elseif ( 'wishglut_layouts' === $page && in_array( $editor, array( 'single_product', 'cartpage', 'cartpage' ) ) ) {
+					} elseif ( 'shopglut_layouts' === $page && in_array( $editor, array( 'single_product', 'cartpage', 'cartpage' ) ) ) {
 						$show_accordion_title = true;
 					}
 
 					if ( $show_accordion_title ) {
 						echo '<h4 class="agl-accordion-title">';
 						echo '<i class="' . esc_attr( $icon ) . '"></i>';
-						echo isset( $field_value['accordion-title'] ) ? esc_html( $field_value['accordion-title'] ) : esc_html__( 'Title', 'wishglut' );
+						echo isset( $field_value['accordion-title'] ) ? esc_html( $field_value['accordion-title'] ) : esc_html__( 'Title', 'shopglut' );
 						echo '</h4>';
 						echo '<div class="agl-accordion-content">';
 					}

@@ -29,7 +29,7 @@ if ( ! class_exists( 'AGWISHGLUT_attribute_terms' ) ) {
 				return null;
 			}
 
-			$table_name = \Wishglut\WishglutDatabase::table_product_swatches();
+			$table_name = \Shopglut\ShopGlutDatabase::table_product_swatches();
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 			$layout = $wpdb->get_row(
@@ -101,7 +101,7 @@ if ( ! class_exists( 'AGWISHGLUT_attribute_terms' ) ) {
 
 			if ( ! $assigned_attribute ) {
 				echo '<div class="attribute-terms-no-attribute">';
-				echo '<p>' . esc_html__( 'No attribute assigned to this layout. Please assign an attribute from the Product Swatches page.', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'No attribute assigned to this layout. Please assign an attribute from the Product Swatches page.', 'shopglut' ) . '</p>';
 				echo '</div>';
 				echo wp_kses_post( $this->field_after() );
 				return;
@@ -119,7 +119,7 @@ if ( ! class_exists( 'AGWISHGLUT_attribute_terms' ) ) {
 				$attribute_label = $this->get_attribute_label( $assigned_attribute );
 				printf(
 					/* translators: %s: attribute label */
-					esc_html__( 'Available Terms for: %s', 'wishglut' ),
+					esc_html__( 'Available Terms for: %s', 'shopglut' ),
 					'<span class="attribute-name">' . esc_html( $attribute_label ) . '</span>'
 				);
 				?>
@@ -127,7 +127,7 @@ if ( ! class_exists( 'AGWISHGLUT_attribute_terms' ) ) {
 
 			<?php if ( empty( $terms ) || is_wp_error( $terms ) ) : ?>
 				<div class="attribute-terms-empty">
-					<p><?php esc_html_e( 'No terms found for this attribute.', 'wishglut' ); ?></p>
+					<p><?php esc_html_e( 'No terms found for this attribute.', 'shopglut' ); ?></p>
 				</div>
 			<?php else : ?>
 				<div class="terms-grid">

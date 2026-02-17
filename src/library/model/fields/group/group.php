@@ -20,7 +20,7 @@ if ( ! class_exists( 'AGWISHGLUT_group' ) ) {
         'max'                    => 0,
         'min'                    => 0,
         'fields'                 => array(),
-        'button_title'           => esc_html__( 'Add New', 'wishglut' ),
+        'button_title'           => esc_html__( 'Add New', 'shopglut' ),
         'accordion_title_prefix' => '',
         'accordion_title_number' => false,
         'accordion_title_auto'   => true,
@@ -32,7 +32,7 @@ if ( ! class_exists( 'AGWISHGLUT_group' ) ) {
 
       if ( preg_match( '/'. preg_quote( '['. $this->field['id'] .']' ) .'/', $this->unique ) ) {
 
-        echo '<div class="agl-notice agl-notice-danger">'. esc_html__( 'Error: Field ID conflict.', 'wishglut' ) .'</div>';
+        echo '<div class="agl-notice agl-notice-danger">'. esc_html__( 'Error: Field ID conflict.', 'shopglut' ) .'</div>';
 
       } else {
 
@@ -43,7 +43,7 @@ if ( ! class_exists( 'AGWISHGLUT_group' ) ) {
           echo '<div class="agl-cloneable-helper">';
           echo '<i class="agl-cloneable-sort fas fa-arrows-alt"></i>';
           echo '<i class="agl-cloneable-clone far fa-clone"></i>';
-          echo '<i class="agl-cloneable-remove agl-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'wishglut' ) .'"></i>';
+          echo '<i class="agl-cloneable-remove agl-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'shopglut' ) .'"></i>';
           echo '</div>';
 
           echo '<h4 class="agl-cloneable-title">';
@@ -84,7 +84,7 @@ if ( ! class_exists( 'AGWISHGLUT_group' ) ) {
               echo '<div class="agl-cloneable-helper">';
               echo '<i class="agl-cloneable-sort fas fa-arrows-alt"></i>';
               echo '<i class="agl-cloneable-clone far fa-clone"></i>';
-              echo '<i class="agl-cloneable-remove agl-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'wishglut' ) .'"></i>';
+              echo '<i class="agl-cloneable-remove agl-confirm fas fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'shopglut' ) .'"></i>';
               echo '</div>';
 
               echo '<h4 class="agl-cloneable-title">';
@@ -118,8 +118,8 @@ if ( ! class_exists( 'AGWISHGLUT_group' ) ) {
 
         echo '</div>';
 
-        echo '<div class="agl-cloneable-alert agl-cloneable-max">'. esc_html__( 'You cannot add more.', 'wishglut' ) .'</div>';
-        echo '<div class="agl-cloneable-alert agl-cloneable-min">'. esc_html__( 'You cannot remove more.', 'wishglut' ) .'</div>';
+        echo '<div class="agl-cloneable-alert agl-cloneable-max">'. esc_html__( 'You cannot add more.', 'shopglut' ) .'</div>';
+        echo '<div class="agl-cloneable-alert agl-cloneable-min">'. esc_html__( 'You cannot remove more.', 'shopglut' ) .'</div>';
         echo '<a href="#" class="button button-primary agl-cloneable-add">'.esc_html( $args['button_title']) .'</a>';
 
         echo esc_attr($this->field_after());

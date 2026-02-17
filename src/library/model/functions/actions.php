@@ -13,7 +13,7 @@ if ( ! function_exists( 'agl_get_icons' ) ) {
     $nonce = ( ! empty( $_POST[ 'nonce' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'nonce' ] ) ) : '';
 
     if ( ! wp_verify_nonce( $nonce, 'agl_icon_nonce' ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'shopglut' ) ) );
     }
 
     ob_start();
@@ -38,7 +38,7 @@ if ( ! function_exists( 'agl_get_icons' ) ) {
 
     } else {
 
-      echo '<div class="agl-error-text">'. esc_html__( 'No data available.', 'wishglut' ) .'</div>';
+      echo '<div class="agl-error-text">'. esc_html__( 'No data available.', 'shopglut' ) .'</div>';
 
     }
 
@@ -65,11 +65,11 @@ if ( ! function_exists( 'agl_export' ) ) {
     $unique = ( ! empty( $_GET[ 'unique' ] ) ) ? sanitize_text_field( wp_unslash( $_GET[ 'unique' ] ) ) : '';
 
     if ( ! wp_verify_nonce( $nonce, 'agl_backup_nonce' ) ) {
-      die( esc_html__( 'Error: Invalid nonce verification.', 'wishglut' ) );
+      die( esc_html__( 'Error: Invalid nonce verification.', 'shopglut' ) );
     }
 
     if ( empty( $unique ) ) {
-      die( esc_html__( 'Error: Invalid key.', 'wishglut' ) );
+      die( esc_html__( 'Error: Invalid key.', 'shopglut' ) );
     }
 
     // Export
@@ -113,15 +113,15 @@ if ( ! function_exists( 'agl_import_ajax' ) ) {
         $data = array();
     }
     if ( ! wp_verify_nonce( $nonce, 'agl_backup_nonce' ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'shopglut' ) ) );
     }
 
     if ( empty( $unique ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid key.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid key.', 'shopglut' ) ) );
     }
 
     if ( empty( $data ) || ! is_array( $data ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: The response is not a valid JSON response.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: The response is not a valid JSON response.', 'shopglut' ) ) );
     }
 
     // Success
@@ -148,7 +148,7 @@ if ( ! function_exists( 'agl_reset_ajax' ) ) {
     $unique = ( ! empty( $_POST[ 'unique' ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ 'unique' ] ) ) : '';
 
     if ( ! wp_verify_nonce( $nonce, 'agl_backup_nonce' ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'shopglut' ) ) );
     }
 
     // Success
@@ -187,17 +187,17 @@ if ( ! function_exists( 'agl_chosen_ajax' ) ) {
     }
 
     if ( ! wp_verify_nonce( $nonce, 'agl_chosen_ajax_nonce' ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid nonce verification.', 'shopglut' ) ) );
     }
 
     if ( empty( $type ) || empty( $term ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid term ID.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Invalid term ID.', 'shopglut' ) ) );
     }
 
     $capability = apply_filters( 'agl_chosen_ajax_capability', 'manage_options' );
 
     if ( ! current_user_can( $capability ) ) {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: You do not have permission to do that.', 'wishglut' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: You do not have permission to do that.', 'shopglut' ) ) );
     }
 
     // Success

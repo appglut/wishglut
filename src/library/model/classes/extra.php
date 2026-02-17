@@ -52,8 +52,8 @@ if ( ! class_exists( 'AGWISHGLUT_Layouts' ) ) {
 			$this->pre_fields = $this->pre_fields( $this->sections );
 
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for hook registration only
-			if ( isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) === 'wishglut_layouts' && isset( $_GET['editor'] ) && sanitize_text_field( wp_unslash( $_GET['editor'] ) ) === 'single_product' && isset( $_GET['layout_id'] ) ) {
-				add_action( 'wishglut_single_settings', array(&$this, 'add_meta_box_content' ) );
+			if ( isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) === 'shopglut_layouts' && isset( $_GET['editor'] ) && sanitize_text_field( wp_unslash( $_GET['editor'] ) ) === 'single_product' && isset( $_GET['layout_id'] ) ) {
+				add_action( 'shopglut_single_settings', array(&$this, 'add_meta_box_content' ) );
 			}
 
 
@@ -163,9 +163,9 @@ if ( ! class_exists( 'AGWISHGLUT_Layouts' ) ) {
 
 			$value = null;
 
-			$table_name = $wpdb->prefix . 'wishglut_product_layout';
+			$table_name = $wpdb->prefix . 'shopglut_product_layout';
 
-			$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_options FROM " . $wpdb->prefix . "wishglut_product_layout WHERE id = %d", $post_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQLPlaceholders.QuotedSimplePlaceholder
+			$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_options FROM " . $wpdb->prefix . "shopglut_product_layout WHERE id = %d", $post_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQLPlaceholders.QuotedSimplePlaceholder
 
 			$layout_options_array = ( $layout_options ) ? unserialize( $layout_options ) : array();
 
@@ -200,7 +200,7 @@ if ( ! class_exists( 'AGWISHGLUT_Layouts' ) ) {
 			wp_nonce_field( 'agl_metabox_nonce', 'agl_metabox_nonce ' . $this->unique );
 
 
-			echo '<div class="wishglut-single-component-settings" id="' . esc_attr( $this->unique ) . '">';
+			echo '<div class="shopglut-single-component-settings" id="' . esc_attr( $this->unique ) . '">';
 
 			echo '<div class="agl agl-metabox' . esc_attr( $theme ) . '">';
 
@@ -274,7 +274,7 @@ if ( ! class_exists( 'AGWISHGLUT_Layouts' ) ) {
 
 				} else {
 
-					echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'wishglut' ) . '</div>';
+					echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'shopglut' ) . '</div>';
 
 				}
 
@@ -293,8 +293,8 @@ if ( ! class_exists( 'AGWISHGLUT_Layouts' ) ) {
 				echo '<div class="agl-sections-reset">';
 				echo '<label>';
 				echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
-				echo '<span class="button agl-button-reset">' . esc_html__( 'Reset', 'wishglut' ) . '</span>';
-				echo '<span class="button agl-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'wishglut' ), esc_html__( 'Cancel', 'wishglut' ) ) . '</span>';
+				echo '<span class="button agl-button-reset">' . esc_html__( 'Reset', 'shopglut' ) . '</span>';
+				echo '<span class="button agl-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'shopglut' ), esc_html__( 'Cancel', 'shopglut' ) ) . '</span>';
 				echo '</label>';
 				echo '</div>';
 

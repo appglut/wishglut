@@ -1,38 +1,38 @@
 jQuery(document).ready(function () {
   setTimeout(function () {
-    jQuery("div#agwishglut_post_options").fadeIn("slow");
+    jQuery("div#agshopglut_post_options").fadeIn("slow");
   }, 400);
 
-  jQuery(".wishglut-admin .updated, .wishglut-admin .notice").each(function () {
+  jQuery(".shopglut-admin .updated, .shopglut-admin .notice").each(function () {
     jQuery(this).attr("style", "display: none !important;");
   });
 
-  jQuery(".wishglut__shortcode-selectable").click(function (e) {
+  jQuery(".shopglut__shortcode-selectable").click(function (e) {
     e.preventDefault();
 
     // Get the text content from the nested span
-    var textToCopy = jQuery(this).find('.wishglut_lcopy-text').text().trim();
+    var textToCopy = jQuery(this).find('.shopglut_lcopy-text').text().trim();
 
     // Copy to clipboard using modern API with fallback
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(textToCopy).then(function() {
-        wishglutShowCopyNotification();
+        shopglutShowCopyNotification();
       }).catch(function() {
-        wishglutCopyFallback(textToCopy);
+        shopglutCopyFallback(textToCopy);
       });
     } else {
-      wishglutCopyFallback(textToCopy);
+      shopglutCopyFallback(textToCopy);
     }
   });
 
   // Copy notification function
-  function wishglutShowCopyNotification() {
+  function shopglutShowCopyNotification() {
     // Create notification if it doesn't exist
-    if (jQuery('.wishglut-copy-notification').length === 0) {
-      jQuery('body').append('<div class="wishglut-copy-notification">Copied to clipboard!</div>');
+    if (jQuery('.shopglut-copy-notification').length === 0) {
+      jQuery('body').append('<div class="shopglut-copy-notification">Copied to clipboard!</div>');
     }
 
-    var notification = jQuery('.wishglut-copy-notification');
+    var notification = jQuery('.shopglut-copy-notification');
     notification.addClass('show');
 
     setTimeout(function() {
@@ -41,23 +41,23 @@ jQuery(document).ready(function () {
   }
 
   // Fallback copy method
-  function wishglutCopyFallback(text) {
+  function shopglutCopyFallback(text) {
     var tempInput = jQuery('<textarea>');
     jQuery('body').append(tempInput);
     tempInput.val(text).select();
     document.execCommand('copy');
     tempInput.remove();
-    wishglutShowCopyNotification();
+    shopglutShowCopyNotification();
   }
 
-  function ag_wishglut_copyToClipboard(element) {
+  function ag_shopglut_copyToClipboard(element) {
     var jQuerytemp = jQuery("<input>");
     jQuery("body").append(jQuerytemp);
     jQuerytemp.val(jQuery(element).text()).select();
     document.execCommand("copy");
     jQuerytemp.remove();
   }
-  function ag_wishglut_SelectText(element) {
+  function ag_shopglut_SelectText(element) {
     var r = document.createRange();
     var w = element.get(0);
     r.selectNodeContents(w);

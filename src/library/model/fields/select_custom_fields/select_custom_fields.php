@@ -34,7 +34,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_custom_fields' ) ) {
 
 			// Get all custom fields from database
 			global $wpdb;
-			$table_name = \Wishglut\WishglutDatabase::table_product_custom_field_settings();
+			$table_name = \Shopglut\ShopGlutDatabase::table_product_custom_field_settings();
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query required for custom table operation, safe table name
 			$custom_fields = $wpdb->get_results(
@@ -52,7 +52,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_custom_fields' ) ) {
 			echo '<select name="' . esc_attr( $field_name ) . '"' . esc_attr( $chosen_class . $multiple_attr . $placeholder_attr . $field_attr ) . '>';
 
 			// Always show default "Select Option" as first option
-			echo '<option value="">' . esc_html__( 'Select Option', 'wishglut' ) . '</option>';
+			echo '<option value="">' . esc_html__( 'Select Option', 'shopglut' ) . '</option>';
 
 			if ( ! empty( $options ) ) {
 				foreach ( $options as $option_key => $option_value ) {
@@ -60,7 +60,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_custom_fields' ) ) {
 					echo '<option value="' . esc_attr( $option_key ) . '" ' . esc_attr( $selected ) . '>' . esc_html( $option_value ) . '</option>';
 				}
 			} else {
-				echo '<option value="" disabled>' . esc_html__( 'No custom fields found', 'wishglut' ) . '</option>';
+				echo '<option value="" disabled>' . esc_html__( 'No custom fields found', 'shopglut' ) . '</option>';
 			}
 
 			echo '</select>';

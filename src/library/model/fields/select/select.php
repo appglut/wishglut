@@ -99,7 +99,7 @@ if ( ! class_exists( 'AGWISHGLUT_select' ) ) {
 					global $wpdb;
 
 					// Define table name
-					$table_name = $wpdb->prefix . 'wishglut_enhancement_filters';
+					$table_name = $wpdb->prefix . 'shopglut_enhancement_filters';
 
 					// Retrieve the specific filter settings for the provided filter_id (e.g., 13)
 					$filter_id = 13;
@@ -119,7 +119,7 @@ if ( ! class_exists( 'AGWISHGLUT_select' ) ) {
 					// If filter settings are found, get used options
 					if ( $result ) {
 						$filter_settings = unserialize( $result['filter_settings'] );
-						$used_options = $filter_settings['shopg_filter_options_settings']['wishglut-filter-settings-main-tab']['filter-show-on-pages'] ?? array();
+						$used_options = $filter_settings['shopg_filter_options_settings']['shopglut-filter-settings-main-tab']['filter-show-on-pages'] ?? array();
 					}
 
 
@@ -191,7 +191,7 @@ if ( ! class_exists( 'AGWISHGLUT_select' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

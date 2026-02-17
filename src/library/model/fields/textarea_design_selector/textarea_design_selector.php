@@ -27,8 +27,8 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 
 			$default_designs = array(
 				'simple_list' => array(
-					'title' => __('Simple List', 'wishglut'),
-					'description' => __('Each line displayed as separate item', 'wishglut'),
+					'title' => __('Simple List', 'shopglut'),
+					'description' => __('Each line displayed as separate item', 'shopglut'),
 					'demo' => '<div class="simple-list-demo">
 						<div>• First feature point</div>
 						<div>• Second feature point</div>
@@ -36,8 +36,8 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 					</div>'
 				),
 				'bullet_points' => array(
-					'title' => __('Bullet Points', 'wishglut'),
-					'description' => __('Styled bullet points with icons', 'wishglut'),
+					'title' => __('Bullet Points', 'shopglut'),
+					'description' => __('Styled bullet points with icons', 'shopglut'),
 					'demo' => '<div class="bullet-points-demo">
 						<div class="bullet-item">✓ Premium quality materials</div>
 						<div class="bullet-item">✓ Fast worldwide shipping</div>
@@ -45,8 +45,8 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 					</div>'
 				),
 				'numbered_list' => array(
-					'title' => __('Numbered List', 'wishglut'),
-					'description' => __('Sequential numbered items', 'wishglut'),
+					'title' => __('Numbered List', 'shopglut'),
+					'description' => __('Sequential numbered items', 'shopglut'),
 					'demo' => '<div class="numbered-list-demo">
 						<div class="numbered-item"><span class="number">1</span> Step one process</div>
 						<div class="numbered-item"><span class="number">2</span> Step two process</div>
@@ -54,39 +54,39 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 					</div>'
 				),
 				'paragraphs' => array(
-					'title' => __('Paragraphs', 'wishglut'),
-					'description' => __('Formatted paragraph text', 'wishglut'),
+					'title' => __('Paragraphs', 'shopglut'),
+					'description' => __('Formatted paragraph text', 'shopglut'),
 					'demo' => '<div class="paragraphs-demo">
 						<div style="font-size: 13px; line-height: 1.4;">This is a well-formatted paragraph with proper spacing and text alignment. Perfect for detailed descriptions.</div>
 					</div>'
 				),
 				'cards' => array(
-					'title' => __('Cards Grid', 'wishglut'),
-					'description' => __('Responsive card layout', 'wishglut'),
+					'title' => __('Cards Grid', 'shopglut'),
+					'description' => __('Responsive card layout', 'shopglut'),
 					'demo' => '<div class="cards-demo" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
 						<div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 6px; border-radius: 4px; font-size: 11px;">Feature 1</div>
 						<div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 6px; border-radius: 4px; font-size: 11px;">Feature 2</div>
 					</div>'
 				),
 				'features_grid' => array(
-					'title' => __('Features Grid', 'wishglut'),
-					'description' => __('Checkmark features in grid', 'wishglut'),
+					'title' => __('Features Grid', 'shopglut'),
+					'description' => __('Checkmark features in grid', 'shopglut'),
 					'demo' => '<div class="features-demo" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
 						<div style="background: #e8f5e8; padding: 4px; border-radius: 3px; font-size: 11px; display: flex; align-items: center;">✓ Feature A</div>
 						<div style="background: #e8f5e8; padding: 4px; border-radius: 3px; font-size: 11px; display: flex; align-items: center;">✓ Feature B</div>
 					</div>'
 				),
 				'info_boxes' => array(
-					'title' => __('Info Boxes', 'wishglut'),
-					'description' => __('Gradient info boxes with icons', 'wishglut'),
+					'title' => __('Info Boxes', 'shopglut'),
+					'description' => __('Gradient info boxes with icons', 'shopglut'),
 					'demo' => '<div class="info-boxes-demo" style="display: flex; flex-direction: column; gap: 4px;">
 						<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 6px; border-radius: 4px; font-size: 11px;">ℹ Important information</div>
 						<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 6px; border-radius: 4px; font-size: 11px;">ℹ Additional details</div>
 					</div>'
 				),
 				'tags' => array(
-					'title' => __('Tags', 'wishglut'),
-					'description' => __('Pill-shaped tag elements', 'wishglut'),
+					'title' => __('Tags', 'shopglut'),
+					'description' => __('Pill-shaped tag elements', 'shopglut'),
 					'demo' => '<div class="tags-demo" style="display: flex; gap: 4px; flex-wrap: wrap;">
 						<span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 10px; font-size: 10px; border: 1px solid #bbdefb;">Tag 1</span>
 						<span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 10px; font-size: 10px; border: 1px solid #bbdefb;">Tag 2</span>
@@ -94,8 +94,8 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 					</div>'
 				),
 				'timeline' => array(
-					'title' => __('Timeline', 'wishglut'),
-					'description' => __('Vertical timeline layout', 'wishglut'),
+					'title' => __('Timeline', 'shopglut'),
+					'description' => __('Vertical timeline layout', 'shopglut'),
 					'demo' => '<div class="timeline-demo" style="position: relative; padding-left: 20px;">
 						<div style="position: absolute; left: 6px; top: 0; bottom: 0; width: 1px; background: #e0e0e0;"></div>
 						<div style="position: relative; margin-bottom: 8px;">
@@ -114,18 +114,18 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 			$current_value = $this->value ?? 'simple_list';
 
 			?>
-			<div class="wishglut-textarea-design-selector">
+			<div class="shopglut-textarea-design-selector">
 				<style>
-				.wishglut-textarea-design-selector {
+				.shopglut-textarea-design-selector {
 					width: 100%;
 				}
-				.wishglut-design-options {
+				.shopglut-design-options {
 					display: grid;
 					grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 					gap: 15px;
 					margin-top: 10px;
 				}
-				.wishglut-design-option {
+				.shopglut-design-option {
 					border: 2px solid #e0e0e0;
 					border-radius: 8px;
 					padding: 15px;
@@ -134,16 +134,16 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 					background: white;
 					position: relative;
 				}
-				.wishglut-design-option:hover {
+				.shopglut-design-option:hover {
 					border-color: #0073aa;
 					box-shadow: 0 4px 12px rgba(0,115,170,0.15);
 					transform: translateY(-2px);
 				}
-				.wishglut-design-option.selected {
+				.shopglut-design-option.selected {
 					border-color: #0073aa;
 					background-color: #f7fcff;
 				}
-				.wishglut-design-option.selected::after {
+				.shopglut-design-option.selected::after {
 					content: '✓';
 					position: absolute;
 					top: 8px;
@@ -225,9 +225,9 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 				}
 				</style>
 
-				<div class="wishglut-design-options">
+				<div class="shopglut-design-options">
 					<?php foreach ( $designs as $design_key => $design ): ?>
-						<div class="wishglut-design-option <?php echo ($current_value === $design_key) ? 'selected' : ''; ?>"
+						<div class="shopglut-design-option <?php echo ($current_value === $design_key) ? 'selected' : ''; ?>"
 							 data-design="<?php echo esc_attr( $design_key ); ?>">
 							<div class="design-title"><?php echo esc_html( $design['title'] ); ?></div>
 							<div class="design-demo">
@@ -247,13 +247,13 @@ if ( ! class_exists( 'AGWISHGLUT_textarea_design_selector' ) ) {
 				// Use jQuery for better compatibility with WordPress admin
 				jQuery(document).ready(function($) {
 					// Handle click on design options
-					$('.wishglut-textarea-design-selector .wishglut-design-option').on('click', function() {
+					$('.shopglut-textarea-design-selector .shopglut-design-option').on('click', function() {
 						var $this = $(this);
 						var design = $this.data('design');
-						var $container = $this.closest('.wishglut-textarea-design-selector');
+						var $container = $this.closest('.shopglut-textarea-design-selector');
 
 						// Remove selected class from all options in this container
-						$container.find('.wishglut-design-option').removeClass('selected');
+						$container.find('.shopglut-design-option').removeClass('selected');
 
 						// Add selected class to clicked option
 						$this.addClass('selected');

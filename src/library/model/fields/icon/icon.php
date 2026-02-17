@@ -17,8 +17,8 @@ if ( ! class_exists( 'AGWISHGLUT_icon' ) ) {
     public function render() {
 
       $args = wp_parse_args( $this->field, array(
-        'button_title' => esc_html__( 'Add Icon', 'wishglut' ),
-        'remove_title' => esc_html__( 'Remove Icon', 'wishglut' ),
+        'button_title' => esc_html__( 'Add Icon', 'shopglut' ),
+        'remove_title' => esc_html__( 'Remove Icon', 'shopglut' ),
       ) );
 
       echo wp_kses_post($this->field_before());
@@ -50,11 +50,11 @@ if ( ! class_exists( 'AGWISHGLUT_icon' ) ) {
             <div class="agl-modal-overlay"></div>
             <div class="agl-modal-inner">
               <div class="agl-modal-title">
-                <?php esc_html_e( 'Add Icon', 'wishglut' ); ?>
+                <?php esc_html_e( 'Add Icon', 'shopglut' ); ?>
                 <div class="agl-modal-close agl-icon-close"></div>
               </div>
               <div class="agl-modal-header">
-                <input type="text" placeholder="<?php esc_html_e( 'Search...', 'wishglut' ); ?>" class="agl-icon-search" />
+                <input type="text" placeholder="<?php esc_html_e( 'Search...', 'shopglut' ); ?>" class="agl-icon-search" />
               </div>
               <div class="agl-modal-content">
                 <div class="agl-modal-loading"><div class="agl-loading"></div></div>

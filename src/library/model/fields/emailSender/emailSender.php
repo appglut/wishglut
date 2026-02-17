@@ -14,79 +14,79 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
         public function render() {
             echo wp_kses_post($this->field_before());
 
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             ?>
 
-            <div class="agwishglut-email-sender">
+            <div class="agshopglut-email-sender">
                 <?php if ( $is_pro_active ) : ?>
                     <div class="email-sender-form">
                         <div class="sender-section">
-                            <h4><?php esc_html_e( 'Send Email to Selected Users', 'wishglut' ); ?></h4>
+                            <h4><?php esc_html_e( 'Send Email to Selected Users', 'shopglut' ); ?></h4>
                             
                             <div class="form-row">
-                                <label for="email-template-select"><?php esc_html_e( 'Select Template:', 'wishglut' ); ?></label>
+                                <label for="email-template-select"><?php esc_html_e( 'Select Template:', 'shopglut' ); ?></label>
                                 <select id="email-template-select" style="width: 300px;">
-                                    <option value="price-drop"><?php esc_html_e( 'Price Drop Notification', 'wishglut' ); ?></option>
-                                    <option value="back-in-stock"><?php esc_html_e( 'Back in Stock', 'wishglut' ); ?></option>
-                                    <option value="wishlist-reminder"><?php esc_html_e( 'Wishlist Reminder', 'wishglut' ); ?></option>
-                                    <option value="promotional"><?php esc_html_e( 'Promotional Email', 'wishglut' ); ?></option>
-                                    <option value="social-update"><?php esc_html_e( 'Social Update', 'wishglut' ); ?></option>
-                                    <option value="custom"><?php esc_html_e( 'Custom Message', 'wishglut' ); ?></option>
+                                    <option value="price-drop"><?php esc_html_e( 'Price Drop Notification', 'shopglut' ); ?></option>
+                                    <option value="back-in-stock"><?php esc_html_e( 'Back in Stock', 'shopglut' ); ?></option>
+                                    <option value="wishlist-reminder"><?php esc_html_e( 'Wishlist Reminder', 'shopglut' ); ?></option>
+                                    <option value="promotional"><?php esc_html_e( 'Promotional Email', 'shopglut' ); ?></option>
+                                    <option value="social-update"><?php esc_html_e( 'Social Update', 'shopglut' ); ?></option>
+                                    <option value="custom"><?php esc_html_e( 'Custom Message', 'shopglut' ); ?></option>
                                 </select>
-                                <button type="button" class="button preview-template-btn"><?php esc_html_e( 'Preview Template', 'wishglut' ); ?></button>
+                                <button type="button" class="button preview-template-btn"><?php esc_html_e( 'Preview Template', 'shopglut' ); ?></button>
                             </div>
                             
                             <div class="form-row">
-                                <label for="email-subject"><?php esc_html_e( 'Subject:', 'wishglut' ); ?></label>
-                                <input type="text" id="email-subject" style="width: 500px;" placeholder="<?php esc_html_e( 'Enter email subject', 'wishglut' ); ?>" />
+                                <label for="email-subject"><?php esc_html_e( 'Subject:', 'shopglut' ); ?></label>
+                                <input type="text" id="email-subject" style="width: 500px;" placeholder="<?php esc_html_e( 'Enter email subject', 'shopglut' ); ?>" />
                             </div>
                             
                             <div class="form-row custom-message-row" style="display: none;">
-                                <label for="custom-email-content"><?php esc_html_e( 'Custom Message:', 'wishglut' ); ?></label>
-                                <textarea id="custom-email-content" rows="8" style="width: 100%;" placeholder="<?php esc_html_e( 'Enter your custom email content...', 'wishglut' ); ?>"></textarea>
-                                <small class="description"><?php esc_html_e( 'You can use variables like {{user_name}}, {{site_name}}, {{current_date}}, etc.', 'wishglut' ); ?></small>
+                                <label for="custom-email-content"><?php esc_html_e( 'Custom Message:', 'shopglut' ); ?></label>
+                                <textarea id="custom-email-content" rows="8" style="width: 100%;" placeholder="<?php esc_html_e( 'Enter your custom email content...', 'shopglut' ); ?>"></textarea>
+                                <small class="description"><?php esc_html_e( 'You can use variables like {{user_name}}, {{site_name}}, {{current_date}}, etc.', 'shopglut' ); ?></small>
                             </div>
                             
                             <div class="form-row">
-                                <label for="email-schedule-type"><?php esc_html_e( 'Send:', 'wishglut' ); ?></label>
+                                <label for="email-schedule-type"><?php esc_html_e( 'Send:', 'shopglut' ); ?></label>
                                 <select id="email-schedule-type">
-                                    <option value="now"><?php esc_html_e( 'Send Now', 'wishglut' ); ?></option>
-                                    <option value="scheduled"><?php esc_html_e( 'Schedule for Later', 'wishglut' ); ?></option>
+                                    <option value="now"><?php esc_html_e( 'Send Now', 'shopglut' ); ?></option>
+                                    <option value="scheduled"><?php esc_html_e( 'Schedule for Later', 'shopglut' ); ?></option>
                                 </select>
                             </div>
                             
                             <div class="form-row schedule-options" style="display: none;">
-                                <label for="email-schedule-date"><?php esc_html_e( 'Schedule Date & Time:', 'wishglut' ); ?></label>
+                                <label for="email-schedule-date"><?php esc_html_e( 'Schedule Date & Time:', 'shopglut' ); ?></label>
                                 <input type="datetime-local" id="email-schedule-date" />
                             </div>
                             
                             <div class="form-row">
-                                <label><?php esc_html_e( 'Recipients:', 'wishglut' ); ?></label>
+                                <label><?php esc_html_e( 'Recipients:', 'shopglut' ); ?></label>
                                 <div class="recipient-options">
                                     <label>
                                         <input type="radio" name="recipient-type" value="selected" checked />
-                                        <?php esc_html_e( 'Selected users from table above', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Selected users from table above', 'shopglut' ); ?>
                                         <span class="selected-users-count">(0 selected)</span>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="all" />
-                                        <?php esc_html_e( 'All users with wishlists', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'All users with wishlists', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="custom" />
-                                        <?php esc_html_e( 'Custom email addresses', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Custom email addresses', 'shopglut' ); ?>
                                     </label>
                                 </div>
                             </div>
                             
                             <div class="form-row custom-emails-row" style="display: none;">
-                                <label for="custom-emails"><?php esc_html_e( 'Email Addresses:', 'wishglut' ); ?></label>
-                                <textarea id="custom-emails" rows="4" style="width: 100%;" placeholder="<?php esc_html_e( 'Enter email addresses, one per line or comma separated', 'wishglut' ); ?>"></textarea>
+                                <label for="custom-emails"><?php esc_html_e( 'Email Addresses:', 'shopglut' ); ?></label>
+                                <textarea id="custom-emails" rows="4" style="width: 100%;" placeholder="<?php esc_html_e( 'Enter email addresses, one per line or comma separated', 'shopglut' ); ?>"></textarea>
                             </div>
                             
                             <div class="form-row">
                                 <button type="button" class="button button-primary send-bulk-email" disabled>
-                                    <?php esc_html_e( 'Send Email', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Send Email', 'shopglut' ); ?>
                                 </button>
                                 <span class="email-sending-status" style="margin-left: 10px;"></span>
                             </div>
@@ -94,13 +94,13 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                     </div>
                 <?php else : ?>
                     <div class="pro-notice">
-                        <p><?php esc_html_e( 'Email sender functionality is available in the Pro version.', 'wishglut' ); ?></p>
+                        <p><?php esc_html_e( 'Email sender functionality is available in the Pro version.', 'shopglut' ); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
 
             <style>
-                .agwishglut-email-sender {
+                .agshopglut-email-sender {
                     background: #fff;
                     border: 1px solid #ddd;
                     border-radius: 4px;
@@ -247,10 +247,10 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                     
                     // Load actual preview via AJAX if needed
                     $.post(ajaxurl, {
-                        action: 'wishglut_preview_email_template',
+                        action: 'shopglut_preview_email_template',
                         template: template,
                         custom_content: customContent,
-                        nonce: '<?php echo esc_attr(wp_create_nonce( "wishglut_admin_nonce" )); ?>'
+                        nonce: '<?php echo esc_attr(wp_create_nonce( "shopglut_admin_nonce" )); ?>'
                     }, function(response) {
                         if (response.success) {
                             modal.find('.template-preview-modal div div').html(response.data.preview);
@@ -279,13 +279,13 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                         }).get();
                         
                         if (recipients.length === 0) {
-                            alert('<?php esc_html_e( "Please select at least one user.", "wishglut" ); ?>');
+                            alert('<?php esc_html_e( "Please select at least one user.", "shopglut" ); ?>');
                             return;
                         }
                     } else if (recipientType === 'custom') {
                         var emailText = $('#custom-emails').val().trim();
                         if (!emailText) {
-                            alert('<?php esc_html_e( "Please enter email addresses.", "wishglut" ); ?>');
+                            alert('<?php esc_html_e( "Please enter email addresses.", "shopglut" ); ?>');
                             return;
                         }
                         recipients = emailText.split(/[\n,]/).map(function(email) {
@@ -296,8 +296,8 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                     }
                     
                     var emailData = {
-                        action: 'wishglut_send_bulk_email',
-                        nonce: '<?php echo esc_attr(wp_create_nonce( "wishglut_admin_nonce" )); ?>',
+                        action: 'shopglut_send_bulk_email',
+                        nonce: '<?php echo esc_attr(wp_create_nonce( "shopglut_admin_nonce" )); ?>',
                         recipient_type: recipientType,
                         recipients: recipients,
                         template: $('#email-template-select').val(),
@@ -310,12 +310,12 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                     var button = $(this);
                     var status = $('.email-sending-status');
                     
-                    button.prop('disabled', true).text('<?php esc_html_e( "Sending...", "wishglut" ); ?>');
-                    status.removeClass('success error').text('<?php esc_html_e( "Preparing to send emails...", "wishglut" ); ?>');
+                    button.prop('disabled', true).text('<?php esc_html_e( "Sending...", "shopglut" ); ?>');
+                    status.removeClass('success error').text('<?php esc_html_e( "Preparing to send emails...", "shopglut" ); ?>');
                     
                     $.post(ajaxurl, emailData, function(response) {
                         if (response.success) {
-                            status.addClass('success').text(response.data.message || '<?php esc_html_e( "Emails sent successfully!", "wishglut" ); ?>');
+                            status.addClass('success').text(response.data.message || '<?php esc_html_e( "Emails sent successfully!", "shopglut" ); ?>');
                             
                             // Reset form
                             $('#email-subject, #custom-email-content, #custom-emails').val('');
@@ -324,18 +324,18 @@ if ( ! class_exists( 'AGWISHGLUT_emailSender' ) ) {
                             $('input[name="recipient-type"][value="selected"]').prop('checked', true);
                             
                         } else {
-                            status.addClass('error').text('<?php esc_html_e( "Error:", "wishglut" ); ?> ' + (response.data || '<?php esc_html_e( "Unknown error occurred", "wishglut" ); ?>'));
+                            status.addClass('error').text('<?php esc_html_e( "Error:", "shopglut" ); ?> ' + (response.data || '<?php esc_html_e( "Unknown error occurred", "shopglut" ); ?>'));
                         }
                         
-                        button.prop('disabled', false).text('<?php esc_html_e( "Send Email", "wishglut" ); ?>');
+                        button.prop('disabled', false).text('<?php esc_html_e( "Send Email", "shopglut" ); ?>');
                         
                         // Clear status after 5 seconds
                         setTimeout(function() {
                             status.removeClass('success error').text('');
                         }, 5000);
                     }).fail(function() {
-                        status.addClass('error').text('<?php esc_html_e( "Network error occurred", "wishglut" ); ?>');
-                        button.prop('disabled', false).text('<?php esc_html_e( "Send Email", "wishglut" ); ?>');
+                        status.addClass('error').text('<?php esc_html_e( "Network error occurred", "shopglut" ); ?>');
+                        button.prop('disabled', false).text('<?php esc_html_e( "Send Email", "shopglut" ); ?>');
                     });
                 });
                 

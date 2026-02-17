@@ -66,18 +66,18 @@ if ( ! class_exists( 'AGWISHGLUT_select_shopbanner_display' ) ) {
 
 					// General Options Group
 					$options['General Options'] = array(
-						'homepage' => __( 'Homepage', 'wishglut' ),
-						'front_page' => __( 'Front Page', 'wishglut' ),
-						'shop_page' => __( 'Shop Page', 'wishglut' ),
-						'cart_page' => __( 'Cart Page', 'wishglut' ),
-						'checkout_page' => __( 'Checkout Page', 'wishglut' ),
-						'my_account_page' => __( 'My Account Page', 'wishglut' ),
-						'product_pages' => __( 'All Product Pages', 'wishglut' ),
-						'product_category_pages' => __( 'Product Category Pages', 'wishglut' ),
-						'product_tag_pages' => __( 'Product Tag Pages', 'wishglut' ),
-						'blog_page' => __( 'Blog Page', 'wishglut' ),
-						'all_pages' => __( 'All Pages', 'wishglut' ),
-						'all_posts' => __( 'All Posts', 'wishglut' ),
+						'homepage' => __( 'Homepage', 'shopglut' ),
+						'front_page' => __( 'Front Page', 'shopglut' ),
+						'shop_page' => __( 'Shop Page', 'shopglut' ),
+						'cart_page' => __( 'Cart Page', 'shopglut' ),
+						'checkout_page' => __( 'Checkout Page', 'shopglut' ),
+						'my_account_page' => __( 'My Account Page', 'shopglut' ),
+						'product_pages' => __( 'All Product Pages', 'shopglut' ),
+						'product_category_pages' => __( 'Product Category Pages', 'shopglut' ),
+						'product_tag_pages' => __( 'Product Tag Pages', 'shopglut' ),
+						'blog_page' => __( 'Blog Page', 'shopglut' ),
+						'all_pages' => __( 'All Pages', 'shopglut' ),
+						'all_posts' => __( 'All Posts', 'shopglut' ),
 					);
 
 					// Specific Pages Group
@@ -192,7 +192,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_shopbanner_display' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

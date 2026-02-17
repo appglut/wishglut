@@ -18,7 +18,7 @@ if ( ! class_exists( 'AGWISHGLUT_product_tags' ) ) {
 
     public function render() {
       $args = wp_parse_args( $this->field, array(
-        'placeholder' => esc_html__( 'Select tags', 'wishglut' ),
+        'placeholder' => esc_html__( 'Select tags', 'shopglut' ),
         'chosen'      => true,
         'multiple'    => true,
         'sortable'    => false,
@@ -75,7 +75,7 @@ if ( ! class_exists( 'AGWISHGLUT_product_tags' ) ) {
           echo '<option value="'. esc_attr( $tag->term_id ) .'" '. esc_attr( $selected ) .'>'. esc_html( $tag->name ) .'</option>';
         }
       } else {
-        echo '<option value="">'. esc_html__( 'No tags found', 'wishglut' ) .'</option>';
+        echo '<option value="">'. esc_html__( 'No tags found', 'shopglut' ) .'</option>';
       }
 
       echo '</select>';

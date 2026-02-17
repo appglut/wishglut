@@ -48,7 +48,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_subscribers' ) ) {
 
 			// Check if 'pro' is active
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( 'Unlock the Pro version', 'wishglut' );
+			$pro_text = __( 'Unlock the Pro version', 'shopglut' );
 			?>
 
 			<div class="agl-fieldset-content">
@@ -56,23 +56,23 @@ if ( ! class_exists( 'AGWISHGLUT_email_subscribers' ) ) {
 			</div>
 
 			<div class="agl-user-subscription-table">
-				<h3><?php esc_html_e( 'Subscribed Users', 'wishglut' ); ?></h3>
+				<h3><?php esc_html_e( 'Subscribed Users', 'shopglut' ); ?></h3>
 				<table class="widefat">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Name', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Email', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Subscription Status', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Lock Type', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Expiry Date', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Created At', 'wishglut' ); ?></th>
-							<th><?php esc_html_e( 'Actions', 'wishglut' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Email', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Subscription Status', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Lock Type', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Expiry Date', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Created At', 'shopglut' ); ?></th>
+							<th><?php esc_html_e( 'Actions', 'shopglut' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						global $wpdb;
-						$table_name = $wpdb->prefix . 'wishglut_lock_settings';
+						$table_name = $wpdb->prefix . 'shopglut_lock_settings';
 						$escaped_table = esc_sql($table_name);
 				$subscribed_users = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Table existence check with caching
 							sprintf("SELECT * FROM `%s`", $escaped_table) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.MissingReplacements -- Using sprintf with escaped table name, no additional parameters needed
@@ -84,7 +84,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_subscribers' ) ) {
 								$email = esc_html( $user->email_subscribe );
 								$status = esc_html( $user->subscription_status );
 								$lock_type = esc_html( $user->lock_type );
-								$expiry_date = ! empty( $user->expiry_date ) ? esc_html( $user->expiry_date ) : __( 'N/A', 'wishglut' );
+								$expiry_date = ! empty( $user->expiry_date ) ? esc_html( $user->expiry_date ) : __( 'N/A', 'shopglut' );
 								$created_at = esc_html( $user->created_at );
 								?>
 								<tr>
@@ -107,10 +107,10 @@ if ( ! class_exists( 'AGWISHGLUT_email_subscribers' ) ) {
 										<?php else : ?>
 											<button class="agl-send-email-button"
 												data-email="<?php echo esc_attr( $user->email_subscribe ); ?>">
-												<?php esc_html_e( 'Send Email', 'wishglut' ); ?>
+												<?php esc_html_e( 'Send Email', 'shopglut' ); ?>
 											</button>
 											<button class="agl-edit-user-button" data-id="<?php echo esc_attr( $user->id ); ?>">
-												<?php esc_html_e( 'Edit', 'wishglut' ); ?>
+												<?php esc_html_e( 'Edit', 'shopglut' ); ?>
 											</button>
 										<?php endif; ?>
 									</td>
@@ -120,7 +120,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_subscribers' ) ) {
 						} else {
 							?>
 							<tr>
-								<td colspan="7"><?php esc_html_e( 'No data available', 'wishglut' ); ?></td>
+								<td colspan="7"><?php esc_html_e( 'No data available', 'shopglut' ); ?></td>
 							</tr>
 						<?php } ?>
 					</tbody>

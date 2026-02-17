@@ -14,16 +14,16 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         public function render() {
             echo wp_kses_post($this->field_before());
 
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             ?>
 
-            <div class="agwishglut-email-users-table">
+            <div class="agshopglut-email-users-table">
                 <div class="table-actions" style="margin-bottom: 15px;">
-                    <button type="button" class="button refresh-users-table"><?php esc_htmlesc_html_e( 'Refresh Tables', 'wishglut' ); ?></button>
+                    <button type="button" class="button refresh-users-table"><?php esc_htmlesc_html_e( 'Refresh Tables', 'shopglut' ); ?></button>
                     <?php if ( $is_pro_active ) : ?>
-                        <button type="button" class="button select-all-users"><?php esc_htmlesc_html_e( 'Select All', 'wishglut' ); ?></button>
-                        <button type="button" class="button deselect-all-users"><?php esc_htmlesc_html_e( 'Deselect All', 'wishglut' ); ?></button>
-                        <span class="selected-count">0 <?php esc_htmlesc_html_e( 'selected', 'wishglut' ); ?></span>
+                        <button type="button" class="button select-all-users"><?php esc_htmlesc_html_e( 'Select All', 'shopglut' ); ?></button>
+                        <button type="button" class="button deselect-all-users"><?php esc_htmlesc_html_e( 'Deselect All', 'shopglut' ); ?></button>
+                        <span class="selected-count">0 <?php esc_htmlesc_html_e( 'selected', 'shopglut' ); ?></span>
                     <?php endif; ?>
                 </div>
                 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
             </div>
 
             <style>
-                .agwishglut-email-users-table {
+                .agshopglut-email-users-table {
                     background: #fff;
                     border: 1px solid #ddd;
                     border-radius: 4px;
@@ -94,8 +94,8 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     button.text('Loading...');
                     
                     $.post(ajaxurl, {
-                        action: 'wishglut_refresh_users_table',
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                        action: 'shopglut_refresh_users_table',
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                     }, function(response) {
                         if (response.success) {
                             $('#users-table-container').html(response.data);
@@ -340,11 +340,11 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     $status.removeClass('success error').addClass('sending').text('Sending test email...');
                     
                     var data = {
-                        action: 'wishglut_send_test_email',
+                        action: 'shopglut_send_test_email',
                         template: $('#email-template-select').val(),
                         subject: $('#email-subject').val(),
                         custom_content: $('#custom-email-content').val(),
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                     };
                     
                     $.post(ajaxurl, data, function(response) {
@@ -375,7 +375,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     });
                     
                     var data = {
-                        action: 'wishglut_send_bulk_email',
+                        action: 'shopglut_send_bulk_email',
                         template: $('#email-template-select').val(),
                         subject: $('#email-subject').val(),
                         custom_content: $('#custom-email-content').val(),
@@ -389,7 +389,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                         recurring_end: $('#recurring-end').val(),
                         track_opens: $('#track-opens').is(':checked'),
                         track_clicks: $('#track-clicks').is(':checked'),
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                     };
                     
                     $.post(ajaxurl, data, function(response) {
@@ -426,164 +426,164 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         private function render_notification_tables() {
             global $wpdb;
             
-            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
-            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
+            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             
             ob_start();
             ?>
             
             <!-- Table 1: Main Wishlist Notifications -->
             <div class="notification-table-section">
-                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Main Wishlist Notifications', 'wishglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with main wishlist notification preferences from wishglut_wishlist.wishlist_notifications', 'wishglut' ); ?></p>
+                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Main Wishlist Notifications', 'shopglut' ); ?></h3>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with main wishlist notification preferences from shopglut_wishlist.wishlist_notifications', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_main_wishlist_table()); ?>
             </div>
             
             <!-- Table 2: Sublist Notifications -->
             <div class="notification-table-section">
-                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Sublist Notifications', 'wishglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with sublist notification preferences from wishglut_wishlist.sublist_notifications', 'wishglut' ); ?></p>
+                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Sublist Notifications', 'shopglut' ); ?></h3>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Users with sublist notification preferences from shopglut_wishlist.sublist_notifications', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_sublist_notifications_table()); ?>
             </div>
             
             <!-- Table 3: Individual Product Subscriptions -->
             <div class="notification-table-section">
-                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Individual Product Subscriptions', 'wishglut' ); ?></h3>
-                <p class="table-description"><?php esc_htmlesc_html_e( 'Individual product subscriptions from wishglut_wishlist_social.product_subscriptions', 'wishglut' ); ?></p>
+                <h3 class="table-title"><?php esc_htmlesc_html_e( 'Individual Product Subscriptions', 'shopglut' ); ?></h3>
+                <p class="table-description"><?php esc_htmlesc_html_e( 'Individual product subscriptions from shopglut_wishlist_social.product_subscriptions', 'shopglut' ); ?></p>
                 <?php echo wp_kses_post($this->render_product_subscriptions_table()); ?>
             </div>
             
             <!-- Email Sender Section -->
-            <div class="agwishglut-email-sender">
+            <div class="agshopglut-email-sender">
                 <?php if ( $is_pro_active ) : ?>
                     <div class="email-sender-form">
                         <div class="sender-section">
-                            <h3 class="table-title" style="margin: 0 0 20px 0;"><?php esc_htmlesc_html_e( 'Send Email to Selected Users', 'wishglut' ); ?></h3>
+                            <h3 class="table-title" style="margin: 0 0 20px 0;"><?php esc_htmlesc_html_e( 'Send Email to Selected Users', 'shopglut' ); ?></h3>
                             
                             <div class="form-row">
-                                <label for="email-template-select"><?php esc_htmlesc_html_e( 'Select Template:', 'wishglut' ); ?></label>
+                                <label for="email-template-select"><?php esc_htmlesc_html_e( 'Select Template:', 'shopglut' ); ?></label>
                                 <select id="email-template-select" style="width: 300px;">
-                                    <option value="price-drop"><?php esc_htmlesc_html_e( 'Price Drop Notification', 'wishglut' ); ?></option>
-                                    <option value="back-in-stock"><?php esc_htmlesc_html_e( 'Back in Stock', 'wishglut' ); ?></option>
-                                    <option value="wishlist-reminder"><?php esc_htmlesc_html_e( 'Wishlist Reminder', 'wishglut' ); ?></option>
-                                    <option value="promotional"><?php esc_htmlesc_html_e( 'Promotional Email', 'wishglut' ); ?></option>
-                                    <option value="social-update"><?php esc_htmlesc_html_e( 'Social Update', 'wishglut' ); ?></option>
-                                    <option value="new-products"><?php esc_htmlesc_html_e( 'New Products Alert', 'wishglut' ); ?></option>
-                                    <option value="sale-alert"><?php esc_htmlesc_html_e( 'Sale Alert', 'wishglut' ); ?></option>
-                                    <option value="abandoned-wishlist"><?php esc_htmlesc_html_e( 'Abandoned Wishlist', 'wishglut' ); ?></option>
-                                    <option value="custom"><?php esc_htmlesc_html_e( 'Custom Message', 'wishglut' ); ?></option>
+                                    <option value="price-drop"><?php esc_htmlesc_html_e( 'Price Drop Notification', 'shopglut' ); ?></option>
+                                    <option value="back-in-stock"><?php esc_htmlesc_html_e( 'Back in Stock', 'shopglut' ); ?></option>
+                                    <option value="wishlist-reminder"><?php esc_htmlesc_html_e( 'Wishlist Reminder', 'shopglut' ); ?></option>
+                                    <option value="promotional"><?php esc_htmlesc_html_e( 'Promotional Email', 'shopglut' ); ?></option>
+                                    <option value="social-update"><?php esc_htmlesc_html_e( 'Social Update', 'shopglut' ); ?></option>
+                                    <option value="new-products"><?php esc_htmlesc_html_e( 'New Products Alert', 'shopglut' ); ?></option>
+                                    <option value="sale-alert"><?php esc_htmlesc_html_e( 'Sale Alert', 'shopglut' ); ?></option>
+                                    <option value="abandoned-wishlist"><?php esc_htmlesc_html_e( 'Abandoned Wishlist', 'shopglut' ); ?></option>
+                                    <option value="custom"><?php esc_htmlesc_html_e( 'Custom Message', 'shopglut' ); ?></option>
                                 </select>
-                                <button type="button" class="button preview-template-btn"><?php esc_htmlesc_html_e( 'Preview Template', 'wishglut' ); ?></button>
+                                <button type="button" class="button preview-template-btn"><?php esc_htmlesc_html_e( 'Preview Template', 'shopglut' ); ?></button>
                             </div>
                             
                             <div class="form-row">
-                                <label for="email-subject"><?php esc_htmlesc_html_e( 'Subject:', 'wishglut' ); ?></label>
-                                <input type="text" id="email-subject" style="width: 500px;" placeholder="<?php esc_attr_e( 'Enter email subject', 'wishglut' ); ?>" />
+                                <label for="email-subject"><?php esc_htmlesc_html_e( 'Subject:', 'shopglut' ); ?></label>
+                                <input type="text" id="email-subject" style="width: 500px;" placeholder="<?php esc_attr_e( 'Enter email subject', 'shopglut' ); ?>" />
                             </div>
                             
                             <div class="form-row custom-message-row" style="display: none;">
-                                <label for="custom-email-content"><?php esc_htmlesc_html_e( 'Custom Message:', 'wishglut' ); ?></label>
-                                <textarea id="custom-email-content" rows="8" style="width: 100%;" placeholder="<?php esc_attr_e( 'Enter your custom email content...', 'wishglut' ); ?>"></textarea>
-                                <small class="description"><?php esc_htmlesc_html_e( 'You can use variables like {{user_name}}, {{site_name}}, {{current_date}}, {{product_name}}, {{wishlist_count}}, etc.', 'wishglut' ); ?></small>
+                                <label for="custom-email-content"><?php esc_htmlesc_html_e( 'Custom Message:', 'shopglut' ); ?></label>
+                                <textarea id="custom-email-content" rows="8" style="width: 100%;" placeholder="<?php esc_attr_e( 'Enter your custom email content...', 'shopglut' ); ?>"></textarea>
+                                <small class="description"><?php esc_htmlesc_html_e( 'You can use variables like {{user_name}}, {{site_name}}, {{current_date}}, {{product_name}}, {{wishlist_count}}, etc.', 'shopglut' ); ?></small>
                             </div>
                             
                             <div class="form-row">
-                                <label for="email-schedule-type"><?php esc_htmlesc_html_e( 'Send:', 'wishglut' ); ?></label>
+                                <label for="email-schedule-type"><?php esc_htmlesc_html_e( 'Send:', 'shopglut' ); ?></label>
                                 <select id="email-schedule-type">
-                                    <option value="now"><?php esc_htmlesc_html_e( 'Send Now', 'wishglut' ); ?></option>
-                                    <option value="scheduled"><?php esc_htmlesc_html_e( 'Schedule for Later', 'wishglut' ); ?></option>
-                                    <option value="recurring"><?php esc_html_e( 'Recurring Email', 'wishglut' ); ?></option>
+                                    <option value="now"><?php esc_htmlesc_html_e( 'Send Now', 'shopglut' ); ?></option>
+                                    <option value="scheduled"><?php esc_htmlesc_html_e( 'Schedule for Later', 'shopglut' ); ?></option>
+                                    <option value="recurring"><?php esc_html_e( 'Recurring Email', 'shopglut' ); ?></option>
                                 </select>
                             </div>
                             
                             <div class="form-row schedule-options" style="display: none;">
-                                <label for="email-schedule-date"><?php esc_html_e( 'Schedule Date & Time:', 'wishglut' ); ?></label>
+                                <label for="email-schedule-date"><?php esc_html_e( 'Schedule Date & Time:', 'shopglut' ); ?></label>
                                 <input type="datetime-local" id="email-schedule-date" />
                             </div>
                             
                             <div class="form-row recurring-options" style="display: none;">
-                                <label><?php esc_html_e( 'Recurring Settings:', 'wishglut' ); ?></label>
+                                <label><?php esc_html_e( 'Recurring Settings:', 'shopglut' ); ?></label>
                                 <div class="recurring-settings">
                                     <div class="recurring-row">
-                                        <label for="recurring-frequency"><?php esc_html_e( 'Frequency:', 'wishglut' ); ?></label>
+                                        <label for="recurring-frequency"><?php esc_html_e( 'Frequency:', 'shopglut' ); ?></label>
                                         <select id="recurring-frequency">
-                                            <option value="daily"><?php esc_html_e( 'Daily', 'wishglut' ); ?></option>
-                                            <option value="weekly"><?php esc_html_e( 'Weekly', 'wishglut' ); ?></option>
-                                            <option value="biweekly"><?php esc_html_e( 'Bi-weekly', 'wishglut' ); ?></option>
-                                            <option value="monthly"><?php esc_html_e( 'Monthly', 'wishglut' ); ?></option>
+                                            <option value="daily"><?php esc_html_e( 'Daily', 'shopglut' ); ?></option>
+                                            <option value="weekly"><?php esc_html_e( 'Weekly', 'shopglut' ); ?></option>
+                                            <option value="biweekly"><?php esc_html_e( 'Bi-weekly', 'shopglut' ); ?></option>
+                                            <option value="monthly"><?php esc_html_e( 'Monthly', 'shopglut' ); ?></option>
                                         </select>
                                     </div>
                                     <div class="recurring-row">
-                                        <label for="recurring-start"><?php esc_html_e( 'Start Date:', 'wishglut' ); ?></label>
+                                        <label for="recurring-start"><?php esc_html_e( 'Start Date:', 'shopglut' ); ?></label>
                                         <input type="datetime-local" id="recurring-start" />
                                     </div>
                                     <div class="recurring-row">
-                                        <label for="recurring-end"><?php esc_html_e( 'End Date (Optional):', 'wishglut' ); ?></label>
+                                        <label for="recurring-end"><?php esc_html_e( 'End Date (Optional):', 'shopglut' ); ?></label>
                                         <input type="datetime-local" id="recurring-end" />
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="form-row">
-                                <label><?php esc_html_e( 'Recipients:', 'wishglut' ); ?></label>
+                                <label><?php esc_html_e( 'Recipients:', 'shopglut' ); ?></label>
                                 <div class="recipient-options">
                                     <label>
                                         <input type="radio" name="recipient-type" value="selected" checked />
-                                        <?php esc_html_e( 'Selected users from table above', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Selected users from table above', 'shopglut' ); ?>
                                         <span class="selected-users-count">(0 selected)</span>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="main-wishlist" />
-                                        <?php esc_html_e( 'All users with main wishlist notifications', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'All users with main wishlist notifications', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="sublist" />
-                                        <?php esc_html_e( 'All users with sublist notifications', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'All users with sublist notifications', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="product-subscribers" />
-                                        <?php esc_html_e( 'All product subscribers', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'All product subscribers', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="radio" name="recipient-type" value="custom" />
-                                        <?php esc_html_e( 'Custom email addresses', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Custom email addresses', 'shopglut' ); ?>
                                     </label>
                                 </div>
                             </div>
                             
                             <div class="form-row custom-emails-row" style="display: none;">
-                                <label for="custom-emails"><?php esc_html_e( 'Email Addresses:', 'wishglut' ); ?></label>
-                                <textarea id="custom-emails" rows="4" style="width: 100%;" placeholder="<?php esc_attr_e( 'Enter email addresses, one per line or comma separated', 'wishglut' ); ?>"></textarea>
+                                <label for="custom-emails"><?php esc_html_e( 'Email Addresses:', 'shopglut' ); ?></label>
+                                <textarea id="custom-emails" rows="4" style="width: 100%;" placeholder="<?php esc_attr_e( 'Enter email addresses, one per line or comma separated', 'shopglut' ); ?>"></textarea>
                             </div>
                             
                             <div class="form-row">
-                                <label><?php esc_html_e( 'Email Options:', 'wishglut' ); ?></label>
+                                <label><?php esc_html_e( 'Email Options:', 'shopglut' ); ?></label>
                                 <div class="email-options">
                                     <label>
                                         <input type="checkbox" id="send-test-email" />
-                                        <?php esc_html_e( 'Send test email to admin first', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Send test email to admin first', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="checkbox" id="track-opens" checked />
-                                        <?php esc_html_e( 'Track email opens', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Track email opens', 'shopglut' ); ?>
                                     </label>
                                     <label>
                                         <input type="checkbox" id="track-clicks" checked />
-                                        <?php esc_html_e( 'Track link clicks', 'wishglut' ); ?>
+                                        <?php esc_html_e( 'Track link clicks', 'shopglut' ); ?>
                                     </label>
                                 </div>
                             </div>
                             
                             <div class="form-row">
                                 <button type="button" class="button button-primary send-bulk-email" disabled>
-                                    <?php esc_html_e( 'Send Email', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Send Email', 'shopglut' ); ?>
                                 </button>
                                 <button type="button" class="button send-test-email-btn" style="margin-left: 10px;">
-                                    <?php esc_html_e( 'Send Test', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Send Test', 'shopglut' ); ?>
                                 </button>
                                 <button type="button" class="button view-scheduled-emails" style="margin-left: 10px;">
-                                    <?php esc_html_e( 'View Scheduled', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'View Scheduled', 'shopglut' ); ?>
                                 </button>
                                 <span class="email-sending-status" style="margin-left: 15px;"></span>
                             </div>
@@ -592,15 +592,15 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                 <div class="modal-overlay">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4><?php esc_html_e( 'Email Preview', 'wishglut' ); ?></h4>
+                                            <h4><?php esc_html_e( 'Email Preview', 'shopglut' ); ?></h4>
                                             <button type="button" class="close-preview">&times;</button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="preview-content"></div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="button close-preview"><?php esc_html_e( 'Close', 'wishglut' ); ?></button>
-                                            <button type="button" class="button button-primary use-template"><?php esc_html_e( 'Use This Template', 'wishglut' ); ?></button>
+                                            <button type="button" class="button close-preview"><?php esc_html_e( 'Close', 'shopglut' ); ?></button>
+                                            <button type="button" class="button button-primary use-template"><?php esc_html_e( 'Use This Template', 'shopglut' ); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -609,17 +609,17 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     </div>
                 <?php else : ?>
                     <div class="notification-table-section">
-                        <h3 class="table-title"><?php esc_html_e( 'Email Sender (Pro Feature)', 'wishglut' ); ?></h3>
+                        <h3 class="table-title"><?php esc_html_e( 'Email Sender (Pro Feature)', 'shopglut' ); ?></h3>
                         <div style="padding: 20px;">
-                            <p><?php esc_html_e( 'Email sender functionality with templates and scheduling is available in the Pro version.', 'wishglut' ); ?></p>
-                            <p><?php esc_html_e( 'Features include:', 'wishglut' ); ?></p>
+                            <p><?php esc_html_e( 'Email sender functionality with templates and scheduling is available in the Pro version.', 'shopglut' ); ?></p>
+                            <p><?php esc_html_e( 'Features include:', 'shopglut' ); ?></p>
                             <ul style="margin-left: 20px;">
-                                <li><?php esc_html_e( 'Pre-built email templates', 'wishglut' ); ?></li>
-                                <li><?php esc_html_e( 'Custom message composition', 'wishglut' ); ?></li>
-                                <li><?php esc_html_e( 'Email scheduling', 'wishglut' ); ?></li>
-                                <li><?php esc_html_e( 'Recurring email campaigns', 'wishglut' ); ?></li>
-                                <li><?php esc_html_e( 'Email tracking & analytics', 'wishglut' ); ?></li>
-                                <li><?php esc_html_e( 'Test email functionality', 'wishglut' ); ?></li>
+                                <li><?php esc_html_e( 'Pre-built email templates', 'shopglut' ); ?></li>
+                                <li><?php esc_html_e( 'Custom message composition', 'shopglut' ); ?></li>
+                                <li><?php esc_html_e( 'Email scheduling', 'shopglut' ); ?></li>
+                                <li><?php esc_html_e( 'Recurring email campaigns', 'shopglut' ); ?></li>
+                                <li><?php esc_html_e( 'Email tracking & analytics', 'shopglut' ); ?></li>
+                                <li><?php esc_html_e( 'Test email functionality', 'shopglut' ); ?></li>
                             </ul>
                         </div>
                     </div>
@@ -703,7 +703,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                     color: #7b1fa2;
                 }
                 
-                .agwishglut-email-sender {
+                .agshopglut-email-sender {
                     margin-top: 40px;
                 }
                 
@@ -907,23 +907,29 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_main_wishlist_table() {
             global $wpdb;
-            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
-            
+            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
+
+            // Check if table exists
+            $table_exists = $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $wishlist_table ) );
+            if ( $table_exists === null ) {
+                return '';
+            }
+
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query
             $users = $wpdb->get_results(
-                "SELECT DISTINCT 
+                "SELECT DISTINCT
                     w.id,
                     w.wish_user_id,
                     w.username,
                     w.useremail,
                     w.wishlist_notifications,
                     w.product_added_time
-                FROM {$wpdb->prefix}wishglut_wishlist w
-                WHERE w.wishlist_notifications IS NOT NULL 
+                FROM {$wpdb->prefix}shopglut_wishlist w
+                WHERE w.wishlist_notifications IS NOT NULL
                 AND w.wishlist_notifications != ''
                 AND w.wishlist_notifications != '[]'
-                AND w.useremail IS NOT NULL 
+                AND w.useremail IS NOT NULL
                 AND w.useremail != ''
                 ORDER BY w.product_added_time DESC
                 LIMIT 100"
@@ -938,11 +944,11 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                             <?php if ( $is_pro_active ) : ?>
                             <th class="check-column"><input type="checkbox" class="select-all-main" /></th>
                             <?php endif; ?>
-                            <th><?php esc_html_e( 'User ID', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Username', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Email', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Notification Types', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Registered', 'wishglut' ); ?></th>
+                            <th><?php esc_html_e( 'User ID', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Username', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Email', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Notification Types', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Registered', 'shopglut' ); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -967,7 +973,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                                 <span class="notification-badge"><?php echo esc_html( $notification ); ?></span>
                                             <?php endforeach; ?>
                                         <?php else : ?>
-                                            <em><?php esc_html_e( 'None', 'wishglut' ); ?></em>
+                                            <em><?php esc_html_e( 'None', 'shopglut' ); ?></em>
                                         <?php endif; ?>
                                     </td>
                                     <td><?php echo esc_html( date_i18n( get_option( 'date_format' ), strtotime( $user->product_added_time ) ) ); ?></td>
@@ -976,7 +982,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                         <?php else : ?>
                             <tr>
                                 <td colspan="<?php echo $is_pro_active ? '6' : '5'; ?>">
-                                    <?php esc_html_e( 'No main wishlist notifications found.', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'No main wishlist notifications found.', 'shopglut' ); ?>
                                 </td>
                             </tr>
                         <?php endif; ?>
@@ -989,28 +995,34 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_sublist_notifications_table() {
             global $wpdb;
-            $wishlist_table = $wpdb->prefix . 'wishglut_wishlist';
-            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
-            
+            $wishlist_table = $wpdb->prefix . 'shopglut_wishlist';
+            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
+
+            // Check if table exists
+            $table_exists = $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $wishlist_social_table ) );
+            if ( $table_exists === null ) {
+                return '';
+            }
+
             // Note: sublist_notifications column has been removed, now using social table
             $wishlist_users = [];
-            
-            // Get users from wishglut_wishlist_social table with notification_settings  
+
+            // Get users from shopglut_wishlist_social table with notification_settings
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query
             $social_users = $wpdb->get_results(
-                "SELECT DISTINCT 
+                "SELECT DISTINCT
                     s.id,
                     s.wishlist_user_id,
                     s.list_name,
                     s.notification_settings,
                     s.created_at,
                     'social' as source
-                FROM {$wpdb->prefix}wishglut_wishlist_social s
-                WHERE s.notification_settings IS NOT NULL 
+                FROM {$wpdb->prefix}shopglut_wishlist_social s
+                WHERE s.notification_settings IS NOT NULL
                 AND s.notification_settings != ''
                 AND s.notification_settings != '{}'
-                AND s.list_name IS NOT NULL 
+                AND s.list_name IS NOT NULL
                 AND s.list_name != ''
                 ORDER BY s.created_at DESC
                 LIMIT 100"
@@ -1063,14 +1075,14 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                             <?php if ( $is_pro_active ) : ?>
                             <th class="check-column"><input type="checkbox" class="select-all-sublist" /></th>
                             <?php endif; ?>
-                            <th><?php esc_html_e( 'User ID', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Username', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Email', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Sublist Name', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Notification Types', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Price Threshold', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Source', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Date', 'wishglut' ); ?></th>
+                            <th><?php esc_html_e( 'User ID', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Username', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Email', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Sublist Name', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Notification Types', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Price Threshold', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Source', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Date', 'shopglut' ); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1088,7 +1100,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                     <td>
                                         <span class="sublist-name"><?php echo esc_html( $item->sublist_name ); ?></span>
                                         <?php if ( $item->source === 'social' && $item->updated_at ) : ?>
-                                            <br><small style="color: #666;"><?php esc_html_e( 'Updated:', 'wishglut' ); ?> <?php echo esc_html( date_i18n( 'M j, Y H:i', strtotime( $item->updated_at ) ) ); ?></small>
+                                            <br><small style="color: #666;"><?php esc_html_e( 'Updated:', 'shopglut' ); ?> <?php echo esc_html( date_i18n( 'M j, Y H:i', strtotime( $item->updated_at ) ) ); ?></small>
                                         <?php endif; ?>
                                     </td>
                                     <td class="notification-types-cell">
@@ -1097,14 +1109,14 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                                 <span class="notification-badge"><?php echo esc_html( $notification ); ?></span>
                                             <?php endforeach; ?>
                                         <?php else : ?>
-                                            <em><?php esc_html_e( 'None', 'wishglut' ); ?></em>
+                                            <em><?php esc_html_e( 'None', 'shopglut' ); ?></em>
                                         <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if ( $item->price_threshold ) : ?>
                                             <?php echo wp_kses_post( wc_price( $item->price_threshold ) ); ?>
                                         <?php else : ?>
-                                            <em><?php esc_html_e( 'N/A', 'wishglut' ); ?></em>
+                                            <em><?php esc_html_e( 'N/A', 'shopglut' ); ?></em>
                                         <?php endif; ?>
                                     </td>
                                     <td>
@@ -1118,7 +1130,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                         <?php else : ?>
                             <tr>
                                 <td colspan="<?php echo $is_pro_active ? '9' : '8'; ?>">
-                                    <?php esc_html_e( 'No sublist notifications found.', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'No sublist notifications found.', 'shopglut' ); ?>
                                 </td>
                             </tr>
                         <?php endif; ?>
@@ -1131,19 +1143,26 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
         
         private function render_product_subscriptions_table() {
             global $wpdb;
-            $wishlist_social_table = $wpdb->prefix . 'wishglut_wishlist_social';
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $wishlist_social_table = $wpdb->prefix . 'shopglut_wishlist_social';
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
+
+            // Check if table exists
+            $table_exists = $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE %s", $wishlist_social_table ) );
+            if ( $table_exists === null ) {
+                return '';
+            }
+
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query
             $social_users = $wpdb->get_results(
-                "SELECT DISTINCT 
+                "SELECT DISTINCT
                     s.id,
                     s.wishlist_user_id,
                     s.list_name,
                     s.notification_settings,
                     s.product_subscriptions,
                     s.created_at
-                FROM {$wpdb->prefix}wishglut_wishlist_social s
-                WHERE s.product_subscriptions IS NOT NULL 
+                FROM {$wpdb->prefix}shopglut_wishlist_social s
+                WHERE s.product_subscriptions IS NOT NULL
                 AND s.product_subscriptions != ''
                 AND s.product_subscriptions != '[]'
                 ORDER BY s.created_at DESC
@@ -1159,13 +1178,13 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                             <?php if ( $is_pro_active ) : ?>
                             <th class="check-column"><input type="checkbox" class="select-all-products" /></th>
                             <?php endif; ?>
-                            <th><?php esc_html_e( 'User ID', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Email', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Product ID', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Product Name', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Notification Types', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Price Threshold', 'wishglut' ); ?></th>
-                            <th><?php esc_html_e( 'Subscribed At', 'wishglut' ); ?></th>
+                            <th><?php esc_html_e( 'User ID', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Email', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Product ID', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Product Name', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Notification Types', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Price Threshold', 'shopglut' ); ?></th>
+                            <th><?php esc_html_e( 'Subscribed At', 'shopglut' ); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1201,7 +1220,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                                         | <?php echo esc_html( $product->get_stock_status() ); ?>
                                                     </div>
                                                 <?php else : ?>
-                                                    <em><?php esc_html_e( 'Product not found', 'wishglut' ); ?></em>
+                                                    <em><?php esc_html_e( 'Product not found', 'shopglut' ); ?></em>
                                                 <?php endif; ?>
                                             </td>
                                             <td class="notification-types-cell">
@@ -1210,11 +1229,11 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                                                         <span class="notification-badge"><?php echo esc_html( $notification ); ?></span>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
-                                                    <em><?php esc_html_e( 'None', 'wishglut' ); ?></em>
+                                                    <em><?php esc_html_e( 'None', 'shopglut' ); ?></em>
                                                 <?php endif; ?>
                                             </td>
-                                            <td><?php echo $price_threshold ? wp_kses_post( wc_price( $price_threshold ) ) : esc_html( __( 'N/A', 'wishglut' ) ); ?></td>
-                                            <td><?php echo $subscribed_at ? esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $subscribed_at ) ) ) : esc_html( __( 'N/A', 'wishglut' ) ); ?></td>
+                                            <td><?php echo $price_threshold ? wp_kses_post( wc_price( $price_threshold ) ) : esc_html( __( 'N/A', 'shopglut' ) ); ?></td>
+                                            <td><?php echo $subscribed_at ? esc_html( date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $subscribed_at ) ) ) : esc_html( __( 'N/A', 'shopglut' ) ); ?></td>
                                         </tr>
                                 <?php
                                     endforeach;
@@ -1224,7 +1243,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailUsersTable' ) ) {
                         <?php else : ?>
                             <tr>
                                 <td colspan="<?php echo $is_pro_active ? '8' : '7'; ?>">
-                                    <?php esc_html_e( 'No product subscriptions found.', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'No product subscriptions found.', 'shopglut' ); ?>
                                 </td>
                             </tr>
                         <?php endif; ?>

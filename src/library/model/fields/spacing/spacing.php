@@ -23,11 +23,11 @@ if ( ! class_exists( 'AGWISHGLUT_spacing' ) ) {
 				'bottom_icon' => '<i class="fas fa-long-arrow-alt-down"></i>',
 				'left_icon' => '<i class="fas fa-long-arrow-alt-left"></i>',
 				'all_icon' => '<i class="fas fa-arrows-alt"></i>',
-				'top_placeholder' => esc_html__( 'top', 'wishglut' ),
-				'right_placeholder' => esc_html__( 'right', 'wishglut' ),
-				'bottom_placeholder' => esc_html__( 'bottom', 'wishglut' ),
-				'left_placeholder' => esc_html__( 'left', 'wishglut' ),
-				'all_placeholder' => esc_html__( 'all', 'wishglut' ),
+				'top_placeholder' => esc_html__( 'top', 'shopglut' ),
+				'right_placeholder' => esc_html__( 'right', 'shopglut' ),
+				'bottom_placeholder' => esc_html__( 'bottom', 'shopglut' ),
+				'left_placeholder' => esc_html__( 'left', 'shopglut' ),
+				'all_placeholder' => esc_html__( 'all', 'shopglut' ),
 				'top' => true,
 				'left' => true,
 				'bottom' => true,
@@ -53,7 +53,7 @@ if ( ! class_exists( 'AGWISHGLUT_spacing' ) ) {
 
 			// Determine if the field is limited to pro
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( 'Unlock in Pro version', 'wishglut' );
+			$pro_text = __( 'Unlock in Pro version', 'shopglut' );
 
 			echo esc_attr( $this->field_before() );
 			echo '<div class="agl--inputs">';

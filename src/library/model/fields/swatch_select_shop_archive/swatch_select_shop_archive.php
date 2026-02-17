@@ -23,7 +23,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 
 			$args = wp_parse_args( $this->field, array(
 				'id' => false,
-				'placeholder' => __( 'Select Pages', 'wishglut' ),
+				'placeholder' => __( 'Select Pages', 'shopglut' ),
 				'chosen' => true,
 				'multiple' => true,
 				'sortable' => false,
@@ -53,7 +53,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 			$options = array();
 
 			// Shop page options
-			$options['shop_page'] = __( 'Shop Page', 'wishglut' );
+			$options['shop_page'] = __( 'Shop Page', 'shopglut' );
 
 			// Archive pages options
 			$product_categories = get_terms( array(
@@ -64,7 +64,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 			if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
 				foreach ( $product_categories as $category ) {
 					$options[ 'cat_' . $category->term_id ] = sprintf(
-						__( 'Category: %s', 'wishglut' ),
+						__( 'Category: %s', 'shopglut' ),
 						$category->name
 					);
 				}
@@ -79,7 +79,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 			if ( ! empty( $product_tags ) && ! is_wp_error( $product_tags ) ) {
 				foreach ( $product_tags as $tag ) {
 					$options[ 'tag_' . $tag->term_id ] = sprintf(
-						__( 'Tag: %s', 'wishglut' ),
+						__( 'Tag: %s', 'shopglut' ),
 						$tag->name
 					);
 				}
@@ -92,7 +92,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 				foreach ( $attribute_taxonomies as $attr ) {
 					$taxonomy_name = wc_attribute_taxonomy_name( $attr->attribute_name );
 					$options[ 'attr_' . $taxonomy_name ] = sprintf(
-						__( 'Attribute: %s', 'wishglut' ),
+						__( 'Attribute: %s', 'shopglut' ),
 						$attr->attribute_label
 					);
 				}
@@ -132,7 +132,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_shop_archive' ) ) {
 				echo '</select>';
 
 			} else {
-				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No shop/archive pages available.', 'wishglut' );
+				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No shop/archive pages available.', 'shopglut' );
 			}
 
 			echo wp_kses_post( $this->field_after() );

@@ -22,7 +22,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 		public function render() {
 
 			$args = wp_parse_args( $this->field, array(
-				'placeholder' => __( 'Select pages and products...', 'wishglut' ),
+				'placeholder' => __( 'Select pages and products...', 'shopglut' ),
 				'chosen' => true,
 				'multiple' => true,
 				'sortable' => false,
@@ -52,7 +52,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 			$options = array();
 
 			// Section 1: Shop Page
-			$options['shop_page'] = __( 'Shop Page', 'wishglut' );
+			$options['shop_page'] = __( 'Shop Page', 'shopglut' );
 
 			// Section 2: Archive Pages
 			// Product Categories
@@ -64,7 +64,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 			if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
 				foreach ( $product_categories as $category ) {
 					$options[ 'cat_' . $category->term_id ] = sprintf(
-						__( 'Category: %s', 'wishglut' ),
+						__( 'Category: %s', 'shopglut' ),
 						$category->name
 					);
 				}
@@ -79,7 +79,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 			if ( ! empty( $product_tags ) && ! is_wp_error( $product_tags ) ) {
 				foreach ( $product_tags as $tag ) {
 					$options[ 'tag_' . $tag->term_id ] = sprintf(
-						__( 'Tag: %s', 'wishglut' ),
+						__( 'Tag: %s', 'shopglut' ),
 						$tag->name
 					);
 				}
@@ -92,7 +92,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 				foreach ( $attribute_taxonomies as $attr ) {
 					$taxonomy_name = wc_attribute_taxonomy_name( $attr->attribute_name );
 					$options[ 'attr_' . $taxonomy_name ] = sprintf(
-						__( 'Attribute: %s', 'wishglut' ),
+						__( 'Attribute: %s', 'shopglut' ),
 						$attr->attribute_label
 					);
 				}
@@ -113,7 +113,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 					$product_id = get_the_ID();
 					$product_title = get_the_title();
 					$options[ 'product_' . $product_id ] = sprintf(
-						__( 'Product: %s', 'wishglut' ),
+						__( 'Product: %s', 'shopglut' ),
 						$product_title . ' (#' . $product_id . ')'
 					);
 				}
@@ -139,8 +139,8 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 				// Field description
 				echo '<div class="swatch-apply-selective-wrapper">';
 				echo '<div class="swatch-apply-selective-header">';
-				echo '<div class="swatch-apply-selective-title">' . esc_html__( 'Apply to Specific Pages & Products', 'wishglut' ) . '</div>';
-				echo '<div class="swatch-apply-selective-desc">' . esc_html__( 'Choose specific pages, archives, or products where swatches should be applied.', 'wishglut' ) . '</div>';
+				echo '<div class="swatch-apply-selective-title">' . esc_html__( 'Apply to Specific Pages & Products', 'shopglut' ) . '</div>';
+				echo '<div class="swatch-apply-selective-desc">' . esc_html__( 'Choose specific pages, archives, or products where swatches should be applied.', 'shopglut' ) . '</div>';
 				echo '</div>';
 
 				echo '<select id="' . esc_attr( $unique_instance_id ) . '" name="' . esc_attr( $field_name ) . '"' . wp_kses_post( $selectAttributes ) . '>';
@@ -154,24 +154,24 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_selective' ) ) {
 				}
 
 				// Group options by type for better UX
-				$this->output_option_group( $options, $this->value, 'shop', __( 'Shop Page', 'wishglut' ) );
-				$this->output_option_group( $options, $this->value, 'cat_', __( 'Product Categories', 'wishglut' ) );
-				$this->output_option_group( $options, $this->value, 'tag_', __( 'Product Tags', 'wishglut' ) );
-				$this->output_option_group( $options, $this->value, 'attr_', __( 'Product Attributes', 'wishglut' ) );
-				$this->output_option_group( $options, $this->value, 'product_', __( 'Individual Products', 'wishglut' ) );
+				$this->output_option_group( $options, $this->value, 'shop', __( 'Shop Page', 'shopglut' ) );
+				$this->output_option_group( $options, $this->value, 'cat_', __( 'Product Categories', 'shopglut' ) );
+				$this->output_option_group( $options, $this->value, 'tag_', __( 'Product Tags', 'shopglut' ) );
+				$this->output_option_group( $options, $this->value, 'attr_', __( 'Product Attributes', 'shopglut' ) );
+				$this->output_option_group( $options, $this->value, 'product_', __( 'Individual Products', 'shopglut' ) );
 
 				echo '</select>';
 
 				// Help text
 				echo '<div class="swatch-apply-selective-help">';
 				echo '<span class="dashicons dashicons-editor-help"></span>';
-				echo '<span>' . esc_html__( 'Select multiple items to apply swatches to specific locations only.', 'wishglut' ) . '</span>';
+				echo '<span>' . esc_html__( 'Select multiple items to apply swatches to specific locations only.', 'shopglut' ) . '</span>';
 				echo '</div>';
 
 				echo '</div>'; // .swatch-apply-selective-wrapper
 
 			} else {
-				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No pages or products available.', 'wishglut' );
+				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No pages or products available.', 'shopglut' );
 			}
 
 			echo wp_kses_post( $this->field_after() );

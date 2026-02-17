@@ -34,7 +34,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_comparison_layouts' ) ) {
 
 			// Get all comparison layouts from database
 			global $wpdb;
-			$table_name = $wpdb->prefix . 'wishglut_comparison_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_comparison_layouts';
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query required for custom table operation, safe table name
 			$comparison_layouts = $wpdb->get_results(
@@ -52,7 +52,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_comparison_layouts' ) ) {
 			echo '<select name="' . esc_attr( $field_name ) . '"' . esc_attr( $chosen_class . $multiple_attr . $placeholder_attr . $field_attr ) . '>';
 
 			// Always show default "Select Option" as first option
-			echo '<option value="">' . esc_html__( 'Select Option', 'wishglut' ) . '</option>';
+			echo '<option value="">' . esc_html__( 'Select Option', 'shopglut' ) . '</option>';
 
 			if ( ! empty( $options ) ) {
 				foreach ( $options as $option_key => $option_value ) {
@@ -60,7 +60,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_comparison_layouts' ) ) {
 					echo '<option value="' . esc_attr( $option_key ) . '" ' . esc_attr( $selected ) . '>' . esc_html( $option_value ) . '</option>';
 				}
 			} else {
-				echo '<option value="" disabled>' . esc_html__( 'No comparison layouts found', 'wishglut' ) . '</option>';
+				echo '<option value="" disabled>' . esc_html__( 'No comparison layouts found', 'shopglut' ) . '</option>';
 			}
 
 			echo '</select>';

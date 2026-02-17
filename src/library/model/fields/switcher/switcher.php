@@ -19,19 +19,23 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 		public function render() {
 
 			$active = ( ! empty( $this->value ) ) ? ' agl--active' : '';
-			$text_on = ( ! empty( $this->field['text_on'] ) ) ? $this->field['text_on'] : esc_html__( 'On', 'wishglut' );
-			$text_off = ( ! empty( $this->field['text_off'] ) ) ? $this->field['text_off'] : esc_html__( 'Off', 'wishglut' );
+			$text_on = ( ! empty( $this->field['text_on'] ) ) ? $this->field['text_on'] : esc_html__( 'On', 'shopglut' );
+			$text_off = ( ! empty( $this->field['text_off'] ) ) ? $this->field['text_off'] : esc_html__( 'Off', 'shopglut' );
 			$text_width = ( ! empty( $this->field['text_width'] ) ) ? ' style="width: ' . wp_kses_post( $this->field['text_width'] ) . 'px;"' : '';
 
 			echo esc_attr( $this->field_before() );
 
 			global $wpdb;
-			$table_name = $wpdb->prefix . 'wishglut_shop_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_shop_layouts';
+
+			$layout_values = [];
 
 			// Query shop layouts without cache for real-time conflict detection
+			if ( $this->table_exists( $table_name ) ) {
 			$layout_values = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query needed for real-time conflict check
 				sprintf("SELECT * FROM `%s`", esc_sql($table_name)) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.MissingReplacements -- Using sprintf with escaped table name, no additional parameters needed
 			);
+			}
 
 	
 			// Default value for enable_switcher
@@ -68,7 +72,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 					if ( $switcher_value !== '0' ) {
 						// At least one OTHER layout has the switcher enabled
 						$enable_switcher = '1';
-						$shop_layout_taken_message = __( 'Already Taken', 'wishglut' ) . ' - ' . esc_html( $layout->layout_name );
+						$shop_layout_taken_message = __( 'Already Taken', 'shopglut' ) . ' - ' . esc_html( $layout->layout_name );
 								break; // No need to check further once we find an enabled switcher
 					}
 				}
@@ -82,7 +86,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout ID only
 				$layout_id = absint( wp_unslash( $_GET['layout_id'] ) );
 
-				$single_product_table_name = $wpdb->prefix . 'wishglut_single_product_layout';
+				$single_product_table_name = $wpdb->prefix . 'shopglut_single_product_layout';
 
 				// Default values for single product switcher logic
 				$disable_single_product_switcher = false;
@@ -94,16 +98,24 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 
 				// Cache key for single product layouts
 				// Query WITHOUT cache for real-time conflict detection
+				$single_product_layout_values = [];
+
+               if ( $this->table_exists( $single_product_table_name ) ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query needed for real-time conflict check
 				$single_product_layout_values = $wpdb->get_results(
 					sprintf("SELECT * FROM `%s`", esc_sql($single_product_table_name)) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Using sprintf with escaped table name, no prepare needed
 				);
+			   }
 
 				// Query current layout WITHOUT cache for real-time status check
+				$current_layout = null;
+
+               if ( $this->table_exists( $single_product_table_name ) ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query needed for real-time status check
 				$current_layout = $wpdb->get_row(
 					sprintf("SELECT * FROM `%s` WHERE id = %d", esc_sql($single_product_table_name), $layout_id) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Using sprintf with escaped table name and validated ID
 				);
+			   }
 
 				// If current layout exists, get its details
 				if ( $current_layout ) {
@@ -158,7 +170,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 
 							if ( $overwrite_all_products == '1' ) {
 								$disable_single_product_switcher = true;
-								$single_product_taken_message = __( 'Already Taken', 'wishglut' ) . ' - ' . esc_html( $slayout->layout_name );
+								$single_product_taken_message = __( 'Already Taken', 'shopglut' ) . ' - ' . esc_html( $slayout->layout_name );
 								break;
 							}
 
@@ -192,18 +204,20 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 				}
 
 				// ==================== ORDER COMPLETE SWITCHER LOGIC ====================
-				$ordercomplete_table_name = $wpdb->prefix . 'wishglut_ordercomplete_layouts';
+				$ordercomplete_table_name = $wpdb->prefix . 'shopglut_ordercomplete_layouts';
 
 				// Get all order complete layouts (no cache)
+				if ( $this->table_exists( $ordercomplete_table_name ) ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Direct query needed for real-time override check
 				$ordercomplete_layout_values = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Direct query needed for real-time override check
 					sprintf("SELECT * FROM `%s`", esc_sql($ordercomplete_table_name)) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Using sprintf with escaped table name
 				);
+				}
 
 				// Get current order complete layout (no cache)
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query needed for real-time override check
 				$current_oc_layout = $wpdb->get_row( $wpdb->prepare(
-					"SELECT * FROM `{$wpdb->prefix}wishglut_ordercomplete_layouts` WHERE id = %d",
+					"SELECT * FROM `{$wpdb->prefix}shopglut_ordercomplete_layouts` WHERE id = %d",
 					$layout_id
 				) );
 
@@ -244,7 +258,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 
 							if ( $oc_override && ( $oc_override == '1' || $oc_override == 1 || $oc_override === true ) ) {
 								$disable_ordercomplete_switcher = true;
-								$ordercomplete_taken_message = __( 'Already Taken', 'wishglut' ) . ' - ' . esc_html( $oc_layout->layout_name );
+								$ordercomplete_taken_message = __( 'Already Taken', 'shopglut' ) . ' - ' . esc_html( $oc_layout->layout_name );
 								break;
 							}
 						}
@@ -252,22 +266,25 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 				}
 
 				// ==================== ACCOUNT PAGE SWITCHER LOGIC ====================
-				$accountpage_table_name = $wpdb->prefix . 'wishglut_accountpage_layouts';
+				$accountpage_table_name = $wpdb->prefix . 'shopglut_accountpage_layouts';
 
 				// Default values for account page switcher logic
 				$disable_accountpage_switcher = false;
 				$accountpage_taken_message = '';
 
 				// Get all account page layouts (no cache)
+				if ( $this->table_exists( $accountpage_table_name ) ) {
+
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Direct query needed for real-time override check
 				$accountpage_layout_values = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Direct query needed for real-time override check
 					sprintf("SELECT * FROM `%s`", esc_sql($accountpage_table_name)) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Using sprintf with escaped table name
 				);
+				}
 
 				// Get current account page layout (no cache)
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Direct query needed for real-time override check
 				$current_ap_layout = $wpdb->get_row( $wpdb->prepare(
-					"SELECT * FROM `{$wpdb->prefix}wishglut_accountpage_layouts` WHERE id = %d",
+					"SELECT * FROM `{$wpdb->prefix}shopglut_accountpage_layouts` WHERE id = %d",
 					$layout_id
 				) );
 
@@ -308,7 +325,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 
 							if ( $ap_enabled && ( $ap_enabled == '1' || $ap_enabled == 1 || $ap_enabled === true ) ) {
 								$disable_accountpage_switcher = true;
-								$accountpage_taken_message = __( 'Already Taken', 'wishglut' ) . ' - ' . esc_html( $ap_layout->layout_name );
+								$accountpage_taken_message = __( 'Already Taken', 'shopglut' ) . ' - ' . esc_html( $ap_layout->layout_name );
 								break;
 							}
 						}
@@ -318,7 +335,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 
 			// Check if 'pro' is set and has a value
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( 'Unlock the Pro version', 'wishglut' );
+			$pro_text = __( 'Unlock the Pro version', 'shopglut' );
 
 			// If 'pro' is set, disable the switcher and show pro version text
 			if ( $is_pro ) {
@@ -387,7 +404,7 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 						// If product not found, show ID with indication
 						/* translators: %d: product ID number */
 					// translators: %d is the product ID that was not found
-						$product_names[] = sprintf( __( 'Product ID: %d (not found)', 'wishglut' ), $product_id );
+						$product_names[] = sprintf( __( 'Product ID: %d (not found)', 'shopglut' ), $product_id );
 					}
 				}
 			}
@@ -398,9 +415,21 @@ if ( ! class_exists( 'AGWISHGLUT_switcher' ) ) {
 				$remaining_count = count( $product_names ) - 3;
 				/* translators: %d: number of additional items not shown */
 			// translators: %d is the number of additional items not shown
-				return implode( ', ', $displayed_names ) . sprintf( __( ' and %d more', 'wishglut' ), $remaining_count );			}
+				return implode( ', ', $displayed_names ) . sprintf( __( ' and %d more', 'shopglut' ), $remaining_count );			}
 			
 			return implode( ', ', $product_names );
 		}
+
+		private function table_exists( $table_name ) {
+				global $wpdb;
+
+				return ( $wpdb->get_var(
+					$wpdb->prepare(
+						"SHOW TABLES LIKE %s",
+						$table_name
+					)
+				) === $table_name );
+          }
+
 	}
 }

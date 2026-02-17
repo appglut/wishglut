@@ -20,8 +20,8 @@ if ( ! class_exists( 'AGWISHGLUT_dimensions' ) ) {
 			$args = wp_parse_args( $this->field, array(
 				'width_icon' => '<i class="fas fa-arrows-alt-h"></i>',
 				'height_icon' => '<i class="fas fa-arrows-alt-v"></i>',
-				'width_placeholder' => esc_html__( 'width', 'wishglut' ),
-				'height_placeholder' => esc_html__( 'height', 'wishglut' ),
+				'width_placeholder' => esc_html__( 'width', 'shopglut' ),
+				'height_placeholder' => esc_html__( 'height', 'shopglut' ),
 				'width' => true,
 				'height' => true,
 				'unit' => true,
@@ -41,7 +41,7 @@ if ( ! class_exists( 'AGWISHGLUT_dimensions' ) ) {
 
 			// Check if the field is pro-only
 			$is_pro = ! empty( $this->field['pro'] ) ? true : false;
-			$pro_text = __( 'Unlock in Pro version', 'wishglut' );
+			$pro_text = __( 'Unlock in Pro version', 'shopglut' );
 
 			echo wp_kses_post($this->field_before());
 			echo '<div class="agl--inputs" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';

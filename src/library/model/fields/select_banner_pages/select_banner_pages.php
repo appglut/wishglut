@@ -66,9 +66,9 @@ if ( ! class_exists( 'AGWISHGLUT_select_banner_pages' ) ) {
 
 					// All Options Group
 					$options['All Options'] = array(
-						'all_pages' => __( 'All Pages', 'wishglut' ),
-						'all_posts' => __( 'All Posts', 'wishglut' ),
-						'all_products' => __( 'All Products', 'wishglut' ),
+						'all_pages' => __( 'All Pages', 'shopglut' ),
+						'all_posts' => __( 'All Posts', 'shopglut' ),
+						'all_products' => __( 'All Products', 'shopglut' ),
 					);
 
 					// Individual Pages Group
@@ -205,7 +205,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_banner_pages' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

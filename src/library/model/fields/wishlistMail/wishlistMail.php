@@ -17,11 +17,11 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
         private $pro_email_instance;
 
         public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-            $this->cron_token = get_option( 'wishglut_wishlist_cron_token', '' );
+            $this->cron_token = get_option( 'shopglut_wishlist_cron_token', '' );
             
             // Get ProEmail instance if available
-            if ( class_exists( 'Wishglut\WishlistPro\ProEmail' ) ) {
-                $this->pro_email_instance = Wishglut\WishlistPro\ProEmail::get_instance();
+            if ( class_exists( 'Shopglut\WishlistPro\ProEmail' ) ) {
+                $this->pro_email_instance = Shopglut\WishlistPro\ProEmail::get_instance();
             }
             
             parent::__construct( $field, $value, $unique, $where, $parent );
@@ -59,23 +59,23 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
 
             // Check if 'pro' is active - Pro version disables the field
             $is_pro = ! empty( $this->field['pro'] ) ? true : false;
-            $pro_text = __( 'Unlock the Pro version', 'wishglut' );
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $pro_text = __( 'Unlock the Pro version', 'shopglut' );
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             ?>
 
 <div class="agl-fieldset-content">
     <!-- Email Options Section -->
     <div class="agl-wishmail-email-options">
         <span class="agl--label">
-            <label for="send_email"><?php esc_html_e( 'Send Email Option', 'wishglut' ); ?></label>
+            <label for="send_email"><?php esc_html_e( 'Send Email Option', 'shopglut' ); ?></label>
         </span>
         <select id="agl-wishmail-email-option" name="<?php echo esc_attr( $this->field_name( '[send_email]' ) ); ?>"
             <?php echo ( $is_pro && !$is_pro_active ) ? 'disabled' : ''; ?>>
             <option value="no" <?php selected( $this->value['send_email'], 'no' ); ?>>
-                <?php esc_html_e( 'Do Not Send Email Automatically', 'wishglut' ); ?>
+                <?php esc_html_e( 'Do Not Send Email Automatically', 'shopglut' ); ?>
             </option>
             <option value="yes" <?php selected( $this->value['send_email'], 'yes' ); ?>>
-                <?php esc_html_e( 'Send Email Automatically', 'wishglut' ); ?>
+                <?php esc_html_e( 'Send Email Automatically', 'shopglut' ); ?>
             </option>
         </select>
 
@@ -95,7 +95,7 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
         <!-- Time Configuration -->
         <div class="agl-wishmail-time-config">
             <span class="agl--label">
-                <label for="time_value"><?php esc_html_e( 'Send Email Time after Added to Wishlist', 'wishglut' ); ?></label>
+                <label for="time_value"><?php esc_html_e( 'Send Email Time after Added to Wishlist', 'shopglut' ); ?></label>
             </span>
             
             <div class="agl-time-inputs">
@@ -109,47 +109,47 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
                 <select name="<?php echo esc_attr( $this->field_name( '[time_unit]' ) ); ?>"
                         <?php echo ( $is_pro && !$is_pro_active ) ? 'disabled' : ''; ?>>
                     <option value="minute" <?php selected( $this->value['time_unit'], 'minute' ); ?>>
-                        <?php esc_html_e( 'Minutes', 'wishglut' ); ?>
+                        <?php esc_html_e( 'Minutes', 'shopglut' ); ?>
                     </option>
                     <option value="hour" <?php selected( $this->value['time_unit'], 'hour' ); ?>>
-                        <?php esc_html_e( 'Hours', 'wishglut' ); ?>
+                        <?php esc_html_e( 'Hours', 'shopglut' ); ?>
                     </option>
                     <option value="day" <?php selected( $this->value['time_unit'], 'day' ); ?>>
-                        <?php esc_html_e( 'Days', 'wishglut' ); ?>
+                        <?php esc_html_e( 'Days', 'shopglut' ); ?>
                     </option>
                 </select>
             </div>
         </div>
 
         <!-- Cron URL Section -->
-        <div class="wishglut-wishlist-mail-cron-url">
-            <label for="cron-url"><?php esc_html_e( 'Cron URL', 'wishglut' ); ?></label>
+        <div class="shopglut-wishlist-mail-cron-url">
+            <label for="cron-url"><?php esc_html_e( 'Cron URL', 'shopglut' ); ?></label>
             <?php 
             $cron_url = '';
             if ( $is_pro_active && $this->pro_email_instance ) {
                 $cron_url = $this->pro_email_instance->get_cron_url();
             } elseif ( !$is_pro || $is_pro_active ) {
-                $cron_url = site_url( '/send-wishglut-wishlist-emails/?cronkey=' . $this->cron_token );
+                $cron_url = site_url( '/send-shopglut-wishlist-emails/?cronkey=' . $this->cron_token );
             }
             ?>
             <div class="agl-cron-url-wrapper">
                 <input type="text" 
-                       id="wishglut-wishlist-cron-url" 
+                       id="shopglut-wishlist-cron-url" 
                        value="<?php echo esc_url( $cron_url ); ?>" 
                        readonly 
                        class="agl-cron-input">
-                <button type="button" id="copy-cron-url" class="agl-copy-button" title="<?php esc_attr_e( 'Copy to clipboard', 'wishglut' ); ?>">
+                <button type="button" id="copy-cron-url" class="agl-copy-button" title="<?php esc_attr_e( 'Copy to clipboard', 'shopglut' ); ?>">
                     <i class="fa fa-copy"></i>
                 </button>
             </div>
             <p class="agl-cron-description">
-                <?php esc_html_e( 'You can configure a cron job from your hosting control panel using the URL above for reliable cron execution.', 'wishglut' ); ?>
+                <?php esc_html_e( 'You can configure a cron job from your hosting control panel using the URL above for reliable cron execution.', 'shopglut' ); ?>
             </p>
             
             <?php if ( $is_pro_active ) : ?>
             <div class="agl-email-test-section">
                 <button type="button" id="test-email-config" class="button button-secondary">
-                    <?php esc_html_e( 'Test Email Configuration', 'wishglut' ); ?>
+                    <?php esc_html_e( 'Test Email Configuration', 'shopglut' ); ?>
                 </button>
                 <span id="test-email-result" class="agl-test-result"></span>
             </div>
@@ -161,14 +161,14 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
 <!-- Users Table Section -->
 <div class="agl-user-wishlist-table">
     <div class="agl-table-header">
-        <h3><?php esc_html_e( 'Wishlist Users', 'wishglut' ); ?></h3>
+        <h3><?php esc_html_e( 'Wishlist Users', 'shopglut' ); ?></h3>
         <?php if ( $is_pro_active ) : ?>
         <div class="agl-table-actions">
             <button type="button" id="refresh-users-table" class="button button-secondary">
-                <?php esc_html_e( 'Refresh', 'wishglut' ); ?>
+                <?php esc_html_e( 'Refresh', 'shopglut' ); ?>
             </button>
             <button type="button" id="send-bulk-emails" class="button button-primary">
-                <?php esc_html_e( 'Send Bulk Emails', 'wishglut' ); ?>
+                <?php esc_html_e( 'Send Bulk Emails', 'shopglut' ); ?>
             </button>
         </div>
         <?php endif; ?>
@@ -183,12 +183,12 @@ if ( ! class_exists( 'AGWISHGLUT_wishlistMail' ) ) {
                         <input type="checkbox" id="select-all-users">
                     </th>
                     <?php endif; ?>
-                    <th><?php esc_html_e( 'User Name', 'wishglut' ); ?></th>
-                    <th><?php esc_html_e( 'User Email', 'wishglut' ); ?></th>
-                    <th><?php esc_html_e( 'Products Count', 'wishglut' ); ?></th>
-                    <th><?php esc_html_e( 'Latest Added Product Time', 'wishglut' ); ?></th>
-                    <th><?php esc_html_e( 'Email Status', 'wishglut' ); ?></th>
-                    <th><?php esc_html_e( 'Actions', 'wishglut' ); ?></th>
+                    <th><?php esc_html_e( 'User Name', 'shopglut' ); ?></th>
+                    <th><?php esc_html_e( 'User Email', 'shopglut' ); ?></th>
+                    <th><?php esc_html_e( 'Products Count', 'shopglut' ); ?></th>
+                    <th><?php esc_html_e( 'Latest Added Product Time', 'shopglut' ); ?></th>
+                    <th><?php esc_html_e( 'Email Status', 'shopglut' ); ?></th>
+                    <th><?php esc_html_e( 'Actions', 'shopglut' ); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -344,7 +344,7 @@ jQuery(document).ready(function($) {
 
     // Copy cron URL to clipboard
     $('#copy-cron-url').click(function() {
-        var cronInput = $('#wishglut-wishlist-cron-url');
+        var cronInput = $('#shopglut-wishlist-cron-url');
         cronInput.select();
         document.execCommand('copy');
         
@@ -368,8 +368,8 @@ jQuery(document).ready(function($) {
             url: ajaxurl,
             type: 'POST',
             data: {
-                action: 'wishglut_send_test_email',
-                nonce: '<?php echo wp_kses_post(wp_create_nonce( "wishglut_pro_nonce" )); ?>'
+                action: 'shopglut_send_test_email',
+                nonce: '<?php echo wp_kses_post(wp_create_nonce( "shopglut_pro_nonce" )); ?>'
             },
             success: function(response) {
                 if (response.success) {
@@ -400,9 +400,9 @@ jQuery(document).ready(function($) {
             url: ajaxurl,
             type: 'POST',
             data: {
-                action: 'wishglut_send_manual_email',
+                action: 'shopglut_send_manual_email',
                 email: email,
-                nonce: '<?php echo wp_kses_post(wp_create_nonce( "wishglut_pro_nonce" )); ?>'
+                nonce: '<?php echo wp_kses_post(wp_create_nonce( "shopglut_pro_nonce" )); ?>'
             },
             success: function(response) {
                 if (response.success) {
@@ -464,9 +464,9 @@ jQuery(document).ready(function($) {
                 url: ajaxurl,
                 type: 'POST',
                 data: {
-                    action: 'wishglut_send_manual_email',
+                    action: 'shopglut_send_manual_email',
                     email: selectedEmails[emailIndex],
-                    nonce: '<?php echo wp_kses_post(wp_create_nonce( "wishglut_pro_nonce" )); ?>'
+                    nonce: '<?php echo wp_kses_post(wp_create_nonce( "shopglut_pro_nonce" )); ?>'
                 },
                 success: function(response) {
                     emailIndex++;
@@ -490,7 +490,7 @@ jQuery(document).ready(function($) {
 
         private function render_users_table_rows( $is_pro, $is_pro_active, $pro_text ) {
             global $wpdb;
-            $table_name = $wpdb->prefix . 'wishglut_wishlist';
+            $table_name = $wpdb->prefix . 'shopglut_wishlist';
             
             // Get wishlist users with better query
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Table existence check with caching
@@ -507,12 +507,12 @@ jQuery(document).ready(function($) {
 
             if ( empty( $wishlist_users ) ) {
                 $colspan = $is_pro_active ? 7 : 6;
-                return '<tr><td colspan="' . $colspan . '">' . esc_html__( 'No wishlist users found', 'wishglut' ) . '</td></tr>';
+                return '<tr><td colspan="' . $colspan . '">' . esc_html__( 'No wishlist users found', 'shopglut' ) . '</td></tr>';
             }
 
             $output = '';
             foreach ( $wishlist_users as $user ) {
-                $username = esc_html( $user->username ?: __( 'Guest User', 'wishglut' ) );
+                $username = esc_html( $user->username ?: __( 'Guest User', 'shopglut' ) );
                 $useremail = esc_html( $user->useremail );
                 
                 // Get product count
@@ -530,7 +530,7 @@ jQuery(document).ready(function($) {
                 $product_count = count( array_unique( $product_ids ) );
                 $product_added_time = $user->product_added_time ? 
                     date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $user->product_added_time ) ) : 
-                    __( 'N/A', 'wishglut' );
+                    __( 'N/A', 'shopglut' );
                 
                 // Email status
                 $email_status = $this->get_email_status( $user );
@@ -550,7 +550,7 @@ jQuery(document).ready(function($) {
                 
                 if ( $is_pro_active ) {
                     $output .= '<button class="agl-send-email-button" data-email="' . esc_attr( $useremail ) . '">';
-                    $output .= __( 'Send Email', 'wishglut' );
+                    $output .= __( 'Send Email', 'shopglut' );
                     $output .= '</button>';
                 } elseif ( $is_pro ) {
                     $output .= '<a href="' . esc_url( $this->field['pro'] ) . '" target="_blank" class="agl--pro-link">';
@@ -558,7 +558,7 @@ jQuery(document).ready(function($) {
                     $output .= '</a>';
                 } else {
                     $output .= '<button class="agl-send-email-button" data-email="' . esc_attr( $useremail ) . '">';
-                    $output .= __( 'Send Email', 'wishglut' );
+                    $output .= __( 'Send Email', 'shopglut' );
                     $output .= '</button>';
                 }
                 
@@ -574,12 +574,12 @@ jQuery(document).ready(function($) {
             $sent_time = date_i18n( get_option( 'date_format' ), strtotime( $user->email_sent ) );
             return '<span class="agl-email-status agl-status-sent">' . 
                 /* translators: %s: formatted date and time when email was sent */
-                sprintf( __( 'Sent %s', 'wishglut' ), $sent_time ) . 
+                sprintf( __( 'Sent %s', 'shopglut' ), $sent_time ) . 
                 '</span>';
 }
             // Check if email should be sent based on time
             if ( $this->pro_email_instance && ! empty( $user->product_added_time ) ) {
-                $options = get_option( 'agwishglut_wishlist_options', [] );
+                $options = get_option( 'agshopglut_wishlist_options', [] );
                 if ( isset( $options['wishlist-email-mail']['send_email'] ) && 
                      $options['wishlist-email-mail']['send_email'] === 'yes' ) {
                     
@@ -591,19 +591,19 @@ jQuery(document).ready(function($) {
                     
                     if ( current_time( 'timestamp' ) >= $scheduled_time ) {
                         return '<span class="agl-email-status agl-status-pending">' . 
-                               __( 'Ready to Send', 'wishglut' ) . 
+                               __( 'Ready to Send', 'shopglut' ) . 
                                '</span>';
                     } else {
                         $send_time = date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $scheduled_time );
                         return '<span class="agl-email-status agl-status-pending">' . 
                             /* translators: %s: Scheduled for email */
-                               sprintf( __( 'Scheduled for %s', 'wishglut' ), $send_time ) . 
+                               sprintf( __( 'Scheduled for %s', 'shopglut' ), $send_time ) . 
                                '</span>';
                     }
                 }
             }
             
-            return '<span class="agl-email-status">' . esc_html__( 'Not Scheduled', 'wishglut' ) . '</span>';
+            return '<span class="agl-email-status">' . esc_html__( 'Not Scheduled', 'shopglut' ) . '</span>';
         }
 
      

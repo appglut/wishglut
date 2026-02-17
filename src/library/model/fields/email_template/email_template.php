@@ -34,11 +34,11 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
       $current_subject = ! empty( $this->value['subject'] ) ? $this->value['subject'] : '';
       $current_content = ! empty( $this->value['content'] ) ? $this->value['content'] : '';
 
-      echo '<div class="agwishglut-email-template-field">';
+      echo '<div class="agshopglut-email-template-field">';
       
       // Template Selector
       echo '<div class="template-selector-wrapper">';
-      echo '<label><strong>' . esc_html__( 'Choose Template:', 'wishglut' ) . '</strong></label>';
+      echo '<label><strong>' . esc_html__( 'Choose Template:', 'shopglut' ) . '</strong></label>';
       echo '<select name="' . esc_attr( $this->field_name( '[template]' ) ) . '" class="template-selector">';
       foreach ( $templates as $template_id => $template_data ) {
         $selected = selected( $current_template, $template_id, false );
@@ -51,15 +51,15 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
 
       // Subject Line Editor
       echo '<div class="subject-line-wrapper" style="margin: 20px 0;">';
-      echo '<label><strong>' . esc_html__( 'Subject Line:', 'wishglut' ) . '</strong></label>';
+      echo '<label><strong>' . esc_html__( 'Subject Line:', 'shopglut' ) . '</strong></label>';
       echo '<input type="text" name="' . esc_attr( $this->field_name( '[subject]' ) ) . '" ';
       echo 'value="' . esc_attr( $current_subject ) . '" ';
-      echo 'class="template-subject widefat" placeholder="' . esc_attr__( 'Enter email subject...', 'wishglut' ) . '" />';
+      echo 'class="template-subject widefat" placeholder="' . esc_attr__( 'Enter email subject...', 'shopglut' ) . '" />';
       echo '</div>';
 
       // Content Editor
       echo '<div class="content-editor-wrapper">';
-      echo '<label><strong>' . esc_html__( 'Email Content:', 'wishglut' ) . '</strong></label>';
+      echo '<label><strong>' . esc_html__( 'Email Content:', 'shopglut' ) . '</strong></label>';
       
       // WordPress Editor
       $editor_id = str_replace( array( '[', ']' ), array( '_', '_' ), $this->field_name( '[content]' ) );
@@ -79,7 +79,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
       // Live Preview Section
       if ( $args['show_preview'] ) {
         echo '<div class="template-preview-wrapper" style="margin-top: 30px;">';
-        echo '<h4>' . esc_html__( 'Live Preview:', 'wishglut' ) . '</h4>';
+        echo '<h4>' . esc_html__( 'Live Preview:', 'shopglut' ) . '</h4>';
         echo '<div class="email-preview-container">';
         
         foreach ( $templates as $template_id => $template_data ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
 
       // Template Variables Helper
       echo '<div class="template-variables-wrapper" style="margin-top: 20px;">';
-      echo '<h4>' . esc_html__( 'Available Variables:', 'wishglut' ) . '</h4>';
+      echo '<h4>' . esc_html__( 'Available Variables:', 'shopglut' ) . '</h4>';
       echo '<div class="variables-list">';
       echo '<code>{user_name}</code> - Customer name<br>';
       echo '<code>{site_name}</code> - Your website name<br>';
@@ -118,32 +118,32 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
     private function get_default_templates() {
       return array(
         'welcome' => array(
-          'name' => __( 'Welcome Email', 'wishglut' ),
-          'subject' => __( 'Welcome to {site_name}!', 'wishglut' ),
+          'name' => __( 'Welcome Email', 'shopglut' ),
+          'subject' => __( 'Welcome to {site_name}!', 'shopglut' ),
           'content' => $this->get_welcome_template_content(),
           'preview_html' => $this->get_welcome_preview_html(),
         ),
         'abandoned' => array(
-          'name' => __( 'Abandoned Wishlist', 'wishglut' ),
-          'subject' => __( 'Your wishlist is waiting for you!', 'wishglut' ),
+          'name' => __( 'Abandoned Wishlist', 'shopglut' ),
+          'subject' => __( 'Your wishlist is waiting for you!', 'shopglut' ),
           'content' => $this->get_abandoned_template_content(),
           'preview_html' => $this->get_abandoned_preview_html(),
         ),
         'price_drop' => array(
-          'name' => __( 'Price Drop Alert', 'wishglut' ),
-          'subject' => __( '🎉 Price drop on {product_name}!', 'wishglut' ),
+          'name' => __( 'Price Drop Alert', 'shopglut' ),
+          'subject' => __( '🎉 Price drop on {product_name}!', 'shopglut' ),
           'content' => $this->get_price_drop_template_content(),
           'preview_html' => $this->get_price_drop_preview_html(),
         ),
         'back_in_stock' => array(
-          'name' => __( 'Back in Stock', 'wishglut' ),
-          'subject' => __( '{product_name} is back in stock!', 'wishglut' ),
+          'name' => __( 'Back in Stock', 'shopglut' ),
+          'subject' => __( '{product_name} is back in stock!', 'shopglut' ),
           'content' => $this->get_back_in_stock_template_content(),
           'preview_html' => $this->get_back_in_stock_preview_html(),
         ),
         'seasonal' => array(
-          'name' => __( 'Seasonal Sale', 'wishglut' ),
-          'subject' => __( 'Special offer on your wishlist items!', 'wishglut' ),
+          'name' => __( 'Seasonal Sale', 'shopglut' ),
+          'subject' => __( 'Special offer on your wishlist items!', 'shopglut' ),
           'content' => $this->get_seasonal_template_content(),
           'preview_html' => $this->get_seasonal_preview_html(),
         ),
@@ -275,7 +275,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
     private function add_template_assets() {
       ?>
       <style>
-        .agwishglut-email-template-field {
+        .agshopglut-email-template-field {
           background: #fff;
           border: 1px solid #ddd;
           padding: 20px;
@@ -326,7 +326,7 @@ if ( ! class_exists( 'AGWISHGLUT_email_template' ) ) {
       jQuery(document).ready(function($) {
         $('.template-selector').on('change', function() {
           var selectedTemplate = $(this).val();
-          var container = $(this).closest('.agwishglut-email-template-field');
+          var container = $(this).closest('.agshopglut-email-template-field');
           
           // Hide all previews
           container.find('.template-preview-item').hide();

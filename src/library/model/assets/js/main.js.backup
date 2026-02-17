@@ -1312,6 +1312,9 @@
         $cloned_item.find(".agl-color").each(function() { $(this).removeClass('wp-color-picker'); });
         $cloned_item.find(".agl-fields").agl_reload_script();
 
+        // Initialize tabbed content within the new repeater item
+        $cloned_item.find('.agl-field-tabbed').AGSHOPGLUT_tabbed();
+
         $wrapper.agl_customizer_refresh();
         $wrapper.agl_customizer_listen({closest: true});
       });
@@ -1340,6 +1343,9 @@
         $wrapper.children().eq($parent.index()).after($cloned_item);
 
         $cloned_item.children(".agl-repeater-content").agl_reload_script();
+
+        // Initialize tabbed content within the cloned repeater item
+        $cloned_item.find('.agl-field-tabbed').AGSHOPGLUT_tabbed();
 
         AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
 
@@ -1573,8 +1579,29 @@
           $content = $contents.eq(index);
 
       $link.addClass('agl-tabbed-active').siblings().removeClass('agl-tabbed-active');
-      $content.agl_reload_script();
       $content.removeClass('hidden').siblings().addClass('hidden');
+
+      // Use a small delay to ensure the content is fully visible before reloading scripts
+      // This is important for switchers, button sets, and color pickers that need proper visibility
+      setTimeout(function() {
+        $content.agl_reload_script();
+
+        // Specifically re-initialize switchers, button sets, and color pickers that might not have loaded properly
+        $content.find('.agl-field-switcher').AGSHOPGLUT_switcher();
+        $content.find('.agl-field-button_set .agl-siblings').agl_siblings();
+
+        // Special handling for color pickers - ensure they're properly destroyed first
+        var $colorFields = $content.find('.agl-color');
+        $colorFields.each(function() {
+          var $this = $(this);
+          // Remove any existing color picker instances
+          if ($this.hasClass('wp-color-picker')) {
+            $this.closest('.wp-picker-container').after($this).remove();
+          }
+          // Reinitialize the color picker
+          $this.agl_color();
+        });
+      }, 50);
     });
   });
   };
@@ -3144,12 +3171,6 @@
         $this.children(".agl-field-select_filter_page").find(".agl-chosen").agl_chosen();
         $this.children(".agl-field-select_products").find(".agl-chosen").agl_chosen();
         $this.children(".agl-field-select_archive_page").find(".agl-chosen").agl_chosen();
-        $this.children(".agl-field-select").find(".agl-chosen").agl_chosen();
-        $this.children(".agl-field-taxonomy").find(".agl-chosen").agl_chosen();
-
-        $this.children(".agl-field-select_badge_display").find(".agl-chosen").agl_chosen();
-        $this.children(".agl-field-select_comparison_display").find(".agl-chosen").agl_chosen();
-        $this.children(".agl-field-select_quickview_display").find(".agl-chosen").agl_chosen();
         $this.children(".agl-field-select").find(".agl-chosen").agl_chosen();
         $this.children(".agl-field-taxonomy").find(".agl-chosen").agl_chosen();
 

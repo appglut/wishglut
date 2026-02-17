@@ -13,11 +13,11 @@
   //
   // Constants
   //
-  var AGWISHGLUT = AGWISHGLUT || {};
+  var AGSHOPGLUT = AGSHOPGLUT || {};
 
-  AGWISHGLUT.funcs = {};
+  AGSHOPGLUT.funcs = {};
 
-  AGWISHGLUT.vars = {
+  AGSHOPGLUT.vars = {
     onloaded: false,
     $body: $("body"),
     $window: $(window),
@@ -32,7 +32,7 @@
   //
   // Helper Functions
   //
-  AGWISHGLUT.helper = {
+  AGSHOPGLUT.helper = {
     //
     // Generate UID
     //
@@ -51,7 +51,7 @@
     //
     name_nested_replace: function ($selector, field_id) {
       var checks = [];
-      var regex = new RegExp(AGWISHGLUT.helper.preg_quote(field_id + "[\\d+]"), "g");
+      var regex = new RegExp(AGSHOPGLUT.helper.preg_quote(field_id + "[\\d+]"), "g");
 
       $selector.find(":radio").each(function () {
         if (this.checked || this.orginal_checked) {
@@ -374,7 +374,7 @@
         }
 
         if (global_depends.length) {
-          $.agl_deps.enable(AGWISHGLUT.vars.$body, global_ruleset, global_depends);
+          $.agl_deps.enable(AGSHOPGLUT.vars.$body, global_ruleset, global_depends);
         }
       }
     });
@@ -383,7 +383,7 @@
   //
   // Field: accordion
   //
-  $.fn.AGWISHGLUT_accordion = function () {
+  $.fn.AGSHOPGLUT_accordion = function () {
     return this.each(function () {
       var $titles = $(this).find(".agl-accordion-title");
 
@@ -422,7 +422,7 @@
   //
   // Field: backup
   //
-  $.fn.AGWISHGLUT_backup = function () {
+  $.fn.AGSHOPGLUT_backup = function () {
     return this.each(function () {
       if (window.wp.customize === undefined) {
         return;
@@ -447,7 +447,7 @@
 
           // then show a notification overlay
           wp.customize.notifications.add(
-            new wp.customize.OverlayNotification("AGWISHGLUT_backup_notification", {
+            new wp.customize.OverlayNotification("AGSHOPGLUT_backup_notification", {
               type: "default",
               message: "&nbsp;",
               loading: true,
@@ -459,7 +459,7 @@
       $reset.on("click", function (e) {
         e.preventDefault();
 
-        if (AGWISHGLUT.vars.is_confirm) {
+        if (AGSHOPGLUT.vars.is_confirm) {
           base.notificationOverlay();
 
           window.wp.ajax
@@ -472,7 +472,7 @@
             })
             .fail(function (response) {
               alert(response.error);
-              wp.customize.notifications.remove("AGWISHGLUT_backup_notification");
+              wp.customize.notifications.remove("AGSHOPGLUT_backup_notification");
             });
         }
       });
@@ -480,7 +480,7 @@
       $import.on("click", function (e) {
         e.preventDefault();
 
-        if (AGWISHGLUT.vars.is_confirm) {
+        if (AGSHOPGLUT.vars.is_confirm) {
           base.notificationOverlay();
 
           window.wp.ajax
@@ -494,7 +494,7 @@
             })
             .fail(function (response) {
               alert(response.error);
-              wp.customize.notifications.remove("AGWISHGLUT_backup_notification");
+              wp.customize.notifications.remove("AGSHOPGLUT_backup_notification");
             });
         }
       });
@@ -504,7 +504,7 @@
   //
   // Field: background
   //
-  $.fn.AGWISHGLUT_background = function () {
+  $.fn.AGSHOPGLUT_background = function () {
     return this.each(function () {
       $(this).find(".agl--background-image").agl_reload_script();
     });
@@ -513,7 +513,7 @@
   //
   // Field: code_editor
   //
-  $.fn.AGWISHGLUT_code_editor = function () {
+  $.fn.AGSHOPGLUT_code_editor = function () {
     return this.each(function () {
       if (typeof CodeMirror !== "function") {
         return;
@@ -533,7 +533,7 @@
           var code_editor = CodeMirror.fromTextArea($textarea[0], data_editor);
 
           // load code-mirror theme css.
-          if (data_editor.theme !== "default" && AGWISHGLUT.vars.code_themes.indexOf(data_editor.theme) === -1) {
+          if (data_editor.theme !== "default" && AGSHOPGLUT.vars.code_themes.indexOf(data_editor.theme) === -1) {
             var $cssLink = $("<link>");
 
             $("#agl-codemirror-css").after($cssLink);
@@ -546,7 +546,7 @@
               media: "all",
             });
 
-            AGWISHGLUT.vars.code_themes.push(data_editor.theme);
+            AGSHOPGLUT.vars.code_themes.push(data_editor.theme);
           }
 
           CodeMirror.modeURL = data_editor.cdnURL + "/mode/%N/%N.min.js";
@@ -565,7 +565,7 @@
   //
   // Field: date
   //
-  $.fn.AGWISHGLUT_date = function () {
+  $.fn.AGSHOPGLUT_date = function () {
     return this.each(function () {
       var $this = $(this),
         $inputs = $this.find("input"),
@@ -613,7 +613,7 @@
   //
   // Field: fieldset
   //
-  $.fn.AGWISHGLUT_fieldset = function () {
+  $.fn.AGSHOPGLUT_fieldset = function () {
     return this.each(function () {
       $(this).find(".agl-fieldset-content").agl_reload_script();
     });
@@ -623,7 +623,7 @@
   // Field: WishlistMail
   //
 
-  $.fn.AGWISHGLUT_wishlistMail = function () {
+  $.fn.AGSHOPGLUT_wishlistMail = function () {
     return this.each(function () {
       $(this).find(".agl-fieldset-content").agl_reload_script();
     });
@@ -632,7 +632,7 @@
   //
   // Field: gallery
   //
-  $.fn.AGWISHGLUT_gallery = function () {
+  $.fn.AGSHOPGLUT_gallery = function () {
     return this.each(function () {
       var $this = $(this),
         $edit = $this.find(".agl-edit-gallery"),
@@ -707,7 +707,7 @@
   //
   // Field: group
   //
-  $.fn.AGWISHGLUT_group = function () {
+  $.fn.AGSHOPGLUT_group = function () {
     return this.each(function () {
       var $this = $(this),
         $fieldset = $this.children(".agl-fieldset"),
@@ -777,7 +777,7 @@
           ui.item.children(".agl-cloneable-content").data("retry", true);
         },
         update: function (event, ui) {
-          AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
+          AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
           $wrapper.agl_customizer_refresh();
 
           if (is_number) {
@@ -842,7 +842,7 @@
 
         $wrapper.children().eq($parent.index()).after($cloned_item);
 
-        AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
+        AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
 
         $wrapper.accordion("refresh");
         $wrapper.agl_customizer_refresh();
@@ -877,7 +877,7 @@
 
         $(this).closest(".agl-cloneable-item").remove();
 
-        AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
+        AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-cloneable-item"), field_id);
 
         $wrapper.agl_customizer_refresh();
 
@@ -900,7 +900,7 @@
   //
   // Field: icon
   //
-  $.fn.AGWISHGLUT_icon = function () {
+  $.fn.AGSHOPGLUT_icon = function () {
     return this.each(function () {
       var $this = $(this);
 
@@ -912,9 +912,9 @@
 
         $modal.removeClass("hidden");
 
-        AGWISHGLUT.vars.$icon_target = $this;
+        AGSHOPGLUT.vars.$icon_target = $this;
 
-        if (!AGWISHGLUT.vars.icon_modal_loaded) {
+        if (!AGSHOPGLUT.vars.icon_modal_loaded) {
           $modal.find(".agl-modal-loading").show();
 
           window.wp.ajax
@@ -924,7 +924,7 @@
             .done(function (response) {
               $modal.find(".agl-modal-loading").hide();
 
-              AGWISHGLUT.vars.icon_modal_loaded = true;
+              AGSHOPGLUT.vars.icon_modal_loaded = true;
 
               var $load = $modal.find(".agl-modal-load").html(response.content);
 
@@ -933,10 +933,10 @@
 
                 var icon = $(this).attr("title");
 
-                AGWISHGLUT.vars.$icon_target.find(".agl-icon-preview i").removeAttr("class").addClass(icon);
-                AGWISHGLUT.vars.$icon_target.find(".agl-icon-preview").removeClass("hidden");
-                AGWISHGLUT.vars.$icon_target.find(".agl-icon-remove").removeClass("hidden");
-                AGWISHGLUT.vars.$icon_target.find("input").val(icon).trigger("change");
+                AGSHOPGLUT.vars.$icon_target.find(".agl-icon-preview i").removeAttr("class").addClass(icon);
+                AGSHOPGLUT.vars.$icon_target.find(".agl-icon-preview").removeClass("hidden");
+                AGSHOPGLUT.vars.$icon_target.find(".agl-icon-remove").removeClass("hidden");
+                AGSHOPGLUT.vars.$icon_target.find("input").val(icon).trigger("change");
 
                 $modal.addClass("hidden");
               });
@@ -982,7 +982,7 @@
   //
   // Field: map
   //
-  $.fn.AGWISHGLUT_map = function () {
+  $.fn.AGSHOPGLUT_map = function () {
     return this.each(function () {
       if (typeof L === "undefined") {
         return;
@@ -1101,7 +1101,7 @@
   //
   // Field: link
   //
-  $.fn.AGWISHGLUT_link = function () {
+  $.fn.AGSHOPGLUT_link = function () {
     return this.each(function () {
       var $this = $(this),
         $link = $this.find(".agl--link"),
@@ -1109,7 +1109,7 @@
         $edit = $this.find(".agl--edit"),
         $remove = $this.find(".agl--remove"),
         $result = $this.find(".agl--result"),
-        uniqid = AGWISHGLUT.helper.uid("agl-wplink-textarea-");
+        uniqid = AGSHOPGLUT.helper.uid("agl-wplink-textarea-");
 
       $add.on("click", function (e) {
         e.preventDefault();
@@ -1163,7 +1163,7 @@
   //
   // Field: media
   //
-  $.fn.AGWISHGLUT_media = function () {
+  $.fn.AGSHOPGLUT_media = function () {
     return this.each(function () {
       var $this = $(this),
         $upload_button = $this.find(".agl--button"),
@@ -1257,7 +1257,7 @@
   //
   // Field: repeater
   //
-  $.fn.AGWISHGLUT_repeater = function () {
+  $.fn.AGSHOPGLUT_repeater = function () {
     return this.each(function () {
       var $this = $(this),
         $fieldset = $this.children(".agl-fieldset"),
@@ -1279,7 +1279,7 @@
         cursor: "move",
         placeholder: "widget-placeholder",
         update: function (event, ui) {
-          AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
+          AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
           $wrapper.agl_customizer_refresh();
           ui.item.agl_reload_script_retry();
         },
@@ -1341,7 +1341,7 @@
 
         $cloned_item.children(".agl-repeater-content").agl_reload_script();
 
-        AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
+        AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
 
         $wrapper.agl_customizer_refresh();
         $wrapper.agl_customizer_listen({closest: true});
@@ -1371,7 +1371,7 @@
 
         $(this).closest(".agl-repeater-item").remove();
 
-        AGWISHGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
+        AGSHOPGLUT.helper.name_nested_replace($wrapper.children(".agl-repeater-item"), field_id);
 
         $wrapper.agl_customizer_refresh();
       };
@@ -1391,7 +1391,7 @@
   // Field: slider
   //
 
-  $.fn.AGWISHGLUT_slider = function () {
+  $.fn.AGSHOPGLUT_slider = function () {
     var columnStyle = "";
     var rowStyle = "";
     return this.each(function () {
@@ -1443,7 +1443,7 @@
   //
   // Field: sortable
   //
-  $.fn.AGWISHGLUT_sortable = function () {
+  $.fn.AGSHOPGLUT_sortable = function () {
     return this.each(function () {
       var $sortable = $(this).find(".agl-sortable");
 
@@ -1464,7 +1464,7 @@
   //
   // Field: sorter
   //
-  $.fn.AGWISHGLUT_sorter = function () {
+  $.fn.AGSHOPGLUT_sorter = function () {
     return this.each(function () {
       var $this = $(this),
         $enabled = $this.find(".agl-enabled"),
@@ -1502,7 +1502,7 @@
   //
   // Field: spinner
   //
-  $.fn.AGWISHGLUT_spinner = function () {
+  $.fn.AGSHOPGLUT_spinner = function () {
     return this.each(function () {
       var $this = $(this),
         $input = $this.find("input"),
@@ -1532,7 +1532,7 @@
   //
   // Field: switcher
   //
-  $.fn.AGWISHGLUT_switcher = function () {
+  $.fn.AGSHOPGLUT_switcher = function () {
     return this.each(function () {
       var $switcher = $(this).find(".agl--switcher");
 
@@ -1557,7 +1557,7 @@
   // Field: tabbed
   //
 
-  $.fn.AGWISHGLUT_tabbed = function () {
+  $.fn.AGSHOPGLUT_tabbed = function () {
    return this.each( function() {
     var $this     = $(this),
         $links    = $this.find('.agl-tabbed-nav a'),
@@ -1582,7 +1582,7 @@
   //
   // Field: section
   //
-  $.fn.AGWISHGLUT_section = function () {
+  $.fn.AGSHOPGLUT_section = function () {
     return this.each(function () {
       var $this = $(this),
         $contents = $this.find(".agl-section-content");
@@ -1594,7 +1594,7 @@
   //
   // Field: typography
   //
-  $.fn.AGWISHGLUT_typography = function () {
+  $.fn.AGSHOPGLUT_typography = function () {
     return this.each(function () {
       var base = this;
       var $this = $(this);
@@ -1916,7 +1916,7 @@
           // Set preview styles on change
           $this.on(
             "change",
-            AGWISHGLUT.helper.debounce(function (event) {
+            AGSHOPGLUT.helper.debounce(function (event) {
               $preview_block.removeClass("hidden");
 
               var font_family = $font_family_select.val(),
@@ -2014,7 +2014,7 @@
   //
   // Field: upload
   //
-  $.fn.AGWISHGLUT_upload = function () {
+  $.fn.AGSHOPGLUT_upload = function () {
     return this.each(function () {
       var $this = $(this),
         $input = $this.find("input"),
@@ -2076,7 +2076,7 @@
   //
   // Field: wp_editor
   //
-  $.fn.AGWISHGLUT_wp_editor = function () {
+  $.fn.AGSHOPGLUT_wp_editor = function () {
     return this.each(function () {
       if (
         typeof window.wp.editor === "undefined" ||
@@ -2100,7 +2100,7 @@
       }
 
       // Generate a unique id
-      var uid = AGWISHGLUT.helper.uid("agl-editor-");
+      var uid = AGSHOPGLUT.helper.uid("agl-editor-");
 
       $textarea.attr("id", uid);
 
@@ -2183,8 +2183,8 @@
         var confirm_answer = confirm(confirm_text);
 
         if (confirm_answer) {
-          AGWISHGLUT.vars.is_confirm = true;
-          AGWISHGLUT.vars.form_modified = false;
+          AGSHOPGLUT.vars.is_confirm = true;
+          AGSHOPGLUT.vars.form_modified = false;
         } else {
           e.preventDefault();
           return false;
@@ -2232,7 +2232,7 @@
 
             window.wp.ajax
               .post("agl_" + $panel.data("unique") + "_ajax_save", {
-                data: $("#agl-form").serializeJSONAGWISHGLUT(),
+                data: $("#agl-form").serializeJSONAGSHOPGLUT(),
               })
               .done(function (response) {
                 // clear errors
@@ -2264,8 +2264,8 @@
                 $buttons.prop("disabled", false).attr("value", $value);
                 flooding = false;
 
-                AGWISHGLUT.vars.form_modified = false;
-                AGWISHGLUT.vars.$form_warning.hide();
+                AGSHOPGLUT.vars.form_modified = false;
+                AGSHOPGLUT.vars.$form_warning.hide();
 
                 clearTimeout(timeout);
 
@@ -2283,7 +2283,7 @@
                 alert(response.error);
               });
           } else {
-            AGWISHGLUT.vars.form_modified = false;
+            AGSHOPGLUT.vars.form_modified = false;
           }
         }
 
@@ -2303,19 +2303,19 @@
         $form_warning = $this.find(".agl-form-warning"),
         $save_button = $this.find(".agl-header .agl-save");
 
-      AGWISHGLUT.vars.$form_warning = $form_warning;
+      AGSHOPGLUT.vars.$form_warning = $form_warning;
 
       // Shows a message white leaving theme options without saving
       if ($form_warning.length) {
         window.onbeforeunload = function () {
-          return AGWISHGLUT.vars.form_modified ? true : undefined;
+          return AGSHOPGLUT.vars.form_modified ? true : undefined;
         };
 
         $content.on("change keypress", ":input", function () {
-          if (!AGWISHGLUT.vars.form_modified) {
+          if (!AGSHOPGLUT.vars.form_modified) {
             $form_success.hide();
             $form_warning.fadeIn("fast");
-            AGWISHGLUT.vars.form_modified = true;
+            AGSHOPGLUT.vars.form_modified = true;
           }
         });
       }
@@ -2533,7 +2533,7 @@
         var serialize = $modal
           .find(".agl-field:not(.agl-depend-on)")
           .find(":input:not(.ignore)")
-          .serializeObjectAGWISHGLUT();
+          .serializeObjectAGSHOPGLUT();
 
         switch (sc_view) {
           case "contents":
@@ -2592,12 +2592,12 @@
 
         $new_clone.find(".agl-fields").agl_reload_script();
 
-        AGWISHGLUT.helper.name_nested_replace($modal.find(".agl--repeat-shortcode"), sc_group);
+        AGSHOPGLUT.helper.name_nested_replace($modal.find(".agl--repeat-shortcode"), sc_group);
 
         $remove_btn.on("click", function () {
           $new_clone.remove();
 
-          AGWISHGLUT.helper.name_nested_replace($modal.find(".agl--repeat-shortcode"), sc_group);
+          AGSHOPGLUT.helper.name_nested_replace($modal.find(".agl--repeat-shortcode"), sc_group);
         });
       });
 
@@ -2632,7 +2632,7 @@
     };
   }
 
-  AGWISHGLUT.funcs.parse_color = function (color) {
+  AGSHOPGLUT.funcs.parse_color = function (color) {
     var value = color.replace(/\s+/g, ""),
       trans = value.indexOf("rgba") !== -1 ? parseFloat(value.replace(/^.*,(.+)\)/, "$1") * 100) : 100,
       rgba = trans < 100 ? true : false;
@@ -2643,7 +2643,7 @@
   $.fn.agl_color = function () {
     return this.each(function () {
       var $input = $(this),
-        picker_color = AGWISHGLUT.funcs.parse_color($input.val()),
+        picker_color = AGSHOPGLUT.funcs.parse_color($input.val()),
         palette_color = window.agl_vars.color_palette.length ? window.agl_vars.color_palette : true,
         $container;
 
@@ -2719,7 +2719,7 @@
               });
 
               $container.on("click", ".wp-picker-default", function () {
-                var default_color = AGWISHGLUT.funcs.parse_color($input.data("default-color")),
+                var default_color = AGSHOPGLUT.funcs.parse_color($input.data("default-color")),
                   default_value = parseFloat(default_color.transparent / 100),
                   default_text = default_value < 1 ? default_value : "";
 
@@ -2784,7 +2784,7 @@
           $this.data("chosen-settings")
         );
 
-        $this.AGWISHGLUTAjaxChosen(set_ajax_options);
+        $this.AGSHOPGLUTAjaxChosen(set_ajax_options);
       } else {
         $this.chosen(set_options);
       }
@@ -2816,7 +2816,7 @@
         });
 
         // Chosen order abstract
-        $this.AGWISHGLUTChosenOrder($hidden_value, true);
+        $this.AGSHOPGLUTChosenOrder($hidden_value, true);
       }
 
       // Chosen sortable
@@ -2918,7 +2918,7 @@
       $this.on({
         mouseenter: function () {
           $tooltip = $('<div class="agl-tooltip"></div>').html($this.find(".agl-help-text").html()).appendTo("body");
-          offset_left = AGWISHGLUT.vars.is_rtl ? $this.offset().left + 24 : $this.offset().left - $tooltip.outerWidth();
+          offset_left = AGSHOPGLUT.vars.is_rtl ? $this.offset().left + 24 : $this.offset().left - $tooltip.outerWidth();
 
           $tooltip.css({
             top: $this.offset().top - ($tooltip.outerHeight() / 2 - 14),
@@ -2951,7 +2951,7 @@
 
         var $input = $complex.find(":input"),
           option_id = $complex.data("option-id"),
-          obj = $input.serializeObjectAGWISHGLUT(),
+          obj = $input.serializeObjectAGSHOPGLUT(),
           data = !$.isEmptyObject(obj) && obj[unique_id] && obj[unique_id][option_id] ? obj[unique_id][option_id] : "",
           control = window.wp.customize.control(unique_id + "[" + option_id + "]");
 
@@ -2993,7 +2993,7 @@
       }
 
       $input.on("change keyup", function () {
-        var obj = $this.find(":input").serializeObjectAGWISHGLUT();
+        var obj = $this.find(":input").serializeObjectAGSHOPGLUT();
         var val = !$.isEmptyObject(obj) && obj[unique_id] && obj[unique_id][option_id] ? obj[unique_id][option_id] : "";
 
         window.wp.customize.control(unique_id + "[" + option_id + "]").setting.set(val);
@@ -3024,16 +3024,16 @@
   //
   // Window on resize
   //
-  AGWISHGLUT.vars.$window
+  AGSHOPGLUT.vars.$window
     .on(
       "resize agl.resize",
-      AGWISHGLUT.helper.debounce(function (event) {
+      AGSHOPGLUT.helper.debounce(function (event) {
         var window_width =
-          navigator.userAgent.indexOf("AppleWebKit/") > -1 ? AGWISHGLUT.vars.$window.width() : window.innerWidth;
+          navigator.userAgent.indexOf("AppleWebKit/") > -1 ? AGSHOPGLUT.vars.$window.width() : window.innerWidth;
 
-        if (window_width <= 782 && !AGWISHGLUT.vars.onloaded) {
+        if (window_width <= 782 && !AGSHOPGLUT.vars.onloaded) {
           $(".agl-section").agl_reload_script();
-          AGWISHGLUT.vars.onloaded = true;
+          AGSHOPGLUT.vars.onloaded = true;
         }
       }, 200)
     )
@@ -3083,7 +3083,7 @@
       var $this = $(this);
 
       if ($this.data("inited")) {
-        $this.children(".agl-field-wp_editor").AGWISHGLUT_wp_editor();
+        $this.children(".agl-field-wp_editor").AGSHOPGLUT_wp_editor();
       }
     });
   };
@@ -3105,31 +3105,31 @@
       // Avoid for conflicts
       if (!$this.data("inited")) {
         // Field plugins
-        $this.children(".agl-field-accordion").AGWISHGLUT_accordion();
-        $this.children(".agl-field-backup").AGWISHGLUT_backup();
-        $this.children(".agl-field-background").AGWISHGLUT_background();
-        $this.children(".agl-field-code_editor").AGWISHGLUT_code_editor();
-        $this.children(".agl-field-date").AGWISHGLUT_date();
-        $this.children(".agl-field-fieldset").AGWISHGLUT_fieldset();
-        $this.children(".agl-field-gallery").AGWISHGLUT_gallery();
-        $this.children(".agl-field-group").AGWISHGLUT_group();
-        $this.children(".agl-field-icon").AGWISHGLUT_icon();
-        $this.children(".agl-field-link").AGWISHGLUT_link();
-        $this.children(".agl-field-media").AGWISHGLUT_media();
-        $this.children(".agl-field-map").AGWISHGLUT_map();
-        $this.children(".agl-field-repeater").AGWISHGLUT_repeater();
-        $this.children(".agl-field-slider").AGWISHGLUT_slider();
-        $(".agl-field-slider").AGWISHGLUT_slider();
-        $this.children(".agl-field-sortable").AGWISHGLUT_sortable();
-        $this.children(".agl-field-sorter").AGWISHGLUT_sorter();
-        $this.children(".agl-field-spinner").AGWISHGLUT_spinner();
-        $this.children(".agl-field-switcher").AGWISHGLUT_switcher();
-        $this.children(".agl-field-tabbed").AGWISHGLUT_tabbed();
-        $this.children(".agl-field-section").AGWISHGLUT_section();
-        $this.children(".agl-field-typography").AGWISHGLUT_typography();
-        $this.children(".agl-field-upload").AGWISHGLUT_upload();
-        $this.children(".agl-field-wp_editor").AGWISHGLUT_wp_editor();
-        $this.children(".agl-field-wishlistMail").AGWISHGLUT_wishlistMail();
+        $this.children(".agl-field-accordion").AGSHOPGLUT_accordion();
+        $this.children(".agl-field-backup").AGSHOPGLUT_backup();
+        $this.children(".agl-field-background").AGSHOPGLUT_background();
+        $this.children(".agl-field-code_editor").AGSHOPGLUT_code_editor();
+        $this.children(".agl-field-date").AGSHOPGLUT_date();
+        $this.children(".agl-field-fieldset").AGSHOPGLUT_fieldset();
+        $this.children(".agl-field-gallery").AGSHOPGLUT_gallery();
+        $this.children(".agl-field-group").AGSHOPGLUT_group();
+        $this.children(".agl-field-icon").AGSHOPGLUT_icon();
+        $this.children(".agl-field-link").AGSHOPGLUT_link();
+        $this.children(".agl-field-media").AGSHOPGLUT_media();
+        $this.children(".agl-field-map").AGSHOPGLUT_map();
+        $this.children(".agl-field-repeater").AGSHOPGLUT_repeater();
+        $this.children(".agl-field-slider").AGSHOPGLUT_slider();
+        $(".agl-field-slider").AGSHOPGLUT_slider();
+        $this.children(".agl-field-sortable").AGSHOPGLUT_sortable();
+        $this.children(".agl-field-sorter").AGSHOPGLUT_sorter();
+        $this.children(".agl-field-spinner").AGSHOPGLUT_spinner();
+        $this.children(".agl-field-switcher").AGSHOPGLUT_switcher();
+        $this.children(".agl-field-tabbed").AGSHOPGLUT_tabbed();
+        $this.children(".agl-field-section").AGSHOPGLUT_section();
+        $this.children(".agl-field-typography").AGSHOPGLUT_typography();
+        $this.children(".agl-field-upload").AGSHOPGLUT_upload();
+        $this.children(".agl-field-wp_editor").AGSHOPGLUT_wp_editor();
+        $this.children(".agl-field-wishlistMail").AGSHOPGLUT_wishlistMail();
 
         // Field colors
         $this.children(".agl-field-border").find(".agl-color").agl_color();

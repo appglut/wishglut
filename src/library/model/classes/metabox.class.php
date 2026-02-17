@@ -54,7 +54,7 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			$this->pre_fields = $this->pre_fields( $this->sections );
 
 			// Keep the existing hook for layouts
-			add_action( 'wishglut_layout_metaboxes', array(&$this, 'add_meta_box' ) );
+			add_action( 'shopglut_layout_metaboxes', array(&$this, 'add_meta_box' ) );
 
 			// Add WordPress native hook for regular posts
 			add_action( 'add_meta_boxes', array(&$this, 'add_wp_meta_box' ) );
@@ -202,7 +202,7 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			
 			// Define all possible metabox IDs
 			$metabox_ids = array(
-				'agwishglut_subscription_lock_metabox_options'
+				'agshopglut_subscription_lock_metabox_options'
 			);
 
 			// Loop through each metabox ID to find the value
@@ -215,19 +215,19 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				}
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'filters' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'filters' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['filter_id'] ) ? absint( wp_unslash( $_GET['filter_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_enhancement_filters';
+			$table_name = $wpdb->prefix . 'shopglut_enhancement_filters';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_filter_' . $post_id;
+			$cache_key = 'shopglut_filter_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT filter_settings FROM {$wpdb->prefix}wishglut_enhancement_filters WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT filter_settings FROM {$wpdb->prefix}shopglut_enhancement_filters WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -237,19 +237,19 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_filter_options_settings'][ $field['id'] ] ) ) ? $layout_options_array['shopg_filter_options_settings'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_layouts' === $page && 'shop' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'shop' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_shop_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_shop_layouts';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_shop_layout_' . $post_id;
+			$cache_key = 'shopglut_shop_layout_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 			
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_shop_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_shop_layouts WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -259,19 +259,19 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_options_settings'][ $field['id'] ] ) ) ? $layout_options_array['shopg_options_settings'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_layouts' === $page && 'archive' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'archive' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_archive_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_archive_layouts';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_archive_layout_' . $post_id;
+			$cache_key = 'shopglut_archive_layout_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 			
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT arlayout_settings FROM {$wpdb->prefix}wishglut_archive_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT arlayout_settings FROM {$wpdb->prefix}shopglut_archive_layouts WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -281,16 +281,16 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_options_settings'][ $field['id'] ] ) ) ? $layout_options_array['shopg_options_settings'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_layouts' === $page && 'single_product' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'single_product' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_single_product_layout';
+			$table_name = $wpdb->prefix . 'shopglut_single_product_layout';
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_single_product_layout WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_single_product_layout WHERE id = %d", $post_id ) );
 		   	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added		
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_single_product_layout WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_single_product_layout WHERE id = %d", $post_id ) );
 			
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
@@ -311,11 +311,11 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 		  }
           
 
-		} elseif ( 'wishglut_enhancements' === $page && 'product_swatches' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'product_swatches' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = \Wishglut\WishglutDatabase::table_product_swatches();
+			$table_name = \Shopglut\ShopGlutDatabase::table_product_swatches();
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
 				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM `{$table_name}` WHERE id = %d", $post_id ) );
@@ -339,15 +339,15 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 
 			}
 
-		} elseif ( 'wishglut_layouts' === $page && 'cartpage' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'cartpage' === $editor ) {
 
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_cartpage_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_cartpage_layouts';
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_cartpage_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_cartpage_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -361,18 +361,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_cartpage_settings_template1']['shopg_cartpage_settings_template1'][ $field['id'] ] ) ) ? $layout_options_array['shopg_cartpage_settings_template1']['shopg_cartpage_settings_template1'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_layouts' === $page && 'ordercomplete' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'ordercomplete' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_ordercomplete_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_ordercomplete_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_ordercomplete_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_ordercomplete_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_ordercomplete_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_ordercomplete_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -385,17 +385,17 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_ordercomplete_settings_'.$layout_template][ $field['id'] ] ) ) ? $layout_options_array['shopg_ordercomplete_settings_'.$layout_template][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'product_comparison' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'product_comparison' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_comparison_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_comparison_layouts';
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_comparison_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_comparison_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_comparison_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_comparison_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -408,18 +408,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			}
 
 
-		} elseif ( 'wishglut_enhancements' === $page && 'product_quickview' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'product_quickview' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_quickview_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_quickview_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_quickview_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_quickview_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_quickview_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_quickview_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -431,17 +431,17 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_product_quickview_settings_'.$layout_template][ $field['id'] ] ) ) ? $layout_options_array['shopg_product_quickview_settings_'.$layout_template][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'product_badges' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'product_badges' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['badge_id'] ) ? absint( wp_unslash( $_GET['badge_id'] ) ) : 1;
 			
-			$table_name = $wpdb->prefix . 'wishglut_product_badge_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_product_badge_layouts';
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings  FROM {$wpdb->prefix}wishglut_product_badge_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings  FROM {$wpdb->prefix}shopglut_product_badge_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_product_badge_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_product_badge_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -456,18 +456,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 
 
 
-		} elseif ( 'wishglut_layouts' === $page && 'accountpage' === $editor ) {
+		} elseif ( 'shopglut_layouts' === $page && 'accountpage' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_accountpage_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_accountpage_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_accountpage_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_accountpage_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_accountpage_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_accountpage_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -480,18 +480,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_accountpage_settings_'.$layout_template][ $field['id'] ] ) ) ? $layout_options_array['shopg_accountpage_settings_'.$layout_template][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_showcases' === $page && 'shopbanner' === $editor ) {
+		} elseif ( 'shopglut_showcases' === $page && 'shopbanner' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_shopbanner_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_shopbanner_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_shopbanner_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_shopbanner_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_shopbanner_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_shopbanner_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -503,15 +503,15 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_product_shopbanner_settings_'.$layout_template][ $field['id'] ] ) ) ? $layout_options_array['shopg_product_shopbanner_settings_'.$layout_template][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_tools' === $page && 'product_custom_field' === $editor ) {
+		} elseif ( 'shopglut_tools' === $page && 'product_custom_field' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['field_id'] ) ? absint( wp_unslash( $_GET['field_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_product_custom_field_settings';
+			$table_name = $wpdb->prefix . 'shopglut_product_custom_field_settings';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT field_settings FROM {$wpdb->prefix}wishglut_product_custom_field_settings WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT field_settings FROM {$wpdb->prefix}shopglut_product_custom_field_settings WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
 				$layout_template = ''; // Product custom fields don't use templates
@@ -530,20 +530,20 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			}
 
 
-		} elseif ( 'wishglut_enhancements' === $page && 'sliders' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'sliders' === $editor ) {
 
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_sliders';
+			$table_name = $wpdb->prefix . 'shopglut_sliders';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_slider_' . $post_id;
+			$cache_key = 'shopglut_slider_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT slider_settings FROM {$wpdb->prefix}wishglut_sliders WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT slider_settings FROM {$wpdb->prefix}shopglut_sliders WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -557,18 +557,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array[ $field['id'] ] ) ) ? $layout_options_array[ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'tabs' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'tabs' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_tabs_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_tabs_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_tabs_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_tabs_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_tabs_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_tabs_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -582,18 +582,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			}
 
 
-		} elseif ( 'wishglut_enhancements' === $page && 'accordions' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'accordions' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_accordion_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_accordion_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_accordion_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_accordion_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_accordion_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_accordion_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -606,18 +606,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_accordion_settings'][ $field['id'] ] ) ) ? $layout_options_array['shopg_accordion_settings'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'gallery' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'gallery' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_gallery_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_gallery_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_gallery_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_gallery_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_gallery_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_gallery_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -630,19 +630,19 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array['shopg_gallery_settings'][ $field['id'] ] ) ) ? $layout_options_array['shopg_gallery_settings'][ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_showcases' === $page && 'shopbanner' === $editor ) {
+		} elseif ( 'shopglut_showcases' === $page && 'shopbanner' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_banners_showcase';
+			$table_name = $wpdb->prefix . 'shopglut_banners_showcase';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_banner_' . $post_id;
+			$cache_key = 'shopglut_banner_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT banner_settings FROM {$wpdb->prefix}wishglut_banners_showcase WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT banner_settings FROM {$wpdb->prefix}shopglut_banners_showcase WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -656,18 +656,18 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 				$value = ( isset( $layout_options_array[ $field['id'] ] ) ) ? $layout_options_array[ $field['id'] ] : null;
 			}
 
-		} elseif ( 'wishglut_enhancements' === $page && 'mega_menu' === $editor ) {
+		} elseif ( 'shopglut_enhancements' === $page && 'mega_menu' === $editor ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_megamenu_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_megamenu_layouts';
 
 			// Add caching for better performance
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}wishglut_megamenu_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT layout_settings FROM {$wpdb->prefix}shopglut_megamenu_layouts WHERE id = %d", $post_id ) );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}wishglut_megamenu_layouts WHERE id = %d", $post_id ) );
+				$layout_template = $wpdb->get_var( $wpdb->prepare( "SELECT layout_template FROM {$wpdb->prefix}shopglut_megamenu_layouts WHERE id = %d", $post_id ) );
 
 			if ( isset( $layout_options ) && @unserialize( $layout_options ) !== false ) {
 				$layout_options_array = unserialize( $layout_options );
@@ -684,15 +684,15 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check for layout data retrieval only
 			$post_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 1;
 
-			$table_name = $wpdb->prefix . 'wishglut_archive_layouts';
+			$table_name = $wpdb->prefix . 'shopglut_archive_layouts';
 
 			// Add caching for better performance
-			$cache_key = 'wishglut_email_designer_layout_' . $post_id;
+			$cache_key = 'shopglut_email_designer_layout_' . $post_id;
 			$layout_options = wp_cache_get( $cache_key );
 			
 			if ( false === $layout_options ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query with caching added
-				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT arlayout_settings FROM {$wpdb->prefix}wishglut_archive_layouts WHERE id = %d", $post_id ) );
+				$layout_options = $wpdb->get_var( $wpdb->prepare( "SELECT arlayout_settings FROM {$wpdb->prefix}shopglut_archive_layouts WHERE id = %d", $post_id ) );
 				wp_cache_set( $cache_key, $layout_options, '', 3600 ); // Cache for 1 hour
 			}
 
@@ -804,7 +804,7 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 
 					} else {
 
-						echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'wishglut' ) . '</div>';
+						echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'shopglut' ) . '</div>';
 
 					}
 
@@ -823,8 +823,8 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 					echo '<div class="agl-sections-reset">';
 					echo '<label>';
 					echo '<input type="checkbox" name="' . esc_attr( $this->unique ) . '[_reset]" />';
-					echo '<span class="button agl-button-reset">' . esc_html__( 'Reset', 'wishglut' ) . '</span>';
-					echo '<span class="button agl-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'wishglut' ), esc_html__( 'Cancel', 'wishglut' ) ) . '</span>';
+					echo '<span class="button agl-button-reset">' . esc_html__( 'Reset', 'shopglut' ) . '</span>';
+					echo '<span class="button agl-button-cancel">' . sprintf( '<small>( %s )</small> %s', esc_html__( 'update post', 'shopglut' ), esc_html__( 'Cancel', 'shopglut' ) ) . '</span>';
 					echo '</label>';
 					echo '</div>';
 
@@ -855,7 +855,7 @@ if ( ! class_exists( 'AGWISHGLUT_Metabox' ) ) {
 						return $post_id;
 					}
 							$metabox_ids = array(
-					'agwishglut_subscription_lock_metabox_options',
+					'agshopglut_subscription_lock_metabox_options',
 				);
 
 				// Loop through all possible IDs and save if data exists

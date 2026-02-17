@@ -226,7 +226,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 			$result = $this->set_options( true );
 
 			if ( ! $result ) {
-               wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'wishglut' ) ) );
+               wp_send_json_error( array( 'error' => esc_html__( 'Error while saving the changes.', 'shopglut' ) ) );
 			} else {
 				wp_send_json_success( array( 'notice' => $this->notice, 'errors' => $this->errors ) );
 			}
@@ -306,7 +306,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 					$import_data = json_decode( wp_unslash( trim( $response['agl_import_data'] ) ), true );
 					$options = ( is_array( $import_data ) && ! empty( $import_data ) ) ? $import_data : array();
 					$importing = true;
-					$this->notice = esc_html__( 'Settings successfully imported.', 'wishglut' );
+					$this->notice = esc_html__( 'Settings successfully imported.', 'shopglut' );
 
 				}
 
@@ -318,7 +318,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 						}
 					}
 
-					$this->notice = esc_html__( 'Default settings restored.', 'wishglut' );
+					$this->notice = esc_html__( 'Default settings restored.', 'shopglut' );
 
 				} else if ( ! empty( $transient['reset_section'] ) && ! empty( $section_id ) ) {
 
@@ -334,7 +334,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 
 					$data = wp_parse_args( $data, $this->options );
 
-					$this->notice = esc_html__( 'Default settings restored.', 'wishglut' );
+					$this->notice = esc_html__( 'Default settings restored.', 'shopglut' );
 
 				} else {
 
@@ -405,7 +405,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 				do_action( "agl_{$this->unique}_save_after", $data, $this );
 
 				if ( empty( $this->notice ) ) {
-					$this->notice = esc_html__( 'Settings saved.', 'wishglut' );
+					$this->notice = esc_html__( 'Settings saved.', 'shopglut' );
 				}
 
 				return true;
@@ -457,16 +457,8 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 
 			extract( $this->args );
 
-			// Check hide_menu option
 			if($hide_menu===true){
-				// Check if integration settings override this
-				$integration_settings = get_option( 'wishglut_integration_settings', array() );
-				// For wishglut, check the show-menu option
-				if ( isset( $integration_settings['wishglut-show-menu'] ) && $integration_settings['wishglut-show-menu'] == '1' ) {
-					// Continue - integration settings override hide_menu
-				} else {
-					return;
-				}
+				return;
 			}
 
 			// Use page_title if set, otherwise fall back to menu_title
@@ -601,7 +593,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 
 			if ( isset( $this->args['shortcode_option'] ) ) {
 				echo '<div class="agl-header-middle">';
-				echo '<p class="agl-shortcode-text">' . esc_html__( 'Shortcode:', 'wishglut' ) . '</p>';
+				echo '<p class="agl-shortcode-text">' . esc_html__( 'Shortcode:', 'shopglut' ) . '</p>';
                 echo '<span class="agl-shortcode-value">' . esc_html( $this->args['shortcode_option'] ?? '' ) . '</span>';
 				echo '</div>';
 			}
@@ -609,14 +601,14 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 
 			echo '<div class="agl-header-right">';
 
-			echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="agl-expand-all" title="' . esc_html__( 'show all settings', 'wishglut' ) . '"><i class="fas fa-outdent"></i></div>' : '';
+			echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="agl-expand-all" title="' . esc_html__( 'show all settings', 'shopglut' ) . '"><i class="fas fa-outdent"></i></div>' : '';
 
-			echo ( $this->args['show_search'] ) ? '<div class="agl-search"><input type="text" name="agl-search" placeholder="' . esc_html__( 'Search...', 'wishglut' ) . '" autocomplete="off" /></div>' : '';
+			echo ( $this->args['show_search'] ) ? '<div class="agl-search"><input type="text" name="agl-search" placeholder="' . esc_html__( 'Search...', 'shopglut' ) . '" autocomplete="off" /></div>' : '';
 
 			echo '<div class="agl-buttons">';
-			echo '<input type="submit" name="' . esc_attr( $this->unique ) . '[_nonce][save]" class="button button-primary agl-top-save agl-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save', 'wishglut' ) . '" data-save="' . esc_html__( 'Saving...', 'wishglut' ) . '">';
-			echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="agl_transient[reset_section]" class="button button-secondary agl-reset-section agl-confirm" value="' . esc_html__( 'Reset Section', 'wishglut' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?', 'wishglut' ) . '">' : '';
-			echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="agl_transient[reset]" class="button agl-warning-primary agl-reset-all agl-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'wishglut' ) : esc_html__( 'Reset', 'wishglut' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?', 'wishglut' ) . '">' : '';
+			echo '<input type="submit" name="' . esc_attr( $this->unique ) . '[_nonce][save]" class="button button-primary agl-top-save agl-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save', 'shopglut' ) . '" data-save="' . esc_html__( 'Saving...', 'shopglut' ) . '">';
+			echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="agl_transient[reset_section]" class="button button-secondary agl-reset-section agl-confirm" value="' . esc_html__( 'Reset Section', 'shopglut' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?', 'shopglut' ) . '">' : '';
+			echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="agl_transient[reset]" class="button agl-warning-primary agl-reset-all agl-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'shopglut' ) : esc_html__( 'Reset', 'shopglut' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?', 'shopglut' ) . '">' : '';
 			echo '</div>';
 
 			echo '</div>';
@@ -625,7 +617,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 			echo '</div>';
 			echo '</div>';
 
-			echo ( $this->args['show_form_warning'] ) ? '<div class="agl-form-result agl-form-warning">' . esc_html__( 'You have unsaved changes, save your changes!', 'wishglut' ) . '</div>' : '';
+			echo ( $this->args['show_form_warning'] ) ? '<div class="agl-form-result agl-form-warning">' . esc_html__( 'You have unsaved changes, save your changes!', 'shopglut' ) . '</div>' : '';
 
 			$notice_class = ( ! empty( $this->notice ) ) ? 'agl-form-show' : '';
 			$notice_text = ( ! empty( $this->notice ) ) ? $this->notice : '';
@@ -721,7 +713,7 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 
 				} else {
 
-					echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'wishglut' ) . '</div>';
+					echo '<div class="agl-no-option">' . esc_html__( 'No data available.', 'shopglut' ) . '</div>';
 
 				}
 
@@ -744,9 +736,9 @@ if ( ! class_exists( 'AGWISHGLUT_Options' ) ) {
 				echo '<div class="agl-footer">';
 
 				echo '<div class="agl-buttons">';
-				echo '<input type="submit" name="agl_transient[save]" class="button button-primary agl-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save', 'wishglut' ) . '" data-save="' . esc_html__( 'Saving...', 'wishglut' ) . '">';
-				echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="agl_transient[reset_section]" class="button button-secondary agl-reset-section agl-confirm" value="' . esc_html__( 'Reset Section', 'wishglut' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?', 'wishglut' ) . '">' : '';
-				echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="agl_transient[reset]" class="button agl-warning-primary agl-reset-all agl-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'wishglut' ) : esc_html__( 'Reset', 'wishglut' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?', 'wishglut' ) . '">' : '';
+				echo '<input type="submit" name="agl_transient[save]" class="button button-primary agl-save' . esc_attr( $ajax_class ) . '" value="' . esc_html__( 'Save', 'shopglut' ) . '" data-save="' . esc_html__( 'Saving...', 'shopglut' ) . '">';
+				echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="agl_transient[reset_section]" class="button button-secondary agl-reset-section agl-confirm" value="' . esc_html__( 'Reset Section', 'shopglut' ) . '" data-confirm="' . esc_html__( 'Are you sure to reset this section options?', 'shopglut' ) . '">' : '';
+				echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="agl_transient[reset]" class="button agl-warning-primary agl-reset-all agl-confirm" value="' . ( ( $this->args['show_reset_section'] ) ? esc_html__( 'Reset All', 'shopglut' ) : esc_html__( 'Reset', 'shopglut' ) ) . '" data-confirm="' . esc_html__( 'Are you sure you want to reset all settings to default values?', 'shopglut' ) . '">' : '';
 				echo '</div>';
 
 				echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="agl-copyright">' . esc_html($this->args['footer_text']) . '</div>' : '';

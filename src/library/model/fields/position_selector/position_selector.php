@@ -27,43 +27,43 @@ if ( ! class_exists( 'AGWISHGLUT_position_selector' ) ) {
 
 			$default_positions = array(
 				'before_title' => array(
-					'title' => __('Before Product Title', 'wishglut'),
-					'description' => __('Display content above the product title', 'wishglut'),
+					'title' => __('Before Product Title', 'shopglut'),
+					'description' => __('Display content above the product title', 'shopglut'),
 					'icon' => '↑'
 				),
 				'after_title' => array(
-					'title' => __('After Product Title', 'wishglut'),
-					'description' => __('Display content below the product title', 'wishglut'),
+					'title' => __('After Product Title', 'shopglut'),
+					'description' => __('Display content below the product title', 'shopglut'),
 					'icon' => '↓'
 				),
 				'before_price' => array(
-					'title' => __('Before Price', 'wishglut'),
-					'description' => __('Display content above the price', 'wishglut'),
+					'title' => __('Before Price', 'shopglut'),
+					'description' => __('Display content above the price', 'shopglut'),
 					'icon' => '↑'
 				),
 				'after_price' => array(
-					'title' => __('After Price', 'wishglut'),
-					'description' => __('Display content below the price', 'wishglut'),
+					'title' => __('After Price', 'shopglut'),
+					'description' => __('Display content below the price', 'shopglut'),
 					'icon' => '↓'
 				),
 				'before_add_to_cart' => array(
-					'title' => __('Before Add to Cart', 'wishglut'),
-					'description' => __('Display content above the add to cart button', 'wishglut'),
+					'title' => __('Before Add to Cart', 'shopglut'),
+					'description' => __('Display content above the add to cart button', 'shopglut'),
 					'icon' => '↑'
 				),
 				'after_add_to_cart' => array(
-					'title' => __('After Add to Cart', 'wishglut'),
-					'description' => __('Display content below the add to cart button', 'wishglut'),
+					'title' => __('After Add to Cart', 'shopglut'),
+					'description' => __('Display content below the add to cart button', 'shopglut'),
 					'icon' => '↓'
 				),
 				'before_meta' => array(
-					'title' => __('Before Product Meta', 'wishglut'),
-					'description' => __('Display content above categories/tags', 'wishglut'),
+					'title' => __('Before Product Meta', 'shopglut'),
+					'description' => __('Display content above categories/tags', 'shopglut'),
 					'icon' => '↑'
 				),
 				'after_meta' => array(
-					'title' => __('After Product Meta', 'wishglut'),
-					'description' => __('Display content below categories/tags', 'wishglut'),
+					'title' => __('After Product Meta', 'shopglut'),
+					'description' => __('Display content below categories/tags', 'shopglut'),
 					'icon' => '↓'
 				),
 			);
@@ -72,18 +72,18 @@ if ( ! class_exists( 'AGWISHGLUT_position_selector' ) ) {
 			$current_value = $this->value ?? 'after_title';
 
 			?>
-			<div class="wishglut-position-selector">
+			<div class="shopglut-position-selector">
 				<style>
-				.wishglut-position-selector {
+				.shopglut-position-selector {
 					width: 100%;
 				}
-				.wishglut-position-options {
+				.shopglut-position-options {
 					display: grid;
 					grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 					gap: 12px;
 					margin-top: 10px;
 				}
-				.wishglut-position-option {
+				.shopglut-position-option {
 					border: 2px solid #e0e0e0;
 					border-radius: 8px;
 					padding: 12px;
@@ -93,15 +93,15 @@ if ( ! class_exists( 'AGWISHGLUT_position_selector' ) ) {
 					position: relative;
 					text-align: center;
 				}
-				.wishglut-position-option:hover {
+				.shopglut-position-option:hover {
 					border-color: #0073aa;
 					box-shadow: 0 2px 8px rgba(0,115,170,0.1);
 				}
-				.wishglut-position-option.selected {
+				.shopglut-position-option.selected {
 					border-color: #0073aa;
 					background-color: #f7fcff;
 				}
-				.wishglut-position-option.selected::after {
+				.shopglut-position-option.selected::after {
 					content: '✓';
 					position: absolute;
 					top: 6px;
@@ -137,9 +137,9 @@ if ( ! class_exists( 'AGWISHGLUT_position_selector' ) ) {
 				}
 				</style>
 
-				<div class="wishglut-position-options">
+				<div class="shopglut-position-options">
 					<?php foreach ( $positions as $position_key => $position ): ?>
-						<div class="wishglut-position-option <?php echo ($current_value === $position_key) ? 'selected' : ''; ?>"
+						<div class="shopglut-position-option <?php echo ($current_value === $position_key) ? 'selected' : ''; ?>"
 							 data-position="<?php echo esc_attr( $position_key ); ?>">
 							<div class="position-icon"><?php echo esc_html( $position['icon'] ); ?></div>
 							<div class="position-title"><?php echo esc_html( $position['title'] ); ?></div>
@@ -157,13 +157,13 @@ if ( ! class_exists( 'AGWISHGLUT_position_selector' ) ) {
 				// Use jQuery for better compatibility with WordPress admin
 				jQuery(document).ready(function($) {
 					// Handle click on position options
-					$('.wishglut-position-selector .wishglut-position-option').on('click', function() {
+					$('.shopglut-position-selector .shopglut-position-option').on('click', function() {
 						var $this = $(this);
 						var position = $this.data('position');
-						var $container = $this.closest('.wishglut-position-selector');
+						var $container = $this.closest('.shopglut-position-selector');
 
 						// Remove selected class from all options in this container
-						$container.find('.wishglut-position-option').removeClass('selected');
+						$container.find('.shopglut-position-option').removeClass('selected');
 
 						// Add selected class to clicked option
 						$this.addClass('selected');

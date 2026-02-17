@@ -23,7 +23,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_products' ) ) {
 
 			$args = wp_parse_args( $this->field, array(
 				'id' => false,
-				'placeholder' => __( 'Select Product', 'wishglut' ),
+				'placeholder' => __( 'Select Product', 'shopglut' ),
 				'chosen' => true,
 				'multiple' => false,
 				'sortable' => false,
@@ -59,7 +59,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_products' ) ) {
 			) );
 
 			$options = array();
-			$options[''] = __( 'All Products', 'wishglut' );
+			$options[''] = __( 'All Products', 'shopglut' );
 
 			if ( $product_query->have_posts() ) {
 				while ( $product_query->have_posts() ) {
@@ -105,7 +105,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_select_products' ) ) {
 				echo '</select>';
 
 			} else {
-				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No products available.', 'wishglut' );
+				echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No products available.', 'shopglut' );
 			}
 
 			echo wp_kses_post( $this->field_after() );

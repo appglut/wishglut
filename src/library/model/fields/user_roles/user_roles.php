@@ -18,7 +18,7 @@ if ( ! class_exists( 'AGWISHGLUT_user_roles' ) ) {
 
     public function render() {
       $args = wp_parse_args( $this->field, array(
-        'placeholder' => esc_html__( 'Select user roles (optional)', 'wishglut' ),
+        'placeholder' => esc_html__( 'Select user roles (optional)', 'shopglut' ),
         'chosen'      => true,
         'multiple'    => true,
         'sortable'    => false,
@@ -78,7 +78,7 @@ if ( ! class_exists( 'AGWISHGLUT_user_roles' ) ) {
           echo '<option value="'. esc_attr( $role_key ) .'" '. esc_attr( $selected ) .'>'. esc_html( $role_name ) .'</option>';
         }
       } else {
-        echo '<option value="">'. esc_html__( 'No user roles found', 'wishglut' ) .'</option>';
+        echo '<option value="">'. esc_html__( 'No user roles found', 'shopglut' ) .'</option>';
       }
 
       echo '</select>';

@@ -22,8 +22,8 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_global' ) ) {
 		public function render() {
 
 			$args = wp_parse_args( $this->field, array(
-				'text_on'        => __( 'Yes', 'wishglut' ),
-				'text_off'       => __( 'No', 'wishglut' ),
+				'text_on'        => __( 'Yes', 'shopglut' ),
+				'text_off'       => __( 'No', 'shopglut' ),
 				'text_width'     => 80,
 				'default_option' => false,
 			) );
@@ -37,8 +37,8 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_global' ) ) {
 			echo '<div class="swatch-apply-global-info">';
 
 			// Main description
-			echo '<div class="swatch-apply-global-title">' . esc_html__( 'Apply Globally to All Products & Pages', 'wishglut' ) . '</div>';
-			echo '<div class="swatch-apply-global-desc">' . esc_html__( 'Enable to apply swatches to all products, shop page, and archive pages globally.', 'wishglut' ) . '</div>';
+			echo '<div class="swatch-apply-global-title">' . esc_html__( 'Apply Globally to All Products & Pages', 'shopglut' ) . '</div>';
+			echo '<div class="swatch-apply-global-desc">' . esc_html__( 'Enable to apply swatches to all products, shop page, and archive pages globally.', 'shopglut' ) . '</div>';
 
 			echo '</div>'; // .swatch-apply-global-info
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_apply_global' ) ) {
 			// Additional info
 			echo '<div class="swatch-apply-global-note">';
 			echo '<span class="dashicons dashicons-info"></span>';
-			echo '<span>' . esc_html__( 'When enabled, swatches will be applied across your entire store.', 'wishglut' ) . '</span>';
+			echo '<span>' . esc_html__( 'When enabled, swatches will be applied across your entire store.', 'shopglut' ) . '</span>';
 			echo '</div>';
 
 			echo '</div>'; // .swatch-apply-global-wrapper

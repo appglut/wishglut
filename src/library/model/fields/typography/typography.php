@@ -4,8 +4,8 @@
  *
  * @since 2.0.0
  *
- * @package wishglut
- * @subpackage wishglut/Framework
+ * @package shopglut
+ * @subpackage shopglut/Framework
  */
 
 if (!defined('ABSPATH')) {
@@ -144,9 +144,9 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Font Family.
 			if (!empty($args['font_family'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Font Family', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Family', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo $this->create_select(array($this->value['font-family'] => $this->value['font-family']), 'font-family', esc_html__('Select Font', 'wishglut'));
+				echo $this->create_select(array($this->value['font-family'] => $this->value['font-family']), 'font-family', esc_html__('Select Font', 'shopglut'));
 				echo '</div>';
 			}
 
@@ -154,7 +154,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Backup Font Family.
 			if (!empty($args['backup_font_family'])) {
 				echo '<div class="agl--block agl--block-backup-font-family hidden">';
-				echo '<div class="agl--title">' . esc_html__('Backup Font Family', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Backup Font Family', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					apply_filters(
@@ -175,7 +175,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 						)
 					),
 					'backup-font-family',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -187,10 +187,10 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				//
 				// Font Style Select.
 				echo '<div class="agl--block agl--block-font-style hidden" style="display:none">';
-				echo '<div class="agl--title">' . esc_html__('Font Style', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Style', 'shopglut') . '</div>';
 				echo '<select data-depend-id="' . esc_attr($this->field['id'] . '-font-style') . '" class="agl--font-style-select" data-placeholder="Default">';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo '<option value="">' . (!$this->chosen ? esc_html__('Default', 'wishglut') : '') . '</option>';
+				echo '<option value="">' . (!$this->chosen ? esc_html__('Default', 'shopglut') : '') . '</option>';
 				if (!empty($this->value['font-weight']) || !empty($this->value['font-style'])) {
 					echo '<option value="' . esc_attr(strtolower($this->value['font-weight'] . $this->value['font-style'])) . '" selected></option>';
 				}
@@ -202,8 +202,8 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				// Extra Font Style Select.
 				if (!empty($args['extra_styles'])) {
 					echo '<div class="agl--block-extra-styles hidden">';
-					echo (!$this->chosen) ? '<div class="agl--title">' . esc_html__('Load Extra Styles', 'wishglut') . '</div>' : '';
-					$placeholder = ($this->chosen) ? esc_html__('Load Extra Styles', 'wishglut') : esc_html__('Default', 'wishglut');
+					echo (!$this->chosen) ? '<div class="agl--title">' . esc_html__('Load Extra Styles', 'shopglut') . '</div>' : '';
+					$placeholder = ($this->chosen) ? esc_html__('Load Extra Styles', 'shopglut') : esc_html__('Default', 'shopglut');
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo $this->create_select($this->value['extra-styles'], 'extra-styles', $placeholder, true);
 					echo '</div>';
@@ -217,10 +217,10 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Subset.
 			if (!empty($args['subset'])) {
 				echo '<div class="agl--block agl--block-subset hidden" style="display:none">';
-				echo '<div class="agl--title">' . esc_html__('Subset', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Subset', 'shopglut') . '</div>';
 				$subset = (is_array($this->value['subset'])) ? $this->value['subset'] : array_filter((array) $this->value['subset']);
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo $this->create_select($subset, 'subset', esc_html__('Default', 'wishglut'), $args['multi_subset']);
+				echo $this->create_select($subset, 'subset', esc_html__('Default', 'shopglut'), $args['multi_subset']);
 				echo '</div>';
 			}
 
@@ -228,19 +228,19 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Text Align.
 			if (!empty($args['text_align'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Text Align', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Text Align', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'inherit' => esc_html__('Inherit', 'wishglut'),
-						'left' => esc_html__('Left', 'wishglut'),
-						'center' => esc_html__('Center', 'wishglut'),
-						'right' => esc_html__('Right', 'wishglut'),
-						'justify' => esc_html__('Justify', 'wishglut'),
-						'initial' => esc_html__('Initial', 'wishglut'),
+						'inherit' => esc_html__('Inherit', 'shopglut'),
+						'left' => esc_html__('Left', 'shopglut'),
+						'center' => esc_html__('Center', 'shopglut'),
+						'right' => esc_html__('Right', 'shopglut'),
+						'justify' => esc_html__('Justify', 'shopglut'),
+						'initial' => esc_html__('Initial', 'shopglut'),
 					),
 					'text-align',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -249,27 +249,27 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Font weight.
 			if (!empty($args['font_weights'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Font Weight', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Weight', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'normal' => esc_html__('Normal', 'wishglut'),
-						'bold' => esc_html__('Bold', 'wishglut'),
-						'bolder' => esc_html__('Bolder', 'wishglut'),
-						'lighter' => esc_html__('Lighter', 'wishglut'),
-						'100' => esc_html__('100', 'wishglut'),
-						'200' => esc_html__('200', 'wishglut'),
-						'300' => esc_html__('300', 'wishglut'),
-						'400' => esc_html__('400', 'wishglut'),
-						'500' => esc_html__('500', 'wishglut'),
-						'600' => esc_html__('600', 'wishglut'),
-						'700' => esc_html__('700', 'wishglut'),
-						'800' => esc_html__('800', 'wishglut'),
-						'900' => esc_html__('900', 'wishglut'),
+						'normal' => esc_html__('Normal', 'shopglut'),
+						'bold' => esc_html__('Bold', 'shopglut'),
+						'bolder' => esc_html__('Bolder', 'shopglut'),
+						'lighter' => esc_html__('Lighter', 'shopglut'),
+						'100' => esc_html__('100', 'shopglut'),
+						'200' => esc_html__('200', 'shopglut'),
+						'300' => esc_html__('300', 'shopglut'),
+						'400' => esc_html__('400', 'shopglut'),
+						'500' => esc_html__('500', 'shopglut'),
+						'600' => esc_html__('600', 'shopglut'),
+						'700' => esc_html__('700', 'shopglut'),
+						'800' => esc_html__('800', 'shopglut'),
+						'900' => esc_html__('900', 'shopglut'),
 
 					),
 					'font-weights',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -277,16 +277,16 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Font Style.
 			if (!empty($args['font_styles'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Font Style', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Style', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'normal' => esc_html__('Normal', 'wishglut'),
-						'italic' => esc_html__('Italic', 'wishglut'),
-						'oblique' => esc_html__('Oblique', 'wishglut'),
+						'normal' => esc_html__('Normal', 'shopglut'),
+						'italic' => esc_html__('Italic', 'shopglut'),
+						'oblique' => esc_html__('Oblique', 'shopglut'),
 					),
 					'font-styles',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -294,16 +294,16 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Font Variant.
 			if (!empty($args['font_variant'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Font Variant', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Variant', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'normal' => esc_html__('Normal', 'wishglut'),
-						'small-caps' => esc_html__('Small Caps', 'wishglut'),
-						'all-small-caps' => esc_html__('All Small Caps', 'wishglut'),
+						'normal' => esc_html__('Normal', 'shopglut'),
+						'small-caps' => esc_html__('Small Caps', 'shopglut'),
+						'all-small-caps' => esc_html__('All Small Caps', 'shopglut'),
 					),
 					'font-variant',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -312,17 +312,17 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Text Transform.
 			if (!empty($args['text_transform'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Text Transform', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Text Transform', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'none' => esc_html__('None', 'wishglut'),
-						'capitalize' => esc_html__('Capitalize', 'wishglut'),
-						'uppercase' => esc_html__('Uppercase', 'wishglut'),
-						'lowercase' => esc_html__('Lowercase', 'wishglut'),
+						'none' => esc_html__('None', 'shopglut'),
+						'capitalize' => esc_html__('Capitalize', 'shopglut'),
+						'uppercase' => esc_html__('Uppercase', 'shopglut'),
+						'lowercase' => esc_html__('Lowercase', 'shopglut'),
 					),
 					'text-transform',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -331,21 +331,21 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Text Decoration.
 			if (!empty($args['text_decoration'])) {
 				echo '<div class="agl--block">';
-				echo '<div class="agl--title">' . esc_html__('Text Decoration', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Text Decoration', 'shopglut') . '</div>';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $this->create_select(
 					array(
-						'none' => esc_html__('None', 'wishglut'),
-						'underline' => esc_html__('Solid', 'wishglut'),
-						'underline double' => esc_html__('Double', 'wishglut'),
-						'underline dotted' => esc_html__('Dotted', 'wishglut'),
-						'underline dashed' => esc_html__('Dashed', 'wishglut'),
-						'underline wavy' => esc_html__('Wavy', 'wishglut'),
-						'underline overline' => esc_html__('Overline', 'wishglut'),
-						'line-through' => esc_html__('Line-through', 'wishglut'),
+						'none' => esc_html__('None', 'shopglut'),
+						'underline' => esc_html__('Solid', 'shopglut'),
+						'underline double' => esc_html__('Double', 'shopglut'),
+						'underline dotted' => esc_html__('Dotted', 'shopglut'),
+						'underline dashed' => esc_html__('Dashed', 'shopglut'),
+						'underline wavy' => esc_html__('Wavy', 'shopglut'),
+						'underline overline' => esc_html__('Overline', 'shopglut'),
+						'line-through' => esc_html__('Line-through', 'shopglut'),
 					),
 					'text-decoration',
-					esc_html__('Default', 'wishglut')
+					esc_html__('Default', 'shopglut')
 				);
 				echo '</div>';
 			}
@@ -359,7 +359,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			if (!empty($args['font_size'])) {
 
 				echo '<div class="agl-field agl-field-slider slider-typo">';
-				echo '<div class="agl-title"><h4>' . esc_html__('Font Size', 'wishglut') . '</h4></div>';
+				echo '<div class="agl-title"><h4>' . esc_html__('Font Size', 'shopglut') . '</h4></div>';
 				echo '<div id="' . esc_attr($this->field['id']) . '" class="agl--wrap field-slider-wrap slider-' . esc_attr($this->field['id']) . '-select-type_">';
 				echo '<div class="agl-slider-ui_' . esc_attr($this->field['id']) . '_"></div>';
 				echo '<div class="agl--inputs slider-units" data-depend-id="' . esc_attr($this->field['id']) . '">';
@@ -391,7 +391,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			if (!empty($args['line_height'])) {
 
 				echo '<div class="agl-field agl-field-slider slider-typo">';
-				echo '<div class="agl-title"><h4>' . esc_html__('Line Height', 'wishglut') . '</h4></div>';
+				echo '<div class="agl-title"><h4>' . esc_html__('Line Height', 'shopglut') . '</h4></div>';
 				echo '<div id="' . esc_attr($this->field['id']) . '" class="agl--wrap field-slider-wrap slider-' . esc_attr($this->field['id']) . '-select-type_">';
 				echo '<div class="agl-slider-ui_' . esc_attr($this->field['id']) . '_"></div>';
 				echo '<div class="agl--inputs slider-units" data-depend-id="' . esc_attr($this->field['id']) . '">';
@@ -421,7 +421,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Letter Spacing.
 			if (!empty($args['letter_spacing'])) {
 				echo '<div class="agl-field agl-field-slider slider-typo">';
-				echo '<div class="agl-title"><h4>' . esc_html__('Letter Spacing', 'wishglut') . '</h4></div>';
+				echo '<div class="agl-title"><h4>' . esc_html__('Letter Spacing', 'shopglut') . '</h4></div>';
 				echo '<div id="' . esc_attr($this->field['id']) . '" class="agl--wrap field-slider-wrap slider-' . esc_attr($this->field['id']) . '-select-type_">';
 				echo '<div class="agl-slider-ui_' . esc_attr($this->field['id']) . '_"></div>';
 				echo '<div class="agl--inputs slider-units" data-depend-id="' . esc_attr($this->field['id']) . '">';
@@ -450,7 +450,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Word Spacing.
 			if (!empty($args['word_spacing'])) {
 				echo '<div class="agl-field agl-field-slider slider-typo">';
-				echo '<div class="agl-title"><h4>' . esc_html__('Word Spacing', 'wishglut') . '</h4></div>';
+				echo '<div class="agl-title"><h4>' . esc_html__('Word Spacing', 'shopglut') . '</h4></div>';
 				echo '<div id="' . esc_attr($this->field['id']) . '" class="agl--wrap field-slider-wrap slider-' . esc_attr($this->field['id']) . '-select-type_">';
 				echo '<div class="agl-slider-ui_' . esc_attr($this->field['id']) . '_"></div>';
 				echo '<div class="agl--inputs slider-units" data-depend-id="' . esc_attr($this->field['id']) . '">';
@@ -483,7 +483,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				echo '<div class="agl--blocks agl--blocks-color">';
 				$default_color_attr = (!empty($default_value['color'])) ? ' data-default-color="' . esc_attr($default_value['color']) . '"' : '';
 				echo '<div class="agl--block agl--block-font-color">';
-				echo '<div class="agl--title">' . esc_html__('Font Color', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Font Color', 'shopglut') . '</div>';
 				echo '<div class="agl-field-color">';
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '<input type="text" data-depend-id="' . esc_attr($this->field['id'] . '-font-color') . '" name="' . esc_attr($this->field_name('[color]')) . '" class="agl-color agl--color" value="' . esc_attr($this->value['color']) . '"' . $default_color_attr . ' />';
@@ -495,7 +495,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				if (!empty($args['hover_color'])) {
 					$default_hover_color_attr = (!empty($default_value['hover_color'])) ? ' data-default-color="' . esc_attr($default_value['hover_color']) . '"' : '';
 					echo '<div class="agl--block agl--block-font-color">';
-					echo '<div class="agl--title">' . esc_html__('Font Hover Color', 'wishglut') . '</div>';
+					echo '<div class="agl--title">' . esc_html__('Font Hover Color', 'shopglut') . '</div>';
 					echo '<div class="agl-field-color">';
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo '<input type="text" data-depend-id="' . esc_attr($this->field['id'] . '-font-hover-color') . '" name="' . esc_attr($this->field_name('[hover_color]')) . '" class="agl-color agl--color" value="' . esc_attr($this->value['hover_color']) . '"' . $default_hover_color_attr . ' />';
@@ -507,7 +507,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				if (!empty($args['active_color'])) {
 					$default_active_color_attr = (!empty($default_value['active_color'])) ? ' data-default-color="' . esc_attr($default_value['active_color']) . '"' : '';
 					echo '<div class="agl--block agl--block-font-color">';
-					echo '<div class="agl--title">' . esc_html__('Font Active Color', 'wishglut') . '</div>';
+					echo '<div class="agl--title">' . esc_html__('Font Active Color', 'shopglut') . '</div>';
 					echo '<div class="agl-field-color">';
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo '<input type="text" data-depend-id="' . esc_attr($this->field['id'] . '-font-active-color') . '" name="' . esc_attr($this->field_name('[active_color]')) . '" class="agl-color agl--color" value="' . esc_attr($this->value['active_color']) . '"' . $default_active_color_attr . ' />';
@@ -522,7 +522,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Custom style.
 			if (!empty($args['custom_style'])) {
 				echo '<div class="agl--block agl--block-custom-style">';
-				echo '<div class="agl--title">' . esc_html__('Custom Style', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Custom Style', 'shopglut') . '</div>';
 				echo '<textarea name="' . esc_attr($this->field_name('[custom-style]')) . '" class="agl--custom-style">' . esc_attr($this->value['custom-style']) . '</textarea>';
 				echo '</div>';
 			}
@@ -530,7 +530,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 			// Margin Bottom.
 			if (!empty($args['margin_bottom'])) {
 				echo '<div class="agl--block agl--block-margin">';
-				echo '<div class="agl--title">' . esc_html__('Margin Bottom', 'wishglut') . '</div>';
+				echo '<div class="agl--title">' . esc_html__('Margin Bottom', 'shopglut') . '</div>';
 				echo '<div class="agl--blocks">';
 				echo '<div class="agl--block agl--unit"><i class="fa fa-long-arrow-down"></i></div>';
 				echo '<div class="agl--block"><input type="number" data-depend-id="' . esc_attr($this->field['id'] . '-margin-bottom') . '" name="' . $this->field_name('[margin-bottom]') . '" class="agl--margin-bottom agl--input agl-number" value="' . $this->value['margin-bottom'] . '" /></div>'; // phpcs:ignore
@@ -615,13 +615,13 @@ if (!class_exists('AGWISHGLUT_typography')) {
 
 				if (!empty($customwebfonts)) {
 					$webfonts['custom'] = array(
-						'label' => esc_html__('Custom Web Fonts', 'wishglut'),
+						'label' => esc_html__('Custom Web Fonts', 'shopglut'),
 						'fonts' => $customwebfonts,
 					);
 				}
 
 				$webfonts['safe'] = array(
-					'label' => esc_html__('Safe Web Fonts', 'wishglut'),
+					'label' => esc_html__('Safe Web Fonts', 'shopglut'),
 					'fonts' => apply_filters(
 						'agl_field_typography_safewebfonts',
 						array(
@@ -644,7 +644,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				);
 
 				$webfonts['google'] = array(
-					'label' => esc_html__('Google Web Fonts', 'wishglut'),
+					'label' => esc_html__('Google Web Fonts', 'shopglut'),
 					'fonts' => apply_filters(
 						'agl_field_typography_googlewebfonts',
 						agl_get_google_fonts()
@@ -680,7 +680,7 @@ if (!class_exists('AGWISHGLUT_typography')) {
 				$webfonts = apply_filters('agl_field_typography_webfonts', $webfonts);
 
 				wp_localize_script(
-					'wishglut',
+					'shopglut',
 					'agl_typography_json',
 					array(
 						'webfonts' => $webfonts,

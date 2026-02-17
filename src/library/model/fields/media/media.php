@@ -42,8 +42,8 @@ if ( ! class_exists( 'AGWISHGLUT_media' ) ) {
 					'remove_preview' => false,
 					'remove_button'  => true,
 					'library'        => array(),
-					'button_title'   => esc_html__( 'Upload', 'wishglut' ),
-					'remove_title'   => esc_html__( 'Remove', 'wishglut' ),
+					'button_title'   => esc_html__( 'Upload', 'shopglut' ),
+					'remove_title'   => esc_html__( 'Remove', 'shopglut' ),
 					'preview_size'   => 'thumbnail',
 				)
 			);
@@ -77,7 +77,7 @@ if ( ! class_exists( 'AGWISHGLUT_media' ) ) {
 			$preview_src = ( 'thumbnail' !== $args['preview_size'] ) ? $this->value['url'] : $this->value['thumbnail'];
 			$hidden_url  = ( empty( $args['url'] ) ) ? ' hidden' : '';
 			$hidden_auto = ( empty( $this->value['url'] ) ) ? ' hidden' : '';
-			$placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="' . esc_html__( 'No media selected', 'wishglut' ) . '"' : '';
+			$placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="' . esc_html__( 'No media selected', 'shopglut' ) . '"' : '';
 
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $this->field_before();

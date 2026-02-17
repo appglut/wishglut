@@ -287,7 +287,7 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 
 		// Setup textdomain
 		public static function textdomain() {
-			load_textdomain( 'wishglut', self::$dir . '/languages/' . get_locale() . '.mo' );
+			load_textdomain( 'shopglut', self::$dir . '/languages/' . get_locale() . '.mo' );
 		}
 
 		// Set all of used fields
@@ -377,7 +377,7 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 			}
 
 			// Main style
-			wp_enqueue_style( 'wishglut', self::include_plugin_url( 'assets/css/style.css' ), array(), self::$version, 'all' );
+			wp_enqueue_style( 'shopglut', self::include_plugin_url( 'assets/css/style.css' ), array(), self::$version, 'all' );
 
 			// Main RTL styles
 			if ( is_rtl() ) {
@@ -389,16 +389,16 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 
 			// Main scripts
 			wp_enqueue_script( 'agl-plugins', self::include_plugin_url( 'assets/js/plugins.js' ), array(), self::$version, true );
-			wp_enqueue_script( 'wishglut', self::include_plugin_url( 'assets/js/main.js' ), array( 'agl-plugins' ), self::$version, true );
+			wp_enqueue_script( 'shopglut', self::include_plugin_url( 'assets/js/main.js' ), array( 'agl-plugins' ), self::$version, true );
 
 			// Main variables
-			wp_localize_script( 'wishglut', 'agl_vars', array(
+			wp_localize_script( 'shopglut', 'agl_vars', array(
 				'color_palette' => apply_filters( 'agl_color_palette', array() ),
 				'i18n' => array(
-					'confirm' => esc_html__( 'Are you sure?', 'wishglut' ),
-					'typing_text' => esc_html__( 'Please enter more characters', 'wishglut' ),
-					'searching_text' => esc_html__( 'Searching...', 'wishglut' ),
-					'no_results_text' => esc_html__( 'No results found.', 'wishglut' ),
+					'confirm' => esc_html__( 'Are you sure?', 'shopglut' ),
+					'typing_text' => esc_html__( 'Please enter more characters', 'shopglut' ),
+					'searching_text' => esc_html__( 'Searching...', 'shopglut' ),
+					'no_results_text' => esc_html__( 'No results found.', 'shopglut' ),
 				),
 			) );
 
@@ -500,7 +500,7 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 				$field_type = $field['type'];
 
 				$field = array();
-				$field['content'] = esc_html__( 'Oops! Not allowed.', 'wishglut' ) . ' <strong>(' . $field_type . ')</strong>';
+				$field['content'] = esc_html__( 'Oops! Not allowed.', 'shopglut' ) . ' <strong>(' . $field_type . ')</strong>';
 				$field['type'] = 'notice';
 				$field['style'] = 'danger';
 
@@ -583,7 +583,7 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 						}
 						echo '<label select-type="' . esc_attr( $field['id'] ) . '-select-type-' . esc_attr( $device ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['id'] ) . '-select-type-' . esc_attr( $device ) . ' "' . ( $checked_device ? 'class="checked"' : '' ) . '><i class="' . esc_attr( $field['id'] ) . ' fa fa-' . esc_attr( $icon_class ) . '" title="' . esc_attr( $title ) . '"><input type="radio" name="' . esc_attr( $device ) . '" value="' . esc_attr( $device ) . '" data-depend-id="agl-responsive-' . esc_attr( $device ) . '" class="agl-hidden-radio" style="display: none;" /></i></label>';
 					}
-					echo '<i class="info fa-solid fa-info" title="' . esc_html__( 'Change display device and adjust value where to show', 'wishglut' ) . '"></i>';
+					echo '<i class="info fa-solid fa-info" title="' . esc_html__( 'Change display device and adjust value where to show', 'shopglut' ) . '"></i>';
 					echo '</div>';
 				}
 
@@ -602,11 +602,11 @@ if ( ! class_exists( 'AGWISHGLUT' ) ) {
 					$instance = new $classname( $field, $value, $unique, $where, $parent );
 					$instance->render();
 				} else {
-					echo '<p>' . esc_html__( 'Field not found!', 'wishglut' ) . '</p>';
+					echo '<p>' . esc_html__( 'Field not found!', 'shopglut' ) . '</p>';
 				}
 
 			} else {
-				echo '<p>' . esc_html__( 'Field not found!', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'Field not found!', 'shopglut' ) . '</p>';
 			}
 
 			echo ( ! empty( $field['title'] ) || ! empty( $field['fancy_title'] ) ) ? '</div>' : '';

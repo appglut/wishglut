@@ -1,20 +1,20 @@
 <?php
 
-use Wishglut\layouts\singleProduct\dataManage as SingleProductDataManage;
-use Wishglut\layouts\cartPage\dataManage as CartDataManage;
-use Wishglut\layouts\orderCompletePage\dataManage as OrderCompleteDataManage;
-use Wishglut\layouts\accountPage\AccountPageDataManage;
-use Wishglut\enhancements\ProductComparison\ProductComparisonDataManage;
-use Wishglut\enhancements\ProductQuickView\QuickViewDataManage;
-use Wishglut\showcases\Sliders\SliderDataManage;
-use Wishglut\enhancements\ProductBadges\BadgeDataManage;
-use Wishglut\enhancements\ProductSwatches\dataManage as ProductSwatchesDataManage;
 
-use Wishglut\showcases\ShopBanner\templates\template1\template1Markup;
-use Wishglut\showcases\Sliders\templates\template1\template1Markup as Slider1Markup;
-use Wishglut\showcases\Gallery\templates\template1\template1Markup as GalleryTemplate1Markup;
-use Wishglut\showcases\Tabs\templates\template1\template1Markup as TabsTemplate1Markup;
-use Wishglut\showcases\Accordions\templates\template1\template1Markup as AccordionTemplate1Markup; 
+use Shopglut\layouts\cartPage\dataManage as CartDataManage;
+use Shopglut\layouts\orderCompletePage\dataManage as OrderCompleteDataManage;
+use Shopglut\layouts\accountPage\AccountPageDataManage;
+use Shopglut\enhancements\ProductComparison\ProductComparisonDataManage;
+use Shopglut\enhancements\ProductQuickView\QuickViewDataManage;
+use Shopglut\showcases\Sliders\SliderDataManage;
+use Shopglut\enhancements\ProductBadges\BadgeDataManage;
+use Shopglut\enhancements\ProductSwatches\dataManage as ProductSwatchesDataManage;
+
+use Shopglut\showcases\ShopBanner\templates\template1\template1Markup;
+use Shopglut\showcases\Sliders\templates\template1\template1Markup as Slider1Markup;
+use Shopglut\showcases\Gallery\templates\template1\template1Markup as GalleryTemplate1Markup;
+use Shopglut\showcases\Tabs\templates\template1\template1Markup as TabsTemplate1Markup;
+use Shopglut\showcases\Accordions\templates\template1\template1Markup as AccordionTemplate1Markup; 
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,7 +40,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 	 */
 	class AGWISHGLUT_preview extends AGWISHGLUTP {
 
-		//use Wishglut\enhancements\Filters\FilterTrait;
+		//use Shopglut\enhancements\Filters\FilterTrait;
 
 
 		/**
@@ -56,7 +56,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 		 * @return void
 		 */
 		public function render() {
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'shop' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'shop' === $_GET['editor'] ) {
 				?>
 				<div class="shopg_shop_layout_contents">
 					<div id="shopg_shop_layout_contents" class="width-100" style="width: 100%;">
@@ -66,10 +66,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 						$layout_id = ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1;
 
-						$table_name = $wpdb->prefix . 'wishglut_shop_layouts';
+						$table_name = $wpdb->prefix . 'shopglut_shop_layouts';
 
 						// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query for layout preview
-						$layout_values = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}wishglut_shop_layouts WHERE id = %d", ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1 ) );
+						$layout_values = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}shopglut_shop_layouts WHERE id = %d", ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1 ) );
 
 						$layout_array_values = isset( $layout_values[0]->layout_settings ) ? unserialize( $layout_values[0]->layout_settings ) : array();
 
@@ -248,7 +248,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 								while ( $query->have_posts() ) {
 									$query->the_post();
 
-									$layout_class = 'Wishglut\\layouts\\shopLayout\\templates\\' . $layout_values[0]->layout_template;
+									$layout_class = 'Shopglut\\layouts\\shopLayout\\templates\\' . $layout_values[0]->layout_template;
 
 									if ( class_exists( $layout_class ) ) {
 										$layout_instance = new $layout_class();
@@ -264,12 +264,12 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 						<?php
 
 						?>
-						<div id="no-product-found" style="display:none;"><?php echo esc_html__( 'No Product Found', 'wishglut' ); ?>
+						<div id="no-product-found" style="display:none;"><?php echo esc_html__( 'No Product Found', 'shopglut' ); ?>
 
 							<?php
 
 							if ( ! $file_included ) {
-								echo esc_html__( 'Layout file not found', 'wishglut' );
+								echo esc_html__( 'Layout file not found', 'shopglut' );
 							}
 							?>
 						</div>
@@ -277,7 +277,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					<?php
 					wp_reset_postdata();
 			}
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'archive' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'archive' === $_GET['editor'] ) {
 				?>
 					<div class="shopg_shop_layout_contents">
 						<div id="shopg_shop_layout_contents" class="width-100" style="width: 100%;">
@@ -287,10 +287,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 							$layout_id = ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1;
 
-							$table_name = $wpdb->prefix . 'wishglut_archive_layouts';
+							$table_name = $wpdb->prefix . 'shopglut_archive_layouts';
 
 							// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query for archive layout preview
-							$layout_values = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}wishglut_archive_layouts WHERE id = %d", ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1 ) );
+							$layout_values = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}shopglut_archive_layouts WHERE id = %d", ! wp_verify_nonce( isset( $_POST['preview_nonce_check'] ), 'preview_nonce_check' ) && isset( $_GET['layout_id'] ) ? absint( $_GET['layout_id'] ) : 1 ) );
 
 							$layout_array_values = unserialize( $layout_values[0]->arlayout_settings );
 
@@ -462,7 +462,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 									while ( $query->have_posts() ) {
 										$query->the_post();
 
-										$layout_class = 'Wishglut\\layouts\\shopLayout\\templates\\' . $layout_values[0]->arlayout_template;
+										$layout_class = 'Shopglut\\layouts\\shopLayout\\templates\\' . $layout_values[0]->arlayout_template;
 
 										if ( class_exists( $layout_class ) ) {
 											$layout_instance = new $layout_class();
@@ -478,12 +478,12 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 							<?php
 
 							?>
-							<div id="no-product-found" style="display:none;"><?php echo esc_html__( 'No Product Found', 'wishglut' ); ?>
+							<div id="no-product-found" style="display:none;"><?php echo esc_html__( 'No Product Found', 'shopglut' ); ?>
 
 								<?php
 
 								if ( ! $file_included ) {
-									echo esc_html__( 'Layout file not found', 'wishglut' );
+									echo esc_html__( 'Layout file not found', 'shopglut' );
 								}
 								?>
 							</div>
@@ -492,42 +492,42 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 						wp_reset_postdata();
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'filters' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'filters' === $_GET['editor'] ) {
 
 			// Check if filter_id is set and fetch the corresponding data
 			$filter_id = isset( $_GET['filter_id'] ) ? intval( $_GET['filter_id'] ) : 0;
 
 			// Retrieve the saved filter data from the database based on filter_id
 			global $wpdb;
-			$table_name = $wpdb->prefix . 'wishglut_enhancement_filters';
+			$table_name = $wpdb->prefix . 'shopglut_enhancement_filters';
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query for filter preview
-			$get_data = $wpdb->get_var( $wpdb->prepare( "SELECT filter_settings FROM {$wpdb->prefix}wishglut_enhancement_filters WHERE id = %d", $filter_id ) );
+			$get_data = $wpdb->get_var( $wpdb->prepare( "SELECT filter_settings FROM {$wpdb->prefix}shopglut_enhancement_filters WHERE id = %d", $filter_id ) );
 
 			//$preview_data = isset( $get_data ) ? unserialize( $get_data ) : array();
 			$preview_data = ( ! empty( $get_data ) && ( $temp = @unserialize( $get_data ) ) !== false ) ? $temp : array();
 
 			// Get title appearance setting from database (moved to higher scope)
-			$title_appearance = $preview_data['shopg_filter_options_settings']['wishglut-filter-settings-main-tab']['filter-title-appearance'] ?? 'accordion-design';
-			$title_group = $preview_data['shopg_filter_options_settings']['wishglut-filter-settings-main-tab']['filter-title-group'] ?? [];
+			$title_appearance = $preview_data['shopg_filter_options_settings']['shopglut-filter-settings-main-tab']['filter-title-appearance'] ?? 'accordion-design';
+			$title_group = $preview_data['shopg_filter_options_settings']['shopglut-filter-settings-main-tab']['filter-title-group'] ?? [];
 
 			// Get icon settings
 			$expand_icon = $title_group['filter-title-expand-icon'] ?? 'fa fa-plus';
 			$close_icon = $title_group['filter-title-close-icon'] ?? 'fa fa-minus';
 
 			// Generate styles directly since we're not using ShopPageFilter
-			if (class_exists('Wishglut\enhancements\Filters\implementation\FilterStyle')) {
-				$filter_style_handler = new \Wishglut\enhancements\Filters\implementation\FilterStyle($filter_id, $preview_data);
+			if (class_exists('Shopglut\enhancements\Filters\implementation\FilterStyle')) {
+				$filter_style_handler = new \Shopglut\enhancements\Filters\implementation\FilterStyle($filter_id, $preview_data);
 				$filter_style_handler->output_styles();
 			}
 
 		}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'single_product' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'single_product' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				// Define preview mode constant for demo editor
-				if (!defined('WISHGLUT_PREVIEW_MODE')) {
-					define('WISHGLUT_PREVIEW_MODE', true);
+				if (!defined('SHOPGLUT_PREVIEW_MODE')) {
+					define('SHOPGLUT_PREVIEW_MODE', true);
 				}
 
 				// Filter to add form element to allowed HTML for preview
@@ -559,7 +559,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					return $allowed_html;
 				}, 10, 2);
 
-				$single_product_data_manage = new SingleProductDataManage();
+				// Only use SingleProductDataManage if ProductDetailsGlut is not active and class exists
+				if (class_exists('Shopglut\layouts\singleProduct\dataManage')) {
+					$single_product_data_manage = new SingleProductDataManage();
+				}
 
 				// Get base allowed HTML
 				$allowed_html = wp_kses_allowed_html( 'post' );
@@ -834,14 +837,14 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				});
 
 				// Get the preview content
-				$preview_content = $single_product_data_manage->wishglut_render_singleplayout_preview( $layout_id );
+				$preview_content = $single_product_data_manage->shopglut_render_singleplayout_preview( $layout_id );
 
 				// Output with wp_kses filtering
 				echo wp_kses( $preview_content, $allowed_html );
 
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'cartpage' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'cartpage' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				$cartPage_dataManage = new CartDataManage();
@@ -909,10 +912,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					}
 				}
 
-				echo wp_kses( $cartPage_dataManage->wishglut_render_cartlayout_preview( $layout_id ), $allowed_html );
+				echo wp_kses( $cartPage_dataManage->shopglut_render_cartlayout_preview( $layout_id ), $allowed_html );
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'ordercomplete' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'ordercomplete' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				$orderCompletePage_dataManage = new OrderCompleteDataManage();
@@ -980,10 +983,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					}
 				}
 
-				echo wp_kses( $orderCompletePage_dataManage->wishglut_render_orderCompletelayout_preview( $layout_id ), $allowed_html );
+				echo wp_kses( $orderCompletePage_dataManage->shopglut_render_orderCompletelayout_preview( $layout_id ), $allowed_html );
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_comparison' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_comparison' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				$productComparison_dataManage = new ProductComparisonDataManage();
@@ -1070,10 +1073,10 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					}
 				}
 
-				echo wp_kses( $productComparison_dataManage->wishglut_render_comparison_preview( $layout_id ), $allowed_html );
+				echo wp_kses( $productComparison_dataManage->shopglut_render_comparison_preview( $layout_id ), $allowed_html );
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_quickview' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_quickview' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				$quickView_dataManage = new QuickViewDataManage();
@@ -1164,11 +1167,11 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					}
 				}
 
-				echo wp_kses( $quickView_dataManage->wishglut_render_quickview_preview( $layout_id ), $allowed_html );
+				echo wp_kses( $quickView_dataManage->shopglut_render_quickview_preview( $layout_id ), $allowed_html );
 			}
 
 
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'accountpage' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'accountpage' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				$accountpage_dataManage = AccountPageDataManage::get_instance();
@@ -1176,32 +1179,32 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				$allowed_tags = wp_kses_allowed_html( 'post' );
 				$allowed_tags['style'] = array();
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Internal preview content with controlled kses rules
-				echo wp_kses( $accountpage_dataManage->wishglut_render_accountpage_preview( $layout_id ), $allowed_tags );
+				echo wp_kses( $accountpage_dataManage->shopglut_render_accountpage_preview( $layout_id ), $allowed_tags );
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'accountpage_prebuilt' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_layouts' === $_GET['page'] && isset( $_GET['editor'] ) && 'accountpage_prebuilt' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				global $wpdb;
-				$table_name = $wpdb->prefix . 'wishglut_accountpage_builder';
+				$table_name = $wpdb->prefix . 'shopglut_accountpage_builder';
 				$escaped_table = esc_sql($table_name);
 				$layout_template = $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query for accountpage layout
 					$wpdb->prepare(sprintf("SELECT layout_template FROM `%s` WHERE id = %d", $escaped_table), $layout_id) // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Using sprintf with escaped table name
 				);
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table query for accountpage settings
-				$layout_options = unserialize($wpdb->get_var($wpdb->prepare("SELECT layout_settings FROM {$wpdb->prefix}wishglut_accountpage_builder WHERE id = %d", $layout_id)));
+				$layout_options = unserialize($wpdb->get_var($wpdb->prepare("SELECT layout_settings FROM {$wpdb->prefix}shopglut_accountpage_builder WHERE id = %d", $layout_id)));
 
 				$layout_settings = isset($layout_options['shopg_accountpage_prebuilt_settings']) ? $layout_options['shopg_accountpage_prebuilt_settings'] : array();
 
-				//echo $cartPage_dataManage->wishglut_render_cartlayout_preview( $layout_id );
+				//echo $cartPage_dataManage->shopglut_render_cartlayout_preview( $layout_id );
                ?>
-				<div class="wishglut-product-preview wishglut-layout-preview">
+				<div class="shopglut-product-preview shopglut-layout-preview">
 				<!-- Columns Layout -->
 				<div class="preview-layout">
 				<?php
 
-				$default_namespace = 'Wishglut\\layouts\\accountPage\\templates\\';
+				$default_namespace = 'Shopglut\\layouts\\accountPage\\templates\\';
 				$template_class = $default_namespace . $layout_template;
 
 
@@ -1220,7 +1223,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 
 			// ShopBanner Preview
-			if ( isset( $_GET['page'] ) && 'wishglut_showcases' === $_GET['page'] && isset( $_GET['editor'] ) && 'shopbanner' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_showcases' === $_GET['page'] && isset( $_GET['editor'] ) && 'shopbanner' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				// Allow style tags and necessary HTML for banner preview
@@ -1286,25 +1289,25 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 				// Render ShopBanner preview
 				?>
-				<div class="wishglut-banner-preview">
+				<div class="shopglut-banner-preview">
 					<?php $render_demo = new template1Markup();
 					   $render_demo -> layout_render([], $layout_id);
 					?>
 				</div>
 				<style>
-					.wishglut-banner-preview {
+					.shopglut-banner-preview {
 						max-width: 800px;
 						margin: 20px auto;
 						border-radius: 8px;
 						overflow: hidden;
 					}
-					.wishglut-banner-container {
+					.shopglut-banner-container {
 						min-height: 300px;
 					}
-					.wishglut-banner-button {
+					.shopglut-banner-button {
 						transition: all 0.3s ease;
 					}
-					.wishglut-banner-button:hover {
+					.shopglut-banner-button:hover {
 						opacity: 0.9;
 						transform: translateY(-2px);
 						box-shadow: 0 6px 20px rgba(0,115,170,0.4) !important;
@@ -1326,7 +1329,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				<?php
 			}
 
-			if ( isset( $_GET['page'] ) && 'wishglut_showcases' === $_GET['page'] && isset( $_GET['editor'] ) && 'slider' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_showcases' === $_GET['page'] && isset( $_GET['editor'] ) && 'slider' === $_GET['editor'] ) {
 				$layout_id = isset( $_GET['layout_id'] ) ? intval( $_GET['layout_id'] ) : 0;
 
 				// Allow style tags and necessary HTML for banner preview
@@ -1392,25 +1395,25 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 				// Render ShopBanner preview
 				?>
-				<div class="wishglut-banner-preview">
+				<div class="shopglut-banner-preview">
 					<?php $render_demo = new Slider1Markup();
 					   $render_demo -> layout_render([], $layout_id);
 					?>
 				</div>
 				<style>
-					.wishglut-banner-preview {
+					.shopglut-banner-preview {
 						max-width: 800px;
 						margin: 20px auto;
 						border-radius: 8px;
 						overflow: hidden;
 					}
-					.wishglut-banner-container {
+					.shopglut-banner-container {
 						min-height: 300px;
 					}
-					.wishglut-banner-button {
+					.shopglut-banner-button {
 						transition: all 0.3s ease;
 					}
-					.wishglut-banner-button:hover {
+					.shopglut-banner-button:hover {
 						opacity: 0.9;
 						transform: translateY(-2px);
 						box-shadow: 0 6px 20px rgba(0,115,170,0.4) !important;
@@ -1433,7 +1436,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 			}
 
 			// Product Badges Preview
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_badges' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_badges' === $_GET['editor'] ) {
 				$badge_id = isset( $_GET['badge_id'] ) ? intval( $_GET['badge_id'] ) : 0;
 
 				$badge_dataManage = BadgeDataManage::get_instance();
@@ -1457,11 +1460,11 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				}
 
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Internal preview content with controlled kses rules
-				echo wp_kses( $badge_dataManage->wishglut_render_badge_preview( $badge_id ), $allowed_tags );
+				echo wp_kses( $badge_dataManage->shopglut_render_badge_preview( $badge_id ), $allowed_tags );
 			}
 
 			// Product Swatches Preview
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_swatches' === $_GET['editor'] ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && isset( $_GET['editor'] ) && 'product_swatches' === $_GET['editor'] ) {
 				$swatches_id = isset( $_GET['swatches_id'] ) ? intval( $_GET['swatches_id'] ) : 0;
 
 				$swatches_dataManage = new ProductSwatchesDataManage();
@@ -1626,12 +1629,12 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				});
 
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Internal preview content with controlled kses rules
-				echo wp_kses( $swatches_dataManage->wishglut_render_singleplayout_preview( $swatches_id ), $allowed_tags );
+				echo wp_kses( $swatches_dataManage->shopglut_render_singleplayout_preview( $swatches_id ), $allowed_tags );
 			}
 
 			// Filters Preview - Allow input elements for checkboxes and radios
 			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-			if ( isset( $_GET['page'] ) && 'wishglut_enhancements' === $_GET['page'] && ( (isset( $_GET['editor'] ) && 'filters' === $_GET['editor']) || (strpos( $request_uri, 'wishglut_enhancements' ) !== false && strpos( $request_uri, 'filter' ) !== false) ) ) {
+			if ( isset( $_GET['page'] ) && 'shopglut_enhancements' === $_GET['page'] && ( (isset( $_GET['editor'] ) && 'filters' === $_GET['editor']) || (strpos( $request_uri, 'shopglut_enhancements' ) !== false && strpos( $request_uri, 'filter' ) !== false) ) ) {
 				
 				// Define custom allowed HTML for filter preview
 				$allowed_tags = wp_kses_allowed_html( 'post' );
@@ -1738,8 +1741,8 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				});
 
 				// Store the allowed tags for use in the filter rendering
-				if (!isset($GLOBALS['wishglut_filter_allowed_tags'])) {
-					$GLOBALS['wishglut_filter_allowed_tags'] = $allowed_tags;
+				if (!isset($GLOBALS['shopglut_filter_allowed_tags'])) {
+					$GLOBALS['shopglut_filter_allowed_tags'] = $allowed_tags;
 				}
 
 				// Output centralized filter styles
@@ -1748,8 +1751,8 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 				}
 
 				// Use FilterContent for HTML generation - wrap with container for backend
-				$filter_content = new \Wishglut\enhancements\Filters\implementation\FilterContent($filter_style_handler, $filter_id, $preview_data);
-				echo '<div class="wishglut-filter-container" data-filter-id="' . esc_attr($filter_id) . '">';
+				$filter_content = new \Shopglut\enhancements\Filters\implementation\FilterContent($filter_style_handler, $filter_id, $preview_data);
+				echo '<div class="shopglut-filter-container" data-filter-id="' . esc_attr($filter_id) . '">';
 				echo wp_kses_post($filter_content->generate_filter_html(true));
 				echo '</div>';
 			}
@@ -1847,7 +1850,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 			$has_children = is_object( $term ) && ! empty( $term->children ) && ! is_wp_error( $term->children );
 			$is_parent = !$this->has_parent( $term );
 
-			$html = '<label class="' . esc_attr( $is_radio ? 'wishglut-filter-radio-label' : 'wishglut-filter-checkbox' ) . '">';
+			$html = '<label class="' . esc_attr( $is_radio ? 'shopglut-filter-radio-label' : 'shopglut-filter-checkbox' ) . '">';
 			$html .= '<input type="' . esc_attr( $is_radio ? 'radio' : 'checkbox' ) . '" name="' . esc_attr( $type ) . ( $is_radio ? '' : '[]' ) . '" value="' . esc_attr( $term_id ) . '">';
 			$html .= '<span class="' . esc_attr( $is_radio ? 'radio-mark' : 'checkmark' ) . '"></span>';
 			$html .= $is_parent ? '<strong>' . esc_html( $term_name ) . '</strong>' : esc_html( $term_name );
@@ -1888,7 +1891,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 
 			switch ( $appearance_type ) {
 				case 'check-list':
-					$html .= '<div class="wishglut-filter-checklist">';
+					$html .= '<div class="shopglut-filter-checklist">';
 					foreach ( $terms as $term ) {
 						// Use recursive rendering to handle hierarchy
 						$html .= $this->render_category_hierarchy_preview( $term, $type, $show_count, false );
@@ -1897,7 +1900,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				case 'radio':
-					$html .= '<div class="wishglut-filter-radio">';
+					$html .= '<div class="shopglut-filter-radio">';
 					foreach ( $terms as $term ) {
 						// Use recursive rendering to handle hierarchy
 						$html .= $this->render_category_hierarchy_preview( $term, $type, $show_count, true );
@@ -1906,7 +1909,7 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				case 'dropdown':
-					$html .= '<select name="' . esc_attr( $type ) . '" class="wishglut-filter-dropdown">';
+					$html .= '<select name="' . esc_attr( $type ) . '" class="shopglut-filter-dropdown">';
 					$html .= '<option value="">Select ' . ucwords( str_replace( '-', ' ', $type ) ) . '</option>';
 					foreach ( $terms as $term ) {
 						$term_id = is_object( $term ) ? $term->term_id : $term['term_id'];
@@ -1920,13 +1923,13 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				case 'button':
-					$html .= '<div class="wishglut-filter-buttons">';
+					$html .= '<div class="shopglut-filter-buttons">';
 					foreach ( $terms as $term ) {
 						$term_id = is_object( $term ) ? $term->term_id : $term['term_id'];
 						$term_name = is_object( $term ) ? $term->name : $term['name'];
 						$term_count = is_object( $term ) ? $term->count : ( isset( $term['count'] ) ? $term['count'] : 0 );
 
-						$html .= '<button type="button" class="wishglut-filter-button" data-value="' . esc_attr( $term_id ) . '">';
+						$html .= '<button type="button" class="shopglut-filter-button" data-value="' . esc_attr( $term_id ) . '">';
 						$html .= esc_html( $term_name );
 						if ( $show_count ) {
 							$html .= ' <span class="count">(' . esc_html( $term_count ) . ')</span>';
@@ -1937,14 +1940,14 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				case 'color':
-					$html .= '<div class="wishglut-filter-colors">';
+					$html .= '<div class="shopglut-filter-colors">';
 					foreach ( $terms as $term ) {
 						$term_id = is_object( $term ) ? $term->term_id : $term['term_id'];
 						$term_name = is_object( $term ) ? $term->name : $term['name'];
 						$term_count = is_object( $term ) ? $term->count : ( isset( $term['count'] ) ? $term['count'] : 0 );
 
 						$color = isset( $colors[$term_id] ) ? $colors[$term_id] : '#cccccc';
-						$html .= '<span class="wishglut-filter-color" data-value="' . esc_attr( $term_id ) . '" title="' . esc_attr( $term_name ) . '">';
+						$html .= '<span class="shopglut-filter-color" data-value="' . esc_attr( $term_id ) . '" title="' . esc_attr( $term_name ) . '">';
 						$html .= '<span class="color-swatch" style="background-color: ' . esc_attr( $color ) . '"></span>';
 						if ( $show_count ) {
 							$html .= ' <span class="count">(' . esc_html( $term_count ) . ')</span>';
@@ -1955,14 +1958,14 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				case 'image':
-					$html .= '<div class="wishglut-filter-images">';
+					$html .= '<div class="shopglut-filter-images">';
 					foreach ( $terms as $term ) {
 						$term_id = is_object( $term ) ? $term->term_id : $term['term_id'];
 						$term_name = is_object( $term ) ? $term->name : $term['name'];
 						$term_count = is_object( $term ) ? $term->count : ( isset( $term['count'] ) ? $term['count'] : 0 );
 
 						$image_url = isset( $images[$term_id] ) ? $images[$term_id] : '';
-						$html .= '<span class="wishglut-filter-image" data-value="' . esc_attr( $term_id ) . '" title="' . esc_attr( $term_name ) . '">';
+						$html .= '<span class="shopglut-filter-image" data-value="' . esc_attr( $term_id ) . '" title="' . esc_attr( $term_name ) . '">';
 						if ( $image_url ) {
 							$html .= '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $term_name ) . '">';
 						} else {
@@ -1977,12 +1980,12 @@ if ( ! class_exists( 'AGWISHGLUT_preview' ) ) {
 					break;
 
 				default:
-					$html .= '<div class="wishglut-filter-list">';
+					$html .= '<div class="shopglut-filter-list">';
 					foreach ( $terms as $term ) {
 						$term_name = is_object( $term ) ? $term->name : $term['name'];
 						$term_count = is_object( $term ) ? $term->count : ( isset( $term['count'] ) ? $term['count'] : 0 );
 
-						$html .= '<span class="wishglut-filter-item">';
+						$html .= '<span class="shopglut-filter-item">';
 						$html .= esc_html( $term_name );
 						if ( $show_count ) {
 							$html .= ' <span class="count">(' . esc_html( $term_count ) . ')</span>';

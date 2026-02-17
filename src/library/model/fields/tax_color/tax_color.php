@@ -11,24 +11,24 @@ if ( ! class_exists( 'AGWISHGLUT_tax_color' ) ) {
 			$unique_modal_id = esc_attr( $this->unique . $this->field['id'] ); // Unique ID for each field instance
 
 			// Render main field with a button to open modal
-			echo '<div class="agwishglut-term-field">';
-			echo '<button type="button" class="button button-primary open-modal" data-modal-id="modal-' . esc_attr($unique_modal_id) . '">' . esc_html__( 'Select Color for Terms', 'wishglut' ) . '</button>';
+			echo '<div class="agshopglut-term-field">';
+			echo '<button type="button" class="button button-primary open-modal" data-modal-id="modal-' . esc_attr($unique_modal_id) . '">' . esc_html__( 'Select Color for Terms', 'shopglut' ) . '</button>';
 			echo '<input type="hidden" name="' . esc_attr( $this->field_name( '[product_option]' ) ) . '" value="' . esc_attr( $taxonomy ) . '" />';
 
-			echo '<div class="agwishglut-modal-overlay"></div>';
+			echo '<div class="agshopglut-modal-overlay"></div>';
 
 			// Modal structure with unique ID
-			echo '<div id="modal-' . esc_attr($unique_modal_id) . '" class="agwishglut-modal">';
+			echo '<div id="modal-' . esc_attr($unique_modal_id) . '" class="agshopglut-modal">';
 			echo '<div class="modal-content">';
 			echo '<span class="close" data-modal-id="modal-' . esc_attr($unique_modal_id) . '">&times;</span>';
-			echo '<h3>' . esc_html__( 'Add Colors for Terms', 'wishglut' ) . '</h3>';
+			echo '<h3>' . esc_html__( 'Add Colors for Terms', 'shopglut' ) . '</h3>';
 			echo '<div class="save_images_message success_message"></div>';
 
 			// Render terms with media buttons if the selected option is a valid taxonomy
 			if ( $this->is_valid_woocommerce_taxonomy( $taxonomy ) ) {
 				$this->render_terms_with_media_buttons( $taxonomy );
 			} else {
-				echo '<p>' . esc_html__( 'Invalid taxonomy selected.', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'Invalid taxonomy selected.', 'shopglut' ) . '</p>';
 			}
 
 			echo '</div>';
@@ -76,10 +76,10 @@ if ( ! class_exists( 'AGWISHGLUT_tax_color' ) ) {
 					echo '</div>';
 				}
 			} else {
-				echo '<p>' . esc_html__( 'No terms found for this taxonomy.', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'No terms found for this taxonomy.', 'shopglut' ) . '</p>';
 			}
 
-			echo '<input type="submit" id="save_filter_images" class="button button-primary" value="' . esc_html__( 'Save Colors', 'wishglut' ) . '">';
+			echo '<input type="submit" id="save_filter_images" class="button button-primary" value="' . esc_html__( 'Save Colors', 'shopglut' ) . '">';
 			echo '</div>';
 		}
 

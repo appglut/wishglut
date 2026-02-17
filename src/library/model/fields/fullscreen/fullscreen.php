@@ -38,7 +38,7 @@ if ( ! class_exists( 'AGWISHGLUT_fullscreen' ) ) {
 			<div class="back-to-menu">
 
 				<a id="layout-switch-fullscreen" class="button button-primary button-large">
-					<?php echo esc_html__( 'Switch to FullScreen', 'wishglut' ); ?>
+					<?php echo esc_html__( 'Switch to FullScreen', 'shopglut' ); ?>
 				</a>
 
 				<div class="clear"></div>

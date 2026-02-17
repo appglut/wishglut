@@ -139,13 +139,13 @@ if ( ! class_exists( 'AGWISHGLUT_select_comparison_display' ) ) {
 
 					// Get already selected options from other comparison layouts
 					global $wpdb;
-					$table_name = $wpdb->prefix . 'wishglut_comparison_layouts';
+					$table_name = $wpdb->prefix . 'shopglut_comparison_layouts';
 
 					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe admin page parameter check
 					$current_layout_id = isset( $_GET['layout_id'] ) ? absint( wp_unslash( $_GET['layout_id'] ) ) : 0;
 
 					// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table name variable
-					$all_layouts = $wpdb->get_results( "SELECT id, layout_settings FROM `{$wpdb->prefix}wishglut_comparison_layouts`" );
+					$all_layouts = $wpdb->get_results( "SELECT id, layout_settings FROM `{$wpdb->prefix}shopglut_comparison_layouts`" );
 
 					$used_options = array();
 					foreach ( $all_layouts as $layout ) {
@@ -236,7 +236,7 @@ if ( ! class_exists( 'AGWISHGLUT_select_comparison_display' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_attr( $this->field['empty_message'] ) : esc_html__( 'No data available.', 'shopglut' );
 
 				}
 

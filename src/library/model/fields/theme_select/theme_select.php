@@ -60,7 +60,7 @@ if ( ! class_exists( 'AGWISHGLUT_theme_select' ) ) {
 
 				} else {
 
-					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_html($this->field['empty_message']) : esc_html__( 'No data provided for this option type.', 'wishglut' );
+					echo ( ! empty( $this->field['empty_message'] ) ) ? esc_html($this->field['empty_message']) : esc_html__( 'No data provided for this option type.', 'shopglut' );
 
 				}
 			}

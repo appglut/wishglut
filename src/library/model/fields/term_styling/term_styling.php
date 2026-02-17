@@ -29,7 +29,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 				return null;
 			}
 
-			$table_name = \Wishglut\WishglutDatabase::table_product_swatches();
+			$table_name = \Shopglut\ShopGlutDatabase::table_product_swatches();
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 			$layout = $wpdb->get_row(
@@ -101,7 +101,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 			if ( ! $assigned_attribute ) {
 				echo '<div class="term-styling-no-attribute">';
-				echo '<p>' . esc_html__( 'No attribute assigned to this layout. Please assign an attribute from the Product Swatches page.', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'No attribute assigned to this layout. Please assign an attribute from the Product Swatches page.', 'shopglut' ) . '</p>';
 				echo '</div>';
 				echo wp_kses_post( $this->field_after() );
 				return;
@@ -111,7 +111,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 			if ( empty( $terms ) || is_wp_error( $terms ) ) {
 				echo '<div class="term-styling-empty">';
-				echo '<p>' . esc_html__( 'No terms found for this attribute.', 'wishglut' ) . '</p>';
+				echo '<p>' . esc_html__( 'No terms found for this attribute.', 'shopglut' ) . '</p>';
 				echo '</div>';
 				echo wp_kses_post( $this->field_after() );
 				return;
@@ -125,8 +125,8 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 			?>
 			<div class="term-styling-wrapper">
 				<div class="term-styling-header">
-					<h4><?php printf( esc_html__( 'Per-Term Styling for: %s', 'wishglut' ), esc_html( $attribute_label ) ); ?></h4>
-					<p class="description"><?php esc_html_e( 'Customize the appearance of each term button individually.', 'wishglut' ); ?></p>
+					<h4><?php printf( esc_html__( 'Per-Term Styling for: %s', 'shopglut' ), esc_html( $attribute_label ) ); ?></h4>
+					<p class="description"><?php esc_html_e( 'Customize the appearance of each term button individually.', 'shopglut' ); ?></p>
 				</div>
 
 				<div class="term-styling-accordion">
@@ -161,7 +161,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 							<div class="term-styling-content" style="display: <?php echo $is_first ? 'block' : 'none'; ?>;">
 								<div class="term-styling-preview">
-									<div class="term-preview-label"><?php esc_html_e( 'Preview:', 'wishglut' ); ?></div>
+									<div class="term-preview-label"><?php esc_html_e( 'Preview:', 'shopglut' ); ?></div>
 									<button class="term-preview-btn" style="
 										background-color: <?php echo esc_attr( $bg_color ); ?>;
 										color: <?php echo esc_attr( $text_color ); ?>;
@@ -179,24 +179,24 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 								<div class="term-styling-fields">
 									<!-- Colors Section -->
 									<div class="term-styling-section">
-										<h5><?php esc_html_e( 'Colors', 'wishglut' ); ?></h5>
+										<h5><?php esc_html_e( 'Colors', 'shopglut' ); ?></h5>
 										<div class="term-styling-row">
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Background', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Background', 'shopglut' ); ?></label>
 												<input type="text" name="<?php echo esc_attr( $field_name . '[bg_color]' ); ?>"
-													class="wishglut-color-picker" value="<?php echo esc_attr( $bg_color ); ?>"
+													class="shopglut-color-picker" value="<?php echo esc_attr( $bg_color ); ?>"
 													data-default-color="<?php echo esc_attr( $bg_color ); ?>">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Text', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Text', 'shopglut' ); ?></label>
 												<input type="text" name="<?php echo esc_attr( $field_name . '[text_color]' ); ?>"
-													class="wishglut-color-picker" value="<?php echo esc_attr( $text_color ); ?>"
+													class="shopglut-color-picker" value="<?php echo esc_attr( $text_color ); ?>"
 													data-default-color="<?php echo esc_attr( $text_color ); ?>">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Border', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Border', 'shopglut' ); ?></label>
 												<input type="text" name="<?php echo esc_attr( $field_name . '[border_color]' ); ?>"
-													class="wishglut-color-picker" value="<?php echo esc_attr( $border_color ); ?>"
+													class="shopglut-color-picker" value="<?php echo esc_attr( $border_color ); ?>"
 													data-default-color="<?php echo esc_attr( $border_color ); ?>">
 											</div>
 										</div>
@@ -204,15 +204,15 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 									<!-- Border Section -->
 									<div class="term-styling-section">
-										<h5><?php esc_html_e( 'Border', 'wishglut' ); ?></h5>
+										<h5><?php esc_html_e( 'Border', 'shopglut' ); ?></h5>
 										<div class="term-styling-row">
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Width (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Width (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[border_width]' ); ?>"
 													value="<?php echo esc_attr( $border_width ); ?>" min="0" max="10" step="1">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Radius (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Radius (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[border_radius]' ); ?>"
 													value="<?php echo esc_attr( $border_radius ); ?>" min="0" max="50" step="1">
 											</div>
@@ -221,15 +221,15 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 									<!-- Typography Section -->
 									<div class="term-styling-section">
-										<h5><?php esc_html_e( 'Typography', 'wishglut' ); ?></h5>
+										<h5><?php esc_html_e( 'Typography', 'shopglut' ); ?></h5>
 										<div class="term-styling-row">
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Font Size (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Font Size (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[font_size]' ); ?>"
 													value="<?php echo esc_attr( $font_size ); ?>" min="10" max="30" step="1">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Font Weight', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Font Weight', 'shopglut' ); ?></label>
 												<select name="<?php echo esc_attr( $field_name . '[font_weight]' ); ?>">
 													<?php
 													$weights = array( '300', '400', '500', '600', '700', '800', '900' );
@@ -245,27 +245,27 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 
 									<!-- Spacing Section -->
 									<div class="term-styling-section">
-										<h5><?php esc_html_e( 'Spacing', 'wishglut' ); ?></h5>
+										<h5><?php esc_html_e( 'Spacing', 'shopglut' ); ?></h5>
 										<div class="term-styling-row">
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Padding X (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Padding X (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[padding_x]' ); ?>"
 													value="<?php echo esc_attr( $padding_x ); ?>" min="0" max="50" step="1">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Padding Y (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Padding Y (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[padding_y]' ); ?>"
 													value="<?php echo esc_attr( $padding_y ); ?>" min="0" max="50" step="1">
 											</div>
 										</div>
 										<div class="term-styling-row">
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Min Width (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Min Width (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[min_width]' ); ?>"
 													value="<?php echo esc_attr( $min_width ); ?>" min="20" max="200" step="1">
 											</div>
 											<div class="term-styling-field">
-												<label><?php esc_html_e( 'Min Height (px)', 'wishglut' ); ?></label>
+												<label><?php esc_html_e( 'Min Height (px)', 'shopglut' ); ?></label>
 												<input type="number" name="<?php echo esc_attr( $field_name . '[min_height]' ); ?>"
 													value="<?php echo esc_attr( $min_height ); ?>" min="20" max="200" step="1">
 											</div>
@@ -409,7 +409,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 					min-width: 70px;
 				}
 
-				.wishglut-color-picker {
+				.shopglut-color-picker {
 					width: 50px !important;
 					height: 30px;
 				}
@@ -434,7 +434,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 			<script>
 				jQuery(document).ready(function($) {
 					// Color picker initialization
-					$('.wishglut-color-picker').wpColorPicker();
+					$('.shopglut-color-picker').wpColorPicker();
 
 					// Accordion toggle
 					$('.term-styling-header-bar').on('click', function() {
@@ -504,7 +504,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 					continue;
 				}
 
-				$selector = '.wishglut-swatch-button[data-value="' . esc_attr( $term_slug ) . '"]';
+				$selector = '.shopglut-swatch-button[data-value="' . esc_attr( $term_slug ) . '"]';
 				$styles = array();
 
 				if ( isset( $term_data['bg_color'] ) ) {
@@ -542,7 +542,7 @@ if ( ! class_exists( 'AGWISHGLUT_term_styling' ) ) {
 			}
 
 			if ( ! empty( $css ) ) {
-				echo '<style id="wishglut-term-styling-css">' . $css . '</style>';
+				echo '<style id="shopglut-term-styling-css">' . $css . '</style>';
 			}
 		}
 	}

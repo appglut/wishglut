@@ -36,7 +36,7 @@ if ( ! class_exists( 'AGWISHGLUT_gallery' ) ) {
 				$icon = ( ! empty( $gallery['icon'] ) ) ? 'agl--icon ' . $gallery['icon'] : 'agl-gallery-icon fas fa-images';
 
 				// Check for shop or archive editor
-				if ( 'wishglut_layouts' === $page && ( 'shop' === $editor || 'archive' === $editor ) ) {
+				if ( 'shopglut_layouts' === $page && ( 'shop' === $editor || 'archive' === $editor ) ) {
 					echo '<h4 class="agl-gallery-title">';
 					echo '<i class="' . esc_attr( $icon ) . '"></i>';
 					echo esc_html( $gallery['title'] );
@@ -44,7 +44,7 @@ if ( ! class_exists( 'AGWISHGLUT_gallery' ) ) {
 					echo '<div class="agl-gallery-content">';
 				}
 
-				if ( 'wishglut_enhancements' === $page && ( 'filters' === $editor) ) {
+				if ( 'shopglut_enhancements' === $page && ( 'filters' === $editor) ) {
 					$gallery_title = $gallery['title']; // Default fallback
 
 					// Try to get gallery-title from the nested value structure
@@ -88,16 +88,16 @@ if ( ! class_exists( 'AGWISHGLUT_gallery' ) ) {
 					// Handle different editor types
 					$show_gallery_title = false;
 
-					if ( 'wishglut_enhancements' === $page && 'filter' === $editor ) {
+					if ( 'shopglut_enhancements' === $page && 'filter' === $editor ) {
 						$show_gallery_title = true;
-					} elseif ( 'wishglut_layouts' === $page && in_array( $editor, array( 'single_product', 'cartpage', 'cartpage' ) ) ) {
+					} elseif ( 'shopglut_layouts' === $page && in_array( $editor, array( 'single_product', 'cartpage', 'cartpage' ) ) ) {
 						$show_gallery_title = true;
 					}
 
 					if ( $show_gallery_title ) {
 						echo '<h4 class="agl-gallery-title">';
 						echo '<i class="' . esc_attr( $icon ) . '"></i>';
-						echo isset( $field_value['gallery-title'] ) ? esc_html( $field_value['gallery-title'] ) : esc_html__( 'Title', 'wishglut' );
+						echo isset( $field_value['gallery-title'] ) ? esc_html( $field_value['gallery-title'] ) : esc_html__( 'Title', 'shopglut' );
 						echo '</h4>';
 						echo '<div class="agl-gallery-content">';
 					}

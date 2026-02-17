@@ -14,23 +14,23 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
         public function render() {
             echo wp_kses_post($this->field_before());
 
-            $is_pro_active = class_exists( 'Wishglut\WishlistPro\ProEmail' );
+            $is_pro_active = class_exists( 'Shopglut\WishlistPro\ProEmail' );
             ?>
 
-            <div class="agwishglut-email-template-manager">
+            <div class="agshopglut-email-template-manager">
                 <?php if ( $is_pro_active ) : ?>
                     <div class="template-manager-content">
                         <div class="template-actions">
-                            <h4><?php esc_html_e( 'Email Template Management', 'wishglut' ); ?></h4>
+                            <h4><?php esc_html_e( 'Email Template Management', 'shopglut' ); ?></h4>
                             <div class="action-buttons">
                                 <button type="button" class="button button-primary create-new-template">
-                                    <?php esc_html_e( 'Create New Template', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Create New Template', 'shopglut' ); ?>
                                 </button>
                                 <button type="button" class="button import-template">
-                                    <?php esc_html_e( 'Import Template', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Import Template', 'shopglut' ); ?>
                                 </button>
                                 <button type="button" class="button export-templates">
-                                    <?php esc_html_e( 'Export All Templates', 'wishglut' ); ?>
+                                    <?php esc_html_e( 'Export All Templates', 'shopglut' ); ?>
                                 </button>
                             </div>
                         </div>
@@ -40,47 +40,47 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                         </div>
                         
                         <div class="template-variables-reference">
-                            <h4><?php esc_html_e( 'Available Template Variables', 'wishglut' ); ?></h4>
+                            <h4><?php esc_html_e( 'Available Template Variables', 'shopglut' ); ?></h4>
                             <div class="variables-grid">
                                 <div class="variable-group">
-                                    <h5><?php esc_html_e( 'User Variables', 'wishglut' ); ?></h5>
+                                    <h5><?php esc_html_e( 'User Variables', 'shopglut' ); ?></h5>
                                     <ul>
-                                        <li><code>{{user_name}}</code> - <?php esc_html_e( 'User display name', 'wishglut' ); ?></li>
-                                        <li><code>{{user_email}}</code> - <?php esc_html_e( 'User email address', 'wishglut' ); ?></li>
-                                        <li><code>{{user_first_name}}</code> - <?php esc_html_e( 'User first name', 'wishglut' ); ?></li>
-                                        <li><code>{{user_last_name}}</code> - <?php esc_html_e( 'User last name', 'wishglut' ); ?></li>
+                                        <li><code>{{user_name}}</code> - <?php esc_html_e( 'User display name', 'shopglut' ); ?></li>
+                                        <li><code>{{user_email}}</code> - <?php esc_html_e( 'User email address', 'shopglut' ); ?></li>
+                                        <li><code>{{user_first_name}}</code> - <?php esc_html_e( 'User first name', 'shopglut' ); ?></li>
+                                        <li><code>{{user_last_name}}</code> - <?php esc_html_e( 'User last name', 'shopglut' ); ?></li>
                                     </ul>
                                 </div>
                                 <div class="variable-group">
-                                    <h5><?php esc_html_e( 'Site Variables', 'wishglut' ); ?></h5>
+                                    <h5><?php esc_html_e( 'Site Variables', 'shopglut' ); ?></h5>
                                     <ul>
-                                        <li><code>{{site_name}}</code> - <?php esc_html_e( 'Website name', 'wishglut' ); ?></li>
-                                        <li><code>{{site_url}}</code> - <?php esc_html_e( 'Website URL', 'wishglut' ); ?></li>
-                                        <li><code>{{current_date}}</code> - <?php esc_html_e( 'Current date', 'wishglut' ); ?></li>
+                                        <li><code>{{site_name}}</code> - <?php esc_html_e( 'Website name', 'shopglut' ); ?></li>
+                                        <li><code>{{site_url}}</code> - <?php esc_html_e( 'Website URL', 'shopglut' ); ?></li>
+                                        <li><code>{{current_date}}</code> - <?php esc_html_e( 'Current date', 'shopglut' ); ?></li>
                                     </ul>
                                 </div>
                                 <div class="variable-group">
-                                    <h5><?php esc_html_e( 'Product Variables', 'wishglut' ); ?></h5>
+                                    <h5><?php esc_html_e( 'Product Variables', 'shopglut' ); ?></h5>
                                     <ul>
-                                        <li><code>{{product_name}}</code> - <?php esc_html_e( 'Product name', 'wishglut' ); ?></li>
-                                        <li><code>{{product_price}}</code> - <?php esc_html_e( 'Product price', 'wishglut' ); ?></li>
-                                        <li><code>{{old_price}}</code> - <?php esc_html_e( 'Original price (for price drops)', 'wishglut' ); ?></li>
-                                        <li><code>{{new_price}}</code> - <?php esc_html_e( 'New price (for price drops)', 'wishglut' ); ?></li>
-                                        <li><code>{{product_url}}</code> - <?php esc_html_e( 'Product page URL', 'wishglut' ); ?></li>
+                                        <li><code>{{product_name}}</code> - <?php esc_html_e( 'Product name', 'shopglut' ); ?></li>
+                                        <li><code>{{product_price}}</code> - <?php esc_html_e( 'Product price', 'shopglut' ); ?></li>
+                                        <li><code>{{old_price}}</code> - <?php esc_html_e( 'Original price (for price drops)', 'shopglut' ); ?></li>
+                                        <li><code>{{new_price}}</code> - <?php esc_html_e( 'New price (for price drops)', 'shopglut' ); ?></li>
+                                        <li><code>{{product_url}}</code> - <?php esc_html_e( 'Product page URL', 'shopglut' ); ?></li>
                                     </ul>
                                 </div>
                                 <div class="variable-group">
-                                    <h5><?php esc_html_e( 'Wishlist Variables', 'wishglut' ); ?></h5>
+                                    <h5><?php esc_html_e( 'Wishlist Variables', 'shopglut' ); ?></h5>
                                     <ul>
-                                        <li><code>{{wishlist_count}}</code> - <?php esc_html_e( 'Number of items in wishlist', 'wishglut' ); ?></li>
-                                        <li><code>{{wishlist_url}}</code> - <?php esc_html_e( 'Wishlist page URL', 'wishglut' ); ?></li>
+                                        <li><code>{{wishlist_count}}</code> - <?php esc_html_e( 'Number of items in wishlist', 'shopglut' ); ?></li>
+                                        <li><code>{{wishlist_url}}</code> - <?php esc_html_e( 'Wishlist page URL', 'shopglut' ); ?></li>
                                     </ul>
                                 </div>
                                 <div class="variable-group">
-                                    <h5><?php esc_html_e( 'System Variables', 'wishglut' ); ?></h5>
+                                    <h5><?php esc_html_e( 'System Variables', 'shopglut' ); ?></h5>
                                     <ul>
-                                        <li><code>{{unsubscribe_url}}</code> - <?php esc_html_e( 'Unsubscribe link', 'wishglut' ); ?></li>
-                                        <li><code>{{tracking_pixel}}</code> - <?php esc_html_e( 'Email open tracking pixel', 'wishglut' ); ?></li>
+                                        <li><code>{{unsubscribe_url}}</code> - <?php esc_html_e( 'Unsubscribe link', 'shopglut' ); ?></li>
+                                        <li><code>{{tracking_pixel}}</code> - <?php esc_html_e( 'Email open tracking pixel', 'shopglut' ); ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -91,64 +91,64 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                     <div id="template-editor-modal" class="template-modal" style="display: none;">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 id="modal-title"><?php esc_html_e( 'Edit Template', 'wishglut' ); ?></h3>
+                                <h3 id="modal-title"><?php esc_html_e( 'Edit Template', 'shopglut' ); ?></h3>
                                 <button type="button" class="close-modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="template-form">
                                     <div class="form-row">
-                                        <label for="template-name"><?php esc_html_e( 'Template Name:', 'wishglut' ); ?></label>
+                                        <label for="template-name"><?php esc_html_e( 'Template Name:', 'shopglut' ); ?></label>
                                         <input type="text" id="template-name" style="width: 300px;" />
                                     </div>
                                     
                                     <div class="form-row">
-                                        <label for="template-type"><?php esc_html_e( 'Template Type:', 'wishglut' ); ?></label>
+                                        <label for="template-type"><?php esc_html_e( 'Template Type:', 'shopglut' ); ?></label>
                                         <select id="template-type">
-                                            <option value="price-drop"><?php esc_html_e( 'Price Drop Alert', 'wishglut' ); ?></option>
-                                            <option value="back-in-stock"><?php esc_html_e( 'Back in Stock', 'wishglut' ); ?></option>
-                                            <option value="wishlist-reminder"><?php esc_html_e( 'Wishlist Reminder', 'wishglut' ); ?></option>
-                                            <option value="promotional"><?php esc_html_e( 'Promotional', 'wishglut' ); ?></option>
-                                            <option value="social-update"><?php esc_html_e( 'Social Update', 'wishglut' ); ?></option>
-                                            <option value="custom"><?php esc_html_e( 'Custom', 'wishglut' ); ?></option>
+                                            <option value="price-drop"><?php esc_html_e( 'Price Drop Alert', 'shopglut' ); ?></option>
+                                            <option value="back-in-stock"><?php esc_html_e( 'Back in Stock', 'shopglut' ); ?></option>
+                                            <option value="wishlist-reminder"><?php esc_html_e( 'Wishlist Reminder', 'shopglut' ); ?></option>
+                                            <option value="promotional"><?php esc_html_e( 'Promotional', 'shopglut' ); ?></option>
+                                            <option value="social-update"><?php esc_html_e( 'Social Update', 'shopglut' ); ?></option>
+                                            <option value="custom"><?php esc_html_e( 'Custom', 'shopglut' ); ?></option>
                                         </select>
                                     </div>
                                     
                                     <div class="form-row">
-                                        <label for="template-subject"><?php esc_html_e( 'Default Subject:', 'wishglut' ); ?></label>
+                                        <label for="template-subject"><?php esc_html_e( 'Default Subject:', 'shopglut' ); ?></label>
                                         <input type="text" id="template-subject" style="width: 500px;" />
                                     </div>
                                     
                                     <div class="form-row">
-                                        <label for="template-content"><?php esc_html_e( 'Template Content:', 'wishglut' ); ?></label>
+                                        <label for="template-content"><?php esc_html_e( 'Template Content:', 'shopglut' ); ?></label>
                                         <div class="editor-toolbar">
-                                            <button type="button" class="editor-btn" data-tag="strong"><?php esc_html_e( 'Bold', 'wishglut' ); ?></button>
-                                            <button type="button" class="editor-btn" data-tag="em"><?php esc_html_e( 'Italic', 'wishglut' ); ?></button>
-                                            <button type="button" class="editor-btn" data-action="link"><?php esc_html_e( 'Link', 'wishglut' ); ?></button>
-                                            <button type="button" class="editor-btn" data-action="variable"><?php esc_html_e( 'Insert Variable', 'wishglut' ); ?></button>
+                                            <button type="button" class="editor-btn" data-tag="strong"><?php esc_html_e( 'Bold', 'shopglut' ); ?></button>
+                                            <button type="button" class="editor-btn" data-tag="em"><?php esc_html_e( 'Italic', 'shopglut' ); ?></button>
+                                            <button type="button" class="editor-btn" data-action="link"><?php esc_html_e( 'Link', 'shopglut' ); ?></button>
+                                            <button type="button" class="editor-btn" data-action="variable"><?php esc_html_e( 'Insert Variable', 'shopglut' ); ?></button>
                                         </div>
                                         <textarea id="template-content" rows="15" style="width: 100%; font-family: monospace;"></textarea>
-                                        <small class="description"><?php esc_html_e( 'Use HTML and template variables. Preview to see how it will look.', 'wishglut' ); ?></small>
+                                        <small class="description"><?php esc_html_e( 'Use HTML and template variables. Preview to see how it will look.', 'shopglut' ); ?></small>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="button preview-template"><?php esc_html_e( 'Preview', 'wishglut' ); ?></button>
-                                <button type="button" class="button button-primary save-template"><?php esc_html_e( 'Save Template', 'wishglut' ); ?></button>
-                                <button type="button" class="button cancel-edit"><?php esc_html_e( 'Cancel', 'wishglut' ); ?></button>
+                                <button type="button" class="button preview-template"><?php esc_html_e( 'Preview', 'shopglut' ); ?></button>
+                                <button type="button" class="button button-primary save-template"><?php esc_html_e( 'Save Template', 'shopglut' ); ?></button>
+                                <button type="button" class="button cancel-edit"><?php esc_html_e( 'Cancel', 'shopglut' ); ?></button>
                             </div>
                         </div>
                     </div>
                     
                 <?php else : ?>
                     <div class="pro-notice">
-                        <p><?php esc_html_e( 'Email template management is available in the Pro version.', 'wishglut' ); ?></p>
-                        <p><?php esc_html_e( 'You can still edit templates in the individual template sections below.', 'wishglut' ); ?></p>
+                        <p><?php esc_html_e( 'Email template management is available in the Pro version.', 'shopglut' ); ?></p>
+                        <p><?php esc_html_e( 'You can still edit templates in the individual template sections below.', 'shopglut' ); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
 
             <style>
-                .agwishglut-email-template-manager {
+                .agshopglut-email-template-manager {
                     background: #fff;
                     border: 1px solid #ddd;
                     border-radius: 4px;
@@ -329,7 +329,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                 // Create new template
                 $('.create-new-template').on('click', function() {
                     currentTemplateId = null;
-                    $('#modal-title').text('<?php echo esc_html__( "Create New Template", "wishglut" ); ?>');
+                    $('#modal-title').text('<?php echo esc_html__( "Create New Template", "shopglut" ); ?>');
                     $('#template-name, #template-subject, #template-content').val('');
                     $('#template-type').val('custom');
                     $('#template-editor-modal').show();
@@ -340,15 +340,15 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                     currentTemplateId = $(this).data('template-id');
                     var card = $(this).closest('.template-card');
                     
-                    $('#modal-title').text('<?php echo esc_html__( "Edit Template", "wishglut" ); ?>');
+                    $('#modal-title').text('<?php echo esc_html__( "Edit Template", "shopglut" ); ?>');
                     $('#template-name').val(card.find('h5').text());
                     $('#template-type').val($(this).data('template-type') || 'custom');
                     
                     // Load template data via AJAX
                     $.post(ajaxurl, {
-                        action: 'wishglut_get_template',
+                        action: 'shopglut_get_template',
                         template_id: currentTemplateId,
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                     }, function(response) {
                         if (response.success) {
                             $('#template-subject').val(response.data.subject || '');
@@ -385,7 +385,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                         textarea.value = text.substring(0, start) + newText + text.substring(end);
                         textarea.selectionStart = textarea.selectionEnd = start + newText.length;
                     } else if ($(this).data('action') === 'link') {
-                        var url = prompt('<?php echo esc_html__( "Enter URL:", "wishglut" ); ?>', 'http://');
+                        var url = prompt('<?php echo esc_html__( "Enter URL:", "shopglut" ); ?>', 'http://');
                         if (url) {
                             var linkText = selectedText || 'Link Text';
                             var newText = '<a href="' + url + '">' + linkText + '</a>';
@@ -402,7 +402,7 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                             '{{unsubscribe_url}}', '{{tracking_pixel}}'
                         ];
                         
-                        var variable = prompt('<?php echo esc_html__( "Choose variable:", "wishglut" ); ?>\n\n' + variables.join('\n'));
+                        var variable = prompt('<?php echo esc_html__( "Choose variable:", "shopglut" ); ?>\n\n' + variables.join('\n'));
                         if (variable && variables.includes(variable)) {
                             textarea.value = text.substring(0, start) + variable + text.substring(end);
                             textarea.selectionStart = textarea.selectionEnd = start + variable.length;
@@ -444,8 +444,8 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                 // Save template
                 $('.save-template').on('click', function() {
                     var templateData = {
-                        action: 'wishglut_save_template',
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>',
+                        action: 'shopglut_save_template',
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>',
                         template_id: currentTemplateId,
                         name: $('#template-name').val(),
                         type: $('#template-type').val(),
@@ -454,31 +454,31 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                     };
                     
                     if (!templateData.name || !templateData.content) {
-                        alert('<?php echo esc_html__( "Please fill in template name and content.", "wishglut" ); ?>');
+                        alert('<?php echo esc_html__( "Please fill in template name and content.", "shopglut" ); ?>');
                         return;
                     }
                     
                     var button = $(this);
-                    button.prop('disabled', true).text('<?php echo esc_html__( "Saving...", "wishglut" ); ?>');
+                    button.prop('disabled', true).text('<?php echo esc_html__( "Saving...", "shopglut" ); ?>');
                     
                     $.post(ajaxurl, templateData, function(response) {
                         if (response.success) {
-                            alert('<?php echo esc_html__( "Template saved successfully!", "wishglut" ); ?>');
+                            alert('<?php echo esc_html__( "Template saved successfully!", "shopglut" ); ?>');
                             $('#template-editor-modal').hide();
                             location.reload(); // Reload to show updated templates
                         } else {
-                            alert('<?php echo esc_html__( "Error saving template:", "wishglut" ); ?> ' + (response.data || '<?php echo esc_html__( "Unknown error", "wishglut" ); ?>'));
+                            alert('<?php echo esc_html__( "Error saving template:", "shopglut" ); ?> ' + (response.data || '<?php echo esc_html__( "Unknown error", "shopglut" ); ?>'));
                         }
-                        button.prop('disabled', false).text('<?php echo esc_html__( "Save Template", "wishglut" ); ?>');
+                        button.prop('disabled', false).text('<?php echo esc_html__( "Save Template", "shopglut" ); ?>');
                     }).fail(function() {
-                        alert('<?php echo esc_html__( "Network error occurred", "wishglut" ); ?>');
-                        button.prop('disabled', false).text('<?php echo esc_html__( "Save Template", "wishglut" ); ?>');
+                        alert('<?php echo esc_html__( "Network error occurred", "shopglut" ); ?>');
+                        button.prop('disabled', false).text('<?php echo esc_html__( "Save Template", "shopglut" ); ?>');
                     });
                 });
                 
                 // Delete template
                 $(document).on('click', '.delete-template', function() {
-                    if (!confirm('<?php echo esc_html__( "Are you sure you want to delete this template?", "wishglut" ); ?>')) {
+                    if (!confirm('<?php echo esc_html__( "Are you sure you want to delete this template?", "shopglut" ); ?>')) {
                         return;
                     }
                     
@@ -486,23 +486,23 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                     var card = $(this).closest('.template-card');
                     
                     $.post(ajaxurl, {
-                        action: 'wishglut_delete_template',
+                        action: 'shopglut_delete_template',
                         template_id: templateId,
-                        nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                        nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                     }, function(response) {
                         if (response.success) {
                             card.fadeOut(300, function() {
                                 $(this).remove();
                             });
                         } else {
-                            alert('<?php echo esc_html__( "Error deleting template:", "wishglut" ); ?> ' + response.data);
+                            alert('<?php echo esc_html__( "Error deleting template:", "shopglut" ); ?> ' + response.data);
                         }
                     });
                 });
                 
                 // Export templates
                 $('.export-templates').on('click', function() {
-                    window.location.href = ajaxurl + '?action=wishglut_export_templates&nonce=<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>';
+                    window.location.href = ajaxurl + '?action=shopglut_export_templates&nonce=<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>';
                 });
                 
                 // Import template
@@ -519,19 +519,19 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                                 var templates = JSON.parse(e.target.result);
                                 
                                 $.post(ajaxurl, {
-                                    action: 'wishglut_import_templates',
+                                    action: 'shopglut_import_templates',
                                     templates: templates,
-                                    nonce: '<?php echo esc_attr( wp_create_nonce( "wishglut_admin_nonce" ) ); ?>'
+                                    nonce: '<?php echo esc_attr( wp_create_nonce( "shopglut_admin_nonce" ) ); ?>'
                                 }, function(response) {
                                     if (response.success) {
-                                        alert('<?php echo esc_html__( "Templates imported successfully!", "wishglut" ); ?>');
+                                        alert('<?php echo esc_html__( "Templates imported successfully!", "shopglut" ); ?>');
                                         location.reload();
                                     } else {
-                                        alert('<?php echo esc_html__( "Error importing templates:", "wishglut" ); ?> ' + response.data);
+                                        alert('<?php echo esc_html__( "Error importing templates:", "shopglut" ); ?> ' + response.data);
                                     }
                                 });
                             } catch (e) {
-                                alert('<?php echo esc_html__( "Invalid template file format", "wishglut" ); ?>');
+                                alert('<?php echo esc_html__( "Invalid template file format", "shopglut" ); ?>');
                             }
                         };
                         reader.readAsText(file);
@@ -548,33 +548,33 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
         
         private function render_template_cards() {
             // Get saved templates from options or database
-            $options = get_option( 'agwishglut_wishlist_options', [] );
+            $options = get_option( 'agshopglut_wishlist_options', [] );
             
             $default_templates = [
                 'price-drop' => [
-                    'name' => __( 'Price Drop Alert', 'wishglut' ),
+                    'name' => __( 'Price Drop Alert', 'shopglut' ),
                     'type' => 'price-drop',
-                    'preview' => __( 'Hi {{user_name}}, Great news! The price has dropped on {{product_name}}...', 'wishglut' )
+                    'preview' => __( 'Hi {{user_name}}, Great news! The price has dropped on {{product_name}}...', 'shopglut' )
                 ],
                 'back-in-stock' => [
-                    'name' => __( 'Back in Stock', 'wishglut' ),
+                    'name' => __( 'Back in Stock', 'shopglut' ),
                     'type' => 'back-in-stock',
-                    'preview' => __( 'Hi {{user_name}}, Good news! {{product_name}} is back in stock...', 'wishglut' )
+                    'preview' => __( 'Hi {{user_name}}, Good news! {{product_name}} is back in stock...', 'shopglut' )
                 ],
                 'wishlist-reminder' => [
-                    'name' => __( 'Wishlist Reminder', 'wishglut' ),
+                    'name' => __( 'Wishlist Reminder', 'shopglut' ),
                     'type' => 'wishlist-reminder',
-                    'preview' => __( 'Hi {{user_name}}, You have {{wishlist_count}} items waiting for you...', 'wishglut' )
+                    'preview' => __( 'Hi {{user_name}}, You have {{wishlist_count}} items waiting for you...', 'shopglut' )
                 ],
                 'promotional' => [
-                    'name' => __( 'Promotional Email', 'wishglut' ),
+                    'name' => __( 'Promotional Email', 'shopglut' ),
                     'type' => 'promotional',
-                    'preview' => __( 'Hi {{user_name}}, We have a special offer just for you...', 'wishglut' )
+                    'preview' => __( 'Hi {{user_name}}, We have a special offer just for you...', 'shopglut' )
                 ],
                 'social-update' => [
-                    'name' => __( 'Social Update', 'wishglut' ),
+                    'name' => __( 'Social Update', 'shopglut' ),
                     'type' => 'social-update',
-                    'preview' => __( 'Hi {{user_name}}, There\'s an update on your social wishlist...', 'wishglut' )
+                    'preview' => __( 'Hi {{user_name}}, There\'s an update on your social wishlist...', 'shopglut' )
                 ]
             ];
             
@@ -590,13 +590,13 @@ if ( ! class_exists( 'AGWISHGLUT_emailTemplateManager' ) ) {
                     </div>
                     <div class="template-actions-row">
                         <button type="button" class="button edit-template" data-template-id="<?php echo esc_attr( $template_id ); ?>" data-template-type="<?php echo esc_attr( $template['type'] ); ?>">
-                            <?php echo esc_html__( 'Edit', 'wishglut' ); ?>
+                            <?php echo esc_html__( 'Edit', 'shopglut' ); ?>
                         </button>
                         <button type="button" class="button duplicate-template" data-template-id="<?php echo esc_attr( $template_id ); ?>">
-                            <?php echo esc_html__( 'Duplicate', 'wishglut' ); ?>
+                            <?php echo esc_html__( 'Duplicate', 'shopglut' ); ?>
                         </button>
                         <button type="button" class="button preview-template-card" data-template-id="<?php echo esc_attr( $template_id ); ?>">
-                            <?php echo esc_html__( 'Preview', 'wishglut' ); ?>
+                            <?php echo esc_html__( 'Preview', 'shopglut' ); ?>
                         </button>
                     </div>
                 </div>

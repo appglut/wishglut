@@ -11,13 +11,13 @@
  *
  */
 (function ($) {
-  function AGWISHGLUTAjaxChosen(element, options) {
+  function AGSHOPGLUTAjaxChosen(element, options) {
     this.element = $(element);
     this.options = options;
     this.init();
   }
 
-  AGWISHGLUTAjaxChosen.prototype.init = function () {
+  AGSHOPGLUTAjaxChosen.prototype.init = function () {
     this.element.chosen(this.options);
     this.container = this.element.next(".chosen-container");
     this.search_field = this.container.find(".chosen-search-input");
@@ -27,7 +27,7 @@
     this.events();
   };
 
-  AGWISHGLUTAjaxChosen.prototype.events = function () {
+  AGSHOPGLUTAjaxChosen.prototype.events = function () {
     var _this = this;
 
     this.search_field.on("compositionstart", function () {
@@ -48,14 +48,14 @@
     });
   };
 
-  AGWISHGLUTAjaxChosen.prototype.search_field_focused = function () {
+  AGSHOPGLUTAjaxChosen.prototype.search_field_focused = function () {
     this.search_welcome_message();
     if (this.options.min_length === 0 && this.search_field.val().length === 0) {
       this.update_list();
     }
   };
 
-  AGWISHGLUTAjaxChosen.prototype.search_welcome_message = function () {
+  AGSHOPGLUTAjaxChosen.prototype.search_welcome_message = function () {
     var value = $.trim(this.search_field.val());
     var results = this.container.find(".chosen-results");
 
@@ -68,7 +68,7 @@
     }
   };
 
-  AGWISHGLUTAjaxChosen.prototype.update_list = function () {
+  AGSHOPGLUTAjaxChosen.prototype.update_list = function () {
     var _this = this;
 
     this.search_welcome_message();
@@ -117,7 +117,7 @@
     }, this.options.type_delay);
   };
 
-  AGWISHGLUTAjaxChosen.prototype.show_results = function (items) {
+  AGSHOPGLUTAjaxChosen.prototype.show_results = function (items) {
     var _this = this;
 
     if (this.is_typing || items === null) {
@@ -157,7 +157,7 @@
       var $hidden_select = this.element.parent().find(".agl-hide-select");
       var $hidden_value = $hidden_select.val() || [];
 
-      this.element.AGWISHGLUTChosenOrder($hidden_value, true);
+      this.element.AGSHOPGLUTChosenOrder($hidden_value, true);
       this.search_field.css("width", width_before_trigger);
     }
 
@@ -168,9 +168,9 @@
     }
   };
 
-  $.fn.AGWISHGLUTAjaxChosen = function (chosenOptions) {
+  $.fn.AGSHOPGLUTAjaxChosen = function (chosenOptions) {
     return this.each(function () {
-      new AGWISHGLUTAjaxChosen(this, chosenOptions);
+      new AGSHOPGLUTAjaxChosen(this, chosenOptions);
     });
   };
 })(jQuery); // Chosen Order v1.2.1
@@ -179,7 +179,7 @@
 // Copyright (c) 2013 - Tristan Jahier, http://tristan-jahier.fr
 (function () {
   var $,
-    AGWISHGLUTAbstractChosenOrder,
+    AGSHOPGLUTAbstractChosenOrder,
     _ref,
     __indexOf =
       [].indexOf ||
@@ -203,14 +203,14 @@
       return child;
     };
 
-  AGWISHGLUTAbstractChosenOrder = (function () {
-    function AGWISHGLUTAbstractChosenOrder() {}
+  AGSHOPGLUTAbstractChosenOrder = (function () {
+    function AGSHOPGLUTAbstractChosenOrder() {}
 
-    AGWISHGLUTAbstractChosenOrder.insertAt = function (node, index, parentNode) {
+    AGSHOPGLUTAbstractChosenOrder.insertAt = function (node, index, parentNode) {
       return parentNode.insertBefore(node, parentNode.children[index]);
     };
 
-    AGWISHGLUTAbstractChosenOrder.getFlattenedOptionsAndGroups = function (select) {
+    AGSHOPGLUTAbstractChosenOrder.getFlattenedOptionsAndGroups = function (select) {
       var flattened_options, opt, options, sub_opt, sub_options, _i, _j, _len, _len1;
       options = Array.prototype.filter.call(select.childNodes, function (o) {
         var _ref;
@@ -233,11 +233,11 @@
       return flattened_options;
     };
 
-    AGWISHGLUTAbstractChosenOrder.isValidMultipleSelectElement = function (element) {
+    AGSHOPGLUTAbstractChosenOrder.isValidMultipleSelectElement = function (element) {
       return element !== null && typeof element !== "undefined" && element.nodeName === "SELECT" && element.multiple;
     };
 
-    AGWISHGLUTAbstractChosenOrder.getChosenUIContainer = function (select) {
+    AGSHOPGLUTAbstractChosenOrder.getChosenUIContainer = function (select) {
       if (select.id !== "") {
         return document.getElementById(select.id.replace(/-/g, "_") + "_chosen");
       } else {
@@ -245,11 +245,11 @@
       }
     };
 
-    AGWISHGLUTAbstractChosenOrder.isChosenified = function (select) {
+    AGSHOPGLUTAbstractChosenOrder.isChosenified = function (select) {
       return this.getChosenUIContainer(select) != null;
     };
 
-    AGWISHGLUTAbstractChosenOrder.forceSelection = function (select, selection) {
+    AGSHOPGLUTAbstractChosenOrder.forceSelection = function (select, selection) {
       var i, opt, options, _ref;
       options = this.getFlattenedOptionsAndGroups(select);
       i = 0;
@@ -267,7 +267,7 @@
       return this.triggerEvent(select, "chosen:updated");
     };
 
-    AGWISHGLUTAbstractChosenOrder.AGWISHGLUTChosenOrder = function (select, order, force) {
+    AGSHOPGLUTAbstractChosenOrder.AGSHOPGLUTChosenOrder = function (select, order, force) {
       var chosen_choices,
         chosen_options,
         chosen_ui,
@@ -327,32 +327,32 @@
       }
     };
 
-    return AGWISHGLUTAbstractChosenOrder;
+    return AGSHOPGLUTAbstractChosenOrder;
   })();
 
   $ = jQuery;
 
   $.fn.extend({
-    AGWISHGLUTChosenOrder: function (order, force) {
-      return _AGWISHGLUTChosenOrder.AGWISHGLUTChosenOrder(this, order, force);
+    AGSHOPGLUTChosenOrder: function (order, force) {
+      return _AGSHOPGLUTChosenOrder.AGSHOPGLUTChosenOrder(this, order, force);
     },
   });
 
-  this._AGWISHGLUTChosenOrder = (function (_super) {
-    __extends(_AGWISHGLUTChosenOrder, _super);
+  this._AGSHOPGLUTChosenOrder = (function (_super) {
+    __extends(_AGSHOPGLUTChosenOrder, _super);
 
-    function _AGWISHGLUTChosenOrder() {
-      _ref = _AGWISHGLUTChosenOrder.__super__.constructor.apply(this, arguments);
+    function _AGSHOPGLUTChosenOrder() {
+      _ref = _AGSHOPGLUTChosenOrder.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
-    _AGWISHGLUTChosenOrder.relAttributeName = "data-option-array-index";
+    _AGSHOPGLUTChosenOrder.relAttributeName = "data-option-array-index";
 
-    _AGWISHGLUTChosenOrder.isjQueryObject = function (obj) {
+    _AGSHOPGLUTChosenOrder.isjQueryObject = function (obj) {
       return typeof jQuery !== "undefined" && jQuery !== null && obj instanceof jQuery;
     };
 
-    _AGWISHGLUTChosenOrder.getDOMElement = function (element) {
+    _AGSHOPGLUTChosenOrder.getDOMElement = function (element) {
       if (this.isjQueryObject(element)) {
         return element.get(0);
       } else {
@@ -360,7 +360,7 @@
       }
     };
 
-    _AGWISHGLUTChosenOrder.searchChosenUIContainer = function (element) {
+    _AGSHOPGLUTChosenOrder.searchChosenUIContainer = function (element) {
       if ($(element).data("chosen") != null) {
         return $(element).data("chosen").container[0];
       } else {
@@ -368,12 +368,12 @@
       }
     };
 
-    _AGWISHGLUTChosenOrder.triggerEvent = function (target, event_name) {
+    _AGSHOPGLUTChosenOrder.triggerEvent = function (target, event_name) {
       return $(target).trigger(event_name);
     };
 
-    return _AGWISHGLUTChosenOrder;
-  })(AGWISHGLUTAbstractChosenOrder);
+    return _AGSHOPGLUTChosenOrder;
+  })(AGSHOPGLUTAbstractChosenOrder);
 }).call(this);
 (function () {
   var $,
@@ -2221,8 +2221,8 @@
   //
 
   if (typeof $.fn !== "undefined") {
-    $.fn.serializeObjectAGWISHGLUT = FormSerializer.serializeObject;
-    $.fn.serializeJSONAGWISHGLUT = FormSerializer.serializeJSON;
+    $.fn.serializeObjectAGSHOPGLUT = FormSerializer.serializeObject;
+    $.fn.serializeJSONAGSHOPGLUT = FormSerializer.serializeJSON;
   }
 
   exports.FormSerializer = FormSerializer;

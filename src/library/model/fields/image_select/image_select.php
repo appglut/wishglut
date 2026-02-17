@@ -30,7 +30,7 @@ if ( ! class_exists( 'AGWISHGLUT_image_select' ) ) {
 
             if ( ! empty( $args['options'] ) ) {
 
-                echo '<div class="agl-siblings wpwishglutpro--image-group" data-multiple="' . esc_attr($args['multiple']) . '">';
+                echo '<div class="agl-siblings wpshopglutpro--image-group" data-multiple="' . esc_attr($args['multiple']) . '">';
 
                 $num = 1;
 

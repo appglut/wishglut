@@ -27,8 +27,8 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 
 			$default_designs = array(
 				'vertical' => array(
-					'title' => __('Vertical Layout', 'wishglut'),
-					'description' => __('Stacked radio buttons vertically', 'wishglut'),
+					'title' => __('Vertical Layout', 'shopglut'),
+					'description' => __('Stacked radio buttons vertically', 'shopglut'),
 					'demo' => '<div class="radio-vertical">
 						<label><input type="radio" name="demo-vertical" checked> Option A</label>
 						<label><input type="radio" name="demo-vertical"> Option B</label>
@@ -36,8 +36,8 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 					</div>'
 				),
 				'horizontal' => array(
-					'title' => __('Horizontal Layout', 'wishglut'),
-					'description' => __('Display radio buttons inline', 'wishglut'),
+					'title' => __('Horizontal Layout', 'shopglut'),
+					'description' => __('Display radio buttons inline', 'shopglut'),
 					'demo' => '<div class="radio-horizontal">
 						<label><input type="radio" name="demo-horizontal" checked> Option A</label>
 						<label><input type="radio" name="demo-horizontal"> Option B</label>
@@ -50,18 +50,18 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 			$current_value = $this->value ?? 'vertical';
 
 			?>
-			<div class="wishglut-radio-design-selector">
+			<div class="shopglut-radio-design-selector">
 				<style>
-				.wishglut-radio-design-selector {
+				.shopglut-radio-design-selector {
 					width: 100%;
 				}
-				.wishglut-design-options {
+				.shopglut-design-options {
 					display: flex;
 					gap: 15px;
 					flex-wrap: wrap;
 					margin-top: 10px;
 				}
-				.wishglut-design-option {
+				.shopglut-design-option {
 					border: 2px solid #e0e0e0;
 					border-radius: 8px;
 					padding: 15px;
@@ -72,16 +72,16 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 					background: white;
 					position: relative;
 				}
-				.wishglut-design-option:hover {
+				.shopglut-design-option:hover {
 					border-color: #0073aa;
 					box-shadow: 0 4px 12px rgba(0,115,170,0.15);
 					transform: translateY(-2px);
 				}
-				.wishglut-design-option.selected {
+				.shopglut-design-option.selected {
 					border-color: #0073aa;
 					background-color: #f7fcff;
 				}
-				.wishglut-design-option.selected::after {
+				.shopglut-design-option.selected::after {
 					content: '✓';
 					position: absolute;
 					top: 8px;
@@ -145,9 +145,9 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 				}
 				</style>
 
-				<div class="wishglut-design-options">
+				<div class="shopglut-design-options">
 					<?php foreach ( $designs as $design_key => $design ): ?>
-						<div class="wishglut-design-option <?php echo ($current_value === $design_key) ? 'selected' : ''; ?>"
+						<div class="shopglut-design-option <?php echo ($current_value === $design_key) ? 'selected' : ''; ?>"
 							 data-design="<?php echo esc_attr( $design_key ); ?>">
 							<div class="design-title"><?php echo esc_html( $design['title'] ); ?></div>
 							<div class="design-demo">
@@ -167,13 +167,13 @@ if ( ! class_exists( 'AGWISHGLUT_radio_design_selector' ) ) {
 				// Use jQuery for better compatibility with WordPress admin
 				jQuery(document).ready(function($) {
 					// Handle click on design options
-					$('.wishglut-radio-design-selector .wishglut-design-option').on('click', function() {
+					$('.shopglut-radio-design-selector .shopglut-design-option').on('click', function() {
 						var $this = $(this);
 						var design = $this.data('design');
-						var $container = $this.closest('.wishglut-radio-design-selector');
+						var $container = $this.closest('.shopglut-radio-design-selector');
 
 						// Remove selected class from all options in this container
-						$container.find('.wishglut-design-option').removeClass('selected');
+						$container.find('.shopglut-design-option').removeClass('selected');
 
 						// Add selected class to clicked option
 						$this.addClass('selected');

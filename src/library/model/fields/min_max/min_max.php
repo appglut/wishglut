@@ -31,12 +31,12 @@ if ( ! class_exists( 'AGWISHGLUT_min_max' ) ) {
 			echo '<div class="agl--min_max">';
 
 			// Min Input
-			echo '<label for="min_value">' . esc_html__( 'Min:', 'wishglut' ) . '</label>';
+			echo '<label for="min_value">' . esc_html__( 'Min:', 'shopglut' ) . '</label>';
 			echo '<input type="number" name="' . esc_attr( $this->field_name( '[min]' ) ) . '" value="' . esc_attr( $min_value ) . '"';
 			echo wp_kses_post( $this->field_attributes( array( ' class' => 'agl-input-number' ) ) ) . ' step="any" />';
 
 			// Max Input
-			echo '<label for="max_value">' . esc_html__( 'Max:', 'wishglut' ) . '</label>';
+			echo '<label for="max_value">' . esc_html__( 'Max:', 'shopglut' ) . '</label>';
 			echo '<input type="number" name="' . esc_attr( $this->field_name( '[max]' ) ) . '" value="' . esc_attr( $max_value ) . '"';
 			echo wp_kses_post( $this->field_attributes( array( ' class' => 'agl-input-number' ) ) ) . ' step="any" />';
 

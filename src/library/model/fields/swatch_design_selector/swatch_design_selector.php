@@ -34,23 +34,23 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_design_selector' ) ) {
 			$all_designs = $this->get_all_designs();
 
 			?>
-			<div class="wishglut-swatch-design-selector">
+			<div class="shopglut-swatch-design-selector">
 				<style>
-				.wishglut-swatch-design-selector {
+				.shopglut-swatch-design-selector {
 					width: 100%;
 				}
-				.wishglut-swatch-design-options {
+				.shopglut-swatch-design-options {
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
 					gap: 15px;
 					margin-top: 15px;
 				}
 				@media (max-width: 768px) {
-					.wishglut-swatch-design-options {
+					.shopglut-swatch-design-options {
 						grid-template-columns: 1fr;
 					}
 				}
-				.wishglut-swatch-design-option {
+				.shopglut-swatch-design-option {
 					border: 2px solid #e0e0e0;
 					border-radius: 8px;
 					padding: 12px;
@@ -60,16 +60,16 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_design_selector' ) ) {
 					position: relative;
 					min-height: 130px;
 				}
-				.wishglut-swatch-design-option:hover {
+				.shopglut-swatch-design-option:hover {
 					border-color: #0073aa;
 					box-shadow: 0 2px 8px rgba(0,115,170,0.15);
 					transform: translateY(-1px);
 				}
-				.wishglut-swatch-design-option.selected {
+				.shopglut-swatch-design-option.selected {
 					border-color: #0073aa;
 					background-color: #f0f7ff;
 				}
-				.wishglut-swatch-design-option.selected::after {
+				.shopglut-swatch-design-option.selected::after {
 					content: '✓';
 					position: absolute;
 					top: 6px;
@@ -408,9 +408,9 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_design_selector' ) ) {
 				}
 				</style>
 
-				<div class="wishglut-swatch-design-options">
+				<div class="shopglut-swatch-design-options">
 					<?php foreach ( $all_designs as $design_key => $design ): ?>
-						<div class="wishglut-swatch-design-option <?php echo ( $current_value === $design_key ) ? 'selected' : ''; ?>"
+						<div class="shopglut-swatch-design-option <?php echo ( $current_value === $design_key ) ? 'selected' : ''; ?>"
 							 data-design="<?php echo esc_attr( $design_key ); ?>">
 							<div class="design-title">
 								<?php echo esc_html( $design['title'] ); ?>
@@ -434,12 +434,12 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_design_selector' ) ) {
 
 				<script>
 				jQuery(document).ready(function($) {
-					$('.wishglut-swatch-design-selector .wishglut-swatch-design-option').on('click', function() {
+					$('.shopglut-swatch-design-selector .shopglut-swatch-design-option').on('click', function() {
 						var $this = $(this);
 						var design = $this.data('design');
-						var $container = $this.closest('.wishglut-swatch-design-selector');
+						var $container = $this.closest('.shopglut-swatch-design-selector');
 
-						$container.find('.wishglut-swatch-design-option').removeClass('selected');
+						$container.find('.shopglut-swatch-design-option').removeClass('selected');
 						$this.addClass('selected');
 
 						var $input = $container.find('input[type="hidden"]');
@@ -464,184 +464,184 @@ if ( ! class_exists( 'AGWISHGLUT_swatch_design_selector' ) ) {
 			return [
 				// FREE DESIGNS (1-8)
 				'dropdown' => [
-					'title' => __( 'Dropdown', 'wishglut' ),
-					'description' => __( 'Classic dropdown select', 'wishglut' ),
+					'title' => __( 'Dropdown', 'shopglut' ),
+					'description' => __( 'Classic dropdown select', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<select style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px;"><option>Select Size</option><option selected>Small</option><option>Medium</option><option>Large</option></select>',
 				],
 				'button_grid' => [
-					'title' => __( 'Button Grid', 'wishglut' ),
-					'description' => __( 'Grid of clickable buttons', 'wishglut' ),
+					'title' => __( 'Button Grid', 'shopglut' ),
+					'description' => __( 'Grid of clickable buttons', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;"><span style="padding:8px;border:1px solid #ddd;text-align:center;border-radius:4px;">XS</span><span style="padding:8px;background:#667eea;color:white;text-align:center;border-radius:4px;">S</span><span style="padding:8px;border:1px solid #ddd;text-align:center;border-radius:4px;">M</span></div>',
 				],
 				'color_swatches' => [
-					'title' => __( 'Color Swatches', 'wishglut' ),
-					'description' => __( 'Circular color pickers', 'wishglut' ),
+					'title' => __( 'Color Swatches', 'shopglut' ),
+					'description' => __( 'Circular color pickers', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:flex;gap:8px;"><span style="width:30px;height:30px;border-radius:50%;background:#ff6b6b;border:2px solid #333;box-shadow:0 0 0 2px white;"></span><span style="width:30px;height:30px;border-radius:50%;background:#4ecdc4;"></span><span style="width:30px;height:30px;border-radius:50%;background:#45b7d1;"></span></div>',
 				],
 				'radio_cards' => [
-					'title' => __( 'Radio Cards', 'wishglut' ),
-					'description' => __( 'Card-style radio buttons', 'wishglut' ),
+					'title' => __( 'Radio Cards', 'shopglut' ),
+					'description' => __( 'Card-style radio buttons', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:flex;flex-direction:column;gap:5px;"><span style="padding:8px;border:1px solid #ddd;border-radius:4px;background:#667eea;color:white;">● Cotton</span><span style="padding:8px;border:1px solid #ddd;border-radius:4px;">○ Polyester</span></div>',
 				],
 				'image_thumbnails' => [
-					'title' => __( 'Image Thumbnails', 'wishglut' ),
-					'description' => __( 'Grid of image thumbnails', 'wishglut' ),
+					'title' => __( 'Image Thumbnails', 'shopglut' ),
+					'description' => __( 'Grid of image thumbnails', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;"><span style="aspect-ratio:1;border:2px solid #333;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">A</span><span style="aspect-ratio:1;border:1px solid #ddd;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">B</span><span style="aspect-ratio:1;border:1px solid #ddd;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">C</span></div>',
 				],
 				'pill_buttons' => [
-					'title' => __( 'Pill Buttons', 'wishglut' ),
-					'description' => __( 'Rounded pill-shaped buttons', 'wishglut' ),
+					'title' => __( 'Pill Buttons', 'shopglut' ),
+					'description' => __( 'Rounded pill-shaped buttons', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:flex;gap:5px;"><span style="padding:6px 12px;border:1px solid #ddd;border-radius:15px;font-size:12px;">Small</span><span style="padding:6px 12px;background:#667eea;color:white;border-radius:15px;font-size:12px;">Medium</span><span style="padding:6px 12px;border:1px solid #ddd;border-radius:15px;font-size:12px;">Large</span></div>',
 				],
 				'box_selection' => [
-					'title' => __( 'Box Selection', 'wishglut' ),
-					'description' => __( 'Boxed items with icons', 'wishglut' ),
+					'title' => __( 'Box Selection', 'shopglut' ),
+					'description' => __( 'Boxed items with icons', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;"><span style="border:1px solid #ddd;border-radius:6px;padding:6px;text-align:center;background:#f8f9ff;border-color:#667eea;"><span style="font-size:18px;">📦</span><br><span style="font-size:10px;font-weight:600;">Standard</span></span><span style="border:1px solid #ddd;border-radius:6px;padding:6px;text-align:center;"><span style="font-size:18px;">🚀</span><br><span style="font-size:10px;font-weight:600;">Express</span></span></div>',
 				],
 				'toggle_switches' => [
-					'title' => __( 'Toggle Switches', 'wishglut' ),
-					'description' => __( 'On/off toggle switches', 'wishglut' ),
+					'title' => __( 'Toggle Switches', 'shopglut' ),
+					'description' => __( 'On/off toggle switches', 'shopglut' ),
 					'type' => 'free',
 					'preview' => '<div style="display:flex;flex-direction:column;gap:8px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:11px;">Gift Wrap</span><span style="width:30px;height:15px;background:#667eea;border-radius:10px;position:relative;"><span style="width:11px;height:11px;background:white;border-radius:50%;position:absolute;top:2px;right:2px;"></span></span></div><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:11px;">Express</span><span style="width:30px;height:15px;background:#ddd;border-radius:10px;position:relative;"><span style="width:11px;height:11px;background:white;border-radius:50%;position:absolute;top:2px;left:2px;"></span></span></div></div>',
 				],
 
 				// PRO DESIGNS (9-30)
 				'checkbox_grid' => [
-					'title' => __( 'Checkbox Grid', 'wishglut' ),
-					'description' => __( 'Grid with checkboxes', 'wishglut' ),
+					'title' => __( 'Checkbox Grid', 'shopglut' ),
+					'description' => __( 'Grid with checkboxes', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;"><span style="display:flex;align-items:center;gap:5px;padding:6px;border:1px solid #ddd;border-radius:6px;background:#667eea;color:white;"><span style="width:14px;height:14px;background:white;display:flex;align-items:center;justify-content:center;font-size:10px;">✓</span><span style="font-size:11px;">Shipping</span></span><span style="display:flex;align-items:center;gap:5px;padding:6px;border:1px solid #ddd;border-radius:6px;"><span style="width:14px;height:14px;border:1px solid #ddd;"></span><span style="font-size:11px;">Gift Wrap</span></span></div>',
 				],
 				'star_rating' => [
-					'title' => __( 'Star Rating', 'wishglut' ),
-					'description' => __( 'Star-based selection', 'wishglut' ),
+					'title' => __( 'Star Rating', 'shopglut' ),
+					'description' => __( 'Star-based selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;flex-direction:column;gap:5px;"><span style="padding:6px;border:1px solid #ddd;border-radius:6px;display:flex;align-items:center;gap:5px;"><span style="color:#ffc107;font-size:12px;">★★★★★</span><span style="font-size:11px;">Premium</span></span><span style="padding:6px;border:1px solid #667eea;border-radius:6px;background:#f8f9ff;display:flex;align-items:center;gap:5px;"><span style="color:#ffc107;font-size:12px;">★★★★☆</span><span style="font-size:11px;">Standard</span></span></div>',
 				],
 				'icon_buttons' => [
-					'title' => __( 'Icon Buttons', 'wishglut' ),
-					'description' => __( 'Buttons with icons', 'wishglut' ),
+					'title' => __( 'Icon Buttons', 'shopglut' ),
+					'description' => __( 'Buttons with icons', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;"><span style="padding:8px;border:1px solid #ddd;border-radius:6px;text-align:center;background:#667eea;color:white;"><span style="font-size:16px;">🚚</span><br><span style="font-size:10px;">Standard</span></span><span style="padding:8px;border:1px solid #ddd;border-radius:6px;text-align:center;"><span style="font-size:16px;">✈️</span><br><span style="font-size:10px;">Express</span></span></div>',
 				],
 				'bordered_list' => [
-					'title' => __( 'Bordered List', 'wishglut' ),
-					'description' => __( 'List with borders', 'wishglut' ),
+					'title' => __( 'Bordered List', 'shopglut' ),
+					'description' => __( 'List with borders', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="border:1px solid #ddd;border-radius:6px;overflow:hidden;"><div style="padding:8px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;font-size:11px;"><span>Monthly</span><span style="font-weight:600;">$9.99</span></div><div style="padding:8px;background:#667eea;color:white;display:flex;justify-content:space-between;font-size:11px;"><span>Yearly</span><span style="font-weight:600;">$99.99</span></div></div>',
 				],
 				'badge_selector' => [
-					'title' => __( 'Badge Selector', 'wishglut' ),
-					'description' => __( 'Badge-style selection', 'wishglut' ),
+					'title' => __( 'Badge Selector', 'shopglut' ),
+					'description' => __( 'Badge-style selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;gap:5px;"><span style="padding:5px 10px;border:1px solid #ddd;border-radius:12px;font-size:11px;position:relative;background:#667eea;color:white;"><span style="position:absolute;top:-6px;right:-6px;background:#28a745;color:white;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;">✓</span>New</span><span style="padding:5px 10px;border:1px solid #ddd;border-radius:12px;font-size:11px;">Sale</span></div>',
 				],
 				'tag_style' => [
-					'title' => __( 'Tag Style', 'wishglut' ),
-					'description' => __( 'Tag-like selection', 'wishglut' ),
+					'title' => __( 'Tag Style', 'shopglut' ),
+					'description' => __( 'Tag-like selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;gap:5px;"><span style="padding:4px 10px;background:#667eea;color:white;border-radius:4px;font-size:11px;position:relative;padding-right:20px;">Electronics<span style="position:absolute;right:5px;top:50%;transform:translateY(-50%);">×</span></span><span style="padding:4px 10px;background:#f0f0f0;border-radius:4px;font-size:11px;">Books</span></div>',
 				],
 				'table_selection' => [
-					'title' => __( 'Table Selection', 'wishglut' ),
-					'description' => __( 'Table-style selection', 'wishglut' ),
+					'title' => __( 'Table Selection', 'shopglut' ),
+					'description' => __( 'Table-style selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="border:1px solid #ddd;border-radius:6px;overflow:hidden;"><div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px;background:#f8f9ff;font-size:10px;font-weight:600;border-bottom:1px solid #ddd;"><span>Plan</span><span>Users</span><span>Price</span></div><div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px;font-size:10px;border-bottom:1px solid #ddd;"><span>Basic</span><span>1-5</span><span>$19</span></div><div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px;font-size:10px;background:#667eea;color:white;"><span>Pro</span><span>5-20</span><span>$49</span></div></div>',
 				],
 				'horizontal_tabs' => [
-					'title' => __( 'Horizontal Tabs', 'wishglut' ),
-					'description' => __( 'Tab-style selection', 'wishglut' ),
+					'title' => __( 'Horizontal Tabs', 'shopglut' ),
+					'description' => __( 'Tab-style selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div><div style="display:flex;border-bottom:1px solid #ddd;"><span style="flex:1;padding:6px;text-align:center;font-size:10px;border-bottom:2px solid transparent;margin-bottom:-1px;">Electronics</span><span style="flex:1;padding:6px;text-align:center;font-size:10px;border-bottom:2px solid #667eea;color:#667eea;">Fashion</span><span style="flex:1;padding:6px;text-align:center;font-size:10px;border-bottom:2px solid transparent;margin-bottom:-1px;">Home</span></div><div style="padding:6px;border:1px solid #ddd;border-top:none;border-radius:0 0 6px 6px;font-size:10px;">Fashion content</div></div>',
 				],
 				'timeline_style' => [
-					'title' => __( 'Timeline Style', 'wishglut' ),
-					'description' => __( 'Timeline-based selection', 'wishglut' ),
+					'title' => __( 'Timeline Style', 'shopglut' ),
+					'description' => __( 'Timeline-based selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="position:relative;padding-left:20px;"><div style="position:absolute;left:5px;top:5px;bottom:5px;width:1px;background:#ddd;"></div><div style="position:relative;padding:6px;border:1px solid #ddd;border-radius:4px;margin-bottom:5px;font-size:10px;"><span style="position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:8px;height:8px;background:white;border:2px solid #ddd;border-radius:50%;"></span>1 Year</div><div style="position:relative;padding:6px;border:1px solid #667eea;border-radius:4px;background:#f8f9ff;font-size:10px;"><span style="position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:8px;height:8px;background:#667eea;border:2px solid #667eea;border-radius:50%;"></span>2 Year</div></div>',
 				],
 				'split_button_group' => [
-					'title' => __( 'Split Button Group', 'wishglut' ),
-					'description' => __( 'Connected button group', 'wishglut' ),
+					'title' => __( 'Split Button Group', 'shopglut' ),
+					'description' => __( 'Connected button group', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="border:1px solid #ddd;border-radius:6px;overflow:hidden;display:flex;"><span style="flex:1;padding:8px;text-align:center;border-right:1px solid #ddd;font-size:11px;background:white;">PDF</span><span style="flex:1;padding:8px;text-align:center;font-size:11px;background:#667eea;color:white;">EPUB</span><span style="flex:1;padding:8px;text-align:center;border-left:1px solid #ddd;font-size:11px;background:white;">MOBI</span></div>',
 				],
 				'detailed_cards' => [
-					'title' => __( 'Detailed Cards', 'wishglut' ),
-					'description' => __( 'Cards with details', 'wishglut' ),
+					'title' => __( 'Detailed Cards', 'shopglut' ),
+					'description' => __( 'Cards with details', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;flex-direction:column;gap:5px;"><span style="padding:8px;border:1px solid #ddd;border-radius:6px;"><span style="font-weight:600;font-size:11px;">Basic Plan</span><span style="font-size:9px;color:#666;">For individuals</span><span style="margin-top:4px;font-weight:600;color:#667eea;font-size:10px;">$19.99</span></span><span style="padding:8px;border:1px solid #667eea;border-radius:6px;background:#f8f9ff;"><span style="font-weight:600;font-size:11px;">Pro Plan</span><span style="font-size:9px;color:#666;">For teams</span><span style="margin-top:4px;font-weight:600;color:#667eea;font-size:10px;">$49.99</span></span></div>',
 				],
 				'chip_selection' => [
-					'title' => __( 'Chip Selection', 'wishglut' ),
-					'description' => __( 'Chip-style buttons', 'wishglut' ),
+					'title' => __( 'Chip Selection', 'shopglut' ),
+					'description' => __( 'Chip-style buttons', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;gap:5px;"><span style="padding:5px 10px;border:1px solid #ddd;border-radius:12px;font-size:11px;display:flex;align-items:center;gap:5px;background:#667eea;color:white;border-color:#667eea;"><span style="font-size:10px;">✓</span>Wi-Fi</span><span style="padding:5px 10px;border:1px solid #ddd;border-radius:12px;font-size:11px;display:flex;align-items:center;gap:5px;"><span style="font-size:10px;">✓</span>Bluetooth</span></div>',
 				],
 				'slider_labels' => [
-					'title' => __( 'Slider with Labels', 'wishglut' ),
-					'description' => __( 'Range slider selection', 'wishglut' ),
+					'title' => __( 'Slider with Labels', 'shopglut' ),
+					'description' => __( 'Range slider selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div><div style="height:4px;background:#ddd;border-radius:3px;position:relative;margin:10px 0;"><span style="position:absolute;left:0;top:0;width:12px;height:12px;background:#667eea;border-radius:50%;transform:translate(-50%,50%);"></span></div><div style="display:flex;justify-content:space-between;font-size:9px;color:#666;margin-bottom:8px;"><span>64GB</span><span>128GB</span><span>256GB</span><span>512GB</span></div><div style="text-align:center;font-size:12px;font-weight:600;color:#667eea;">256GB Selected</div></div>',
 				],
 				'progress_steps' => [
-					'title' => __( 'Progress Steps', 'wishglut' ),
-					'description' => __( 'Step-based selection', 'wishglut' ),
+					'title' => __( 'Progress Steps', 'shopglut' ),
+					'description' => __( 'Step-based selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;justify-content:space-between;position:relative;padding-top:15px;"><div style="position:absolute;top:18px;left:20px;right:20px;height:1px;background:#ddd;"></div><div style="display:flex;flex-direction:column;align-items:center;position:relative;"><span style="width:20px;height:20px;border:1px solid #ddd;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#28a745;border-color:#28a745;">✓</span><span style="font-size:9px;margin-top:3px;">Bronze</span></div><div style="display:flex;flex-direction:column;align-items:center;position:relative;"><span style="width:20px;height:20px;border:1px solid #667eea;background:#667eea;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">2</span><span style="font-size:9px;margin-top:3px;">Silver</span></div><div style="display:flex;flex-direction:column;align-items:center;position:relative;"><span style="width:20px;height:20px;border:1px solid #ddd;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">3</span><span style="font-size:9px;margin-top:3px;">Gold</span></div></div>',
 				],
 				'dropdown_icons' => [
-					'title' => __( 'Dropdown with Icons', 'wishglut' ),
-					'description' => __( 'Custom dropdown with icons', 'wishglut' ),
+					'title' => __( 'Dropdown with Icons', 'shopglut' ),
+					'description' => __( 'Custom dropdown with icons', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="border:1px solid #ddd;border-radius:6px;padding:8px;display:flex;justify-content:space-between;align-items:center;background:white;"><span style="display:flex;align-items:center;gap:5px;"><span style="font-size:14px;">💳</span><span style="font-size:11px;">Credit Card</span></span><span style="font-size:10px;">▼</span></div>',
 				],
 				'vertical_button_group' => [
-					'title' => __( 'Vertical Button Group', 'wishglut' ),
-					'description' => __( 'Vertical list style', 'wishglut' ),
+					'title' => __( 'Vertical Button Group', 'shopglut' ),
+					'description' => __( 'Vertical list style', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="border:1px solid #ddd;border-radius:6px;overflow:hidden;"><span style="padding:8px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;font-size:10px;background:white;"><span>1 Year - $0</span><span>→</span></span><span style="padding:8px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;font-size:10px;background:#667eea;color:white;"><span>2 Year - $29</span><span>→</span></span><span style="padding:8px;display:flex;justify-content:space-between;font-size:10px;background:white;"><span>3 Year - $59</span><span>→</span></span></div>',
 				],
 				'card_grid_hover' => [
-					'title' => __( 'Card Grid with Hover', 'wishglut' ),
-					'description' => __( 'Hoverable card grid', 'wishglut' ),
+					'title' => __( 'Card Grid with Hover', 'shopglut' ),
+					'description' => __( 'Hoverable card grid', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;"><span style="border:1px solid #ddd;border-radius:6px;padding:10px;text-align:center;"><span style="font-size:20px;">📱</span><br><span style="font-weight:600;font-size:11px;">Basic</span><br><span style="font-size:10px;color:#666;">$29.99</span></span><span style="border:1px solid #667eea;border-radius:6px;padding:10px;text-align:center;background:#667eea;color:white;"><span style="font-size:20px;">💼</span><br><span style="font-weight:600;font-size:11px;">Pro</span><br><span style="font-size:10px;">$49.99</span></span></div>',
 				],
 				'comparison_cards' => [
-					'title' => __( 'Comparison Cards', 'wishglut' ),
-					'description' => __( 'Comparing card options', 'wishglut' ),
+					'title' => __( 'Comparison Cards', 'shopglut' ),
+					'description' => __( 'Comparing card options', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;"><span style="border:1px solid #ddd;border-radius:6px;padding:8px;text-align:center;position:relative;"><span style="font-weight:600;font-size:11px;">Basic</span><div style="font-size:14px;font-weight:600;margin:5px 0;">$9.99</div><span style="font-size:9px;">10GB Storage</span></span><span style="border:1px solid #667eea;border-radius:6px;padding:8px;text-align:center;background:#667eea;color:white;position:relative;"><span style="position:absolute;top:-5px;right:5px;background:white;color:#667eea;padding:2px 6px;border-radius:10px;font-size:8px;font-weight:600;">POPULAR</span><span style="font-weight:600;font-size:11px;">Pro</span><div style="font-size:14px;font-weight:600;margin:5px 0;">$29.99</div><span style="font-size:9px;">50GB Storage</span></span></div>',
 				],
 				'range_price' => [
-					'title' => __( 'Range Price Selector', 'wishglut' ),
-					'description' => __( 'Price range selection', 'wishglut' ),
+					'title' => __( 'Range Price Selector', 'shopglut' ),
+					'description' => __( 'Price range selection', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div><div style="display:flex;gap:10px;margin-bottom:8px;"><span style="flex:1;"><span style="font-size:9px;color:#666;">Min</span><div style="padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-weight:600;">$100</div></span><span style="flex:1;"><span style="font-size:9px;color:#666;">Max</span><div style="padding:6px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-weight:600;">$500</div></span></div><div style="height:4px;background:#ddd;border-radius:3px;position:relative;"><span style="position:absolute;left:25%;right:25%;height:100%;background:#667eea;border-radius:3px;"></span></div></div>',
 				],
 				'multi_select_boxes' => [
-					'title' => __( 'Multi-Select Boxes', 'wishglut' ),
-					'description' => __( 'Multi-select with boxes', 'wishglut' ),
+					'title' => __( 'Multi-Select Boxes', 'shopglut' ),
+					'description' => __( 'Multi-select with boxes', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5px;"><span style="display:flex;gap:8px;padding:8px;border:1px solid #667eea;border-radius:6px;background:#f8f9ff;"><span style="width:14px;height:14px;background:#667eea;border-radius:3px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:9px;">✓</span></span><span><span style="font-weight:600;font-size:10px;">Warranty</span><br><span style="font-size:9px;color:#666;">3 years</span></span></span><span style="display:flex;gap:8px;padding:8px;border:1px solid #ddd;border-radius:6px;"><span style="width:14px;height:14px;border:1px solid #ddd;border-radius:3px;"></span><span><span style="font-weight:600;font-size:10px;">Support</span><br><span style="font-size:9px;color:#666;">Priority</span></span></span></div>',
 				],
 				'quantity_matrix' => [
-					'title' => __( 'Quantity Matrix', 'wishglut' ),
-					'description' => __( 'Quantity button grid', 'wishglut' ),
+					'title' => __( 'Quantity Matrix', 'shopglut' ),
+					'description' => __( 'Quantity button grid', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div><div style="font-size:10px;color:#666;margin-bottom:5px;">Choose quantity</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;"><span style="aspect-ratio:1;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:white;">1</span><span style="aspect-ratio:1;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:white;">5</span><span style="aspect-ratio:1;border:1px solid #667eea;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:#667eea;color:white;">10</span><span style="aspect-ratio:1;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:white;">25</span><span style="aspect-ratio:1;border:1px solid #ddd;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:white;">50</span></div></div>',
 				],
 				'pyramid_selection' => [
-					'title' => __( 'Pyramid Selection', 'wishglut' ),
-					'description' => __( 'Pyramid-style layout', 'wishglut' ),
+					'title' => __( 'Pyramid Selection', 'shopglut' ),
+					'description' => __( 'Pyramid-style layout', 'shopglut' ),
 					'type' => 'pro',
 					'preview' => '<div style="display:flex;flex-direction:column;gap:5px;"><div style="display:flex;justify-content:center;gap:5px;"><span style="padding:8px 15px;border:1px solid #667eea;border-radius:6px;background:#667eea;color:white;font-size:11px;font-weight:600;position:relative;"><span style="position:absolute;top:-10px;right:-5px;font-size:14px;">⭐</span><span>Best Value</span></span></div><div style="display:flex;justify-content:center;gap:5px;"><span style="padding:8px 12px;border:1px solid #ddd;border-radius:6px;background:white;font-size:11px;font-weight:600;">Standard</span><span style="padding:8px 12px;border:1px solid #ddd;border-radius:6px;background:white;font-size:11px;font-weight:600;">Plus</span></div></div>',
 				],
