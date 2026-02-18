@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# But track these
+!wishglut.zip
+!wishglut-version.json
+!.github/
+!.gitignore
+
+# Track build scripts
+!build.sh
+!set-version.sh

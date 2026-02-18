@@ -1,0 +1,13 @@
+{
+  "name": "WishGlut",
+  "slug": "wishglut",
+  "version": "1.1.2",
+  "download_url": "https://updates.appglut.com/plugins/wishglut.zip",
+  "homepage": "https://github.com/appglut/wishglut",
+  "requires": "5.8",
+  "tested": "6.5",
+  "requires_php": "7.4",
+  "last_updated": "2025-02-18 00:00:00",
+  "author": "AppGlut",
+  "author_homepage": "https://appglut.com"
+}
