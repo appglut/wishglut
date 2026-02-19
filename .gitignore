@@ -7,6 +7,3 @@
 !.github/
 !.gitignore
 
-# Track build scripts
-!build.sh
-!set-version.sh
