@@ -1,7 +1,7 @@
 {
   "name": "WishGlut",
   "slug": "wishglut",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "download_url": "https://updates.appglut.com/plugins/wishglut.zip",
   "homepage": "https://github.com/appglut/wishglut",
   "requires": "5.8",
